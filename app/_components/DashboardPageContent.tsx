@@ -1,4 +1,4 @@
-import { Sidebar, TopBar, ProfileCard, StatsRow, ActivityChart, PRCycleCard } from "./index";
+import { Sidebar, TopBar, ProfileCard, StatsRow, ActivityChart, PRCycleCard, ContributionHeatmap } from "./index";
 
 export default function DashboardPage() {
     return (
@@ -9,6 +9,7 @@ export default function DashboardPage() {
                 <main className="flex-1 overflow-y-auto p-6">
                     <div className="grid grid-cols-12 gap-4 max-w-[1400px] mx-auto">
 
+                        {/* Row 1 */}
                         <div className="col-span-12 md:col-span-4">
                             <ProfileCard />
                         </div>
@@ -16,12 +17,17 @@ export default function DashboardPage() {
                         <div className="col-span-12 md:col-span-8">
                             <StatsRow />
                         </div>
-
+                        {/* Row 2 */}
                         <div className="col-span-12 md:col-span-8">
                             <ActivityChart />
                         </div>
                         <div className="col-span-12 md:col-span-4">
                             <PRCycleCard />
+                        </div>
+
+                        {/* Row 3 */}
+                        <div className="col-span-12">
+                            <ContributionHeatmap />
                         </div>
                     </div>
                 </main>
