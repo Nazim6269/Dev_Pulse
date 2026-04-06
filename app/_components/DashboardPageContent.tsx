@@ -7,7 +7,7 @@ export default function DashboardPage() {
             <div className="flex-1 flex flex-col overflow-hidden">
                 <TopBar />
                 <main className="flex-1 overflow-y-auto p-6">
-                    <div className="grid grid-cols-12 gap-4 max-w-[1400px] mx-auto">
+                    <div className="grid grid-cols-12 gap-4 max-w-[1920px] mx-auto">
 
                         {/* Row 1 */}
                         <div className="col-span-12 md:col-span-4">
@@ -35,15 +35,15 @@ export default function DashboardPage() {
                             <RecentPRs />
                         </div>
                         <div className="col-span-12 md:col-span-3">
-              <GoalTracker />
-            </div>
-            <div className="col-span-12 md:col-span-4">
-              <TopRepos />
-            </div>
-{/* Row 5 */}
-            <div className="col-span-12">
-              <ReviewStats />
-            </div>
+                            <GoalTracker />
+                        </div>
+                        <div className="col-span-12 md:col-span-4">
+                            <TopRepos />
+                        </div>
+                        {/* Row 5 */}
+                        <div className="col-span-12">
+                            <ReviewStats />
+                        </div>
                     </div>
                 </main>
             </div>

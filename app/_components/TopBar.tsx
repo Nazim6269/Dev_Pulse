@@ -12,7 +12,7 @@ export default function TopBar() {
       <div className="flex-1" />
 
       {/* Search */}
-      <div className="flex items-center gap-2 bg-white/[0.05] border border-white/[0.07] rounded-xl px-3 py-1.5 w-56 group focus-within:border-violet-500/50 transition-colors">
+      <div className="hidden md:flex items-center gap-2 bg-white/[0.05] border border-white/[0.07] rounded-xl px-3 py-1.5 w-56 group focus-within:border-violet-500/50 transition-colors">
         <Search size={13} className="text-white/30 shrink-0" />
         <input
           placeholder="Search repos, PRs..."
@@ -29,7 +29,7 @@ export default function TopBar() {
       </button>
 
       {/* Sync badge */}
-      <div className="flex items-center gap-1.5">
+      <div className="hidden sm:flex items-center gap-1.5">
         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/60" />
         <span className="text-[11px] text-white/30">Synced</span>
       </div>

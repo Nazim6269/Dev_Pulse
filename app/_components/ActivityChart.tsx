@@ -34,7 +34,7 @@ export default function ActivityChart() {
             <div key={week} className="flex-1 flex flex-col items-center gap-1">
               <div className="w-full flex items-end gap-0.5 h-28">
                 <div
-                  className="flex-1 rounded-t-md bg-violet-500/25 hover:bg-violet-500/50 transition-colors cursor-default relative group"
+                  className="flex-1 rounded-t-md bg-violet-500 hover:bg-violet-500/50 transition-colors cursor-default relative group"
                   style={{ height: `${commitH}%` }}
                 >
                   <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-white/0 group-hover:text-white/60 transition-colors whitespace-nowrap">
@@ -42,7 +42,7 @@ export default function ActivityChart() {
                   </span>
                 </div>
                 <div
-                  className="flex-1 rounded-t-md bg-amber-500/40 hover:bg-amber-500/60 transition-colors cursor-default"
+                  className="flex-1 rounded-t-md bg-amber-500 hover:bg-amber-500/60 transition-colors cursor-default"
                   style={{ height: `${prH}%` }}
                 />
               </div>
