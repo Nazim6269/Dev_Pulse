@@ -4,3 +4,4 @@ export { default as TopBar } from "./TopBar";
 export { default as ProfileCard } from "./ProfileCard";
 export { default as StatsRow } from "./StatsRow";
 export { default as ActivityChart } from "./ActivityChart";
+export { default as PRCycleCard } from "./PRCycleCard";
