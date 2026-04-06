@@ -6,3 +6,4 @@ export { default as StatsRow } from "./StatsRow";
 export { default as ActivityChart } from "./ActivityChart";
 export { default as PRCycleCard } from "./PRCycleCard";
 export { default as ContributionHeatmap } from "./ContributionHeatmap";
+export { default as RecentPRs } from "./RecentPRs";
