@@ -10,3 +10,4 @@ export { default as RecentPRs } from "./RecentPRs";
 export { default as GoalTracker } from "./GoalTracker";
 export { default as TopRepos } from "./TopRepos";
 export { default as ReviewStats } from "./ReviewStats";
+export { default as DropDownMenu } from "../../components/common/DropDown";

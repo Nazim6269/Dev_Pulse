@@ -1,13 +1,10 @@
 import { Search, SlidersHorizontal, ChevronDown } from "lucide-react";
-
+import {DropDownMenu} from "./index";
 export default function TopBar() {
   return (
     <header className="h-14 border-b border-white/[0.06] bg-[#0c0c0e] flex items-center px-6 gap-4 shrink-0">
       {/* Page title */}
-      <div className="flex items-center gap-2">
-        <span className="text-[13px] font-medium text-white/90 tracking-tight">Overview</span>
-        <ChevronDown size={13} className="text-white/30" />
-      </div>
+      <DropDownMenu />
 
       <div className="flex-1" />
 
