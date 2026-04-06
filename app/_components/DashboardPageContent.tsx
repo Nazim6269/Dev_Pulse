@@ -1,5 +1,4 @@
-
-import { Sidebar, TopBar, ProfileCard } from "./index";
+import { Sidebar, TopBar, ProfileCard, StatsRow } from "./index";
 
 export default function DashboardPage() {
     return (
@@ -12,6 +11,10 @@ export default function DashboardPage() {
 
                         <div className="col-span-12 md:col-span-4">
                             <ProfileCard />
+                        </div>
+
+                        <div className="col-span-12 md:col-span-8">
+                            <StatsRow />
                         </div>
                     </div>
                 </main>
