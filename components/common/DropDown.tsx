@@ -16,6 +16,7 @@ import { useState } from "react";
 export interface DropDownItem {
   label: string;
   value: string;
+  href?: string;
 }
 
 interface DropDownProps {
@@ -28,17 +29,24 @@ interface DropDownProps {
 
 export default function DropDown({ title, placeholderClass, itemClass, leftIcon, items }: DropDownProps) {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(title);
+
+  const handleValueChange = (value: string) => {
+    console.log(value);
+    setValue(value);
+    setOpen(false);
+  }
   return (
     <DropdownMenu open={open} onOpenChange={(prev) => setOpen(prev)}>
-      <DropdownMenuTrigger asChild>
-        <Button variant="default" className={`flex items-center gap-2 text-sm cursor-pointer  ${placeholderClass}`}>
-          {leftIcon}  {title} <ChevronDown size={13} className={`text-white/30 ${open ? "rotate-180 transition-all duration-300" : "transition-all duration-300"}`} />
+      <DropdownMenuTrigger  >
+        <Button variant="default" className={`flex items-center gap-2 text-sm cursor-pointer  ${placeholderClass}`} >
+          {leftIcon}  {value} <ChevronDown size={13} className={`text-white/30 ${open ? "rotate-180 transition-all duration-300" : "transition-all duration-300"}`} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-[#0c0c0e] border border-white/6">
         <DropdownMenuGroup>
           {items?.map((item) => (
-            <DropdownMenuItem key={item.value} className={`cursor-pointer ${itemClass} `}>
+            <DropdownMenuItem key={item.value} className={`cursor-pointer ${itemClass} `} onClick={() => handleValueChange(item.label)}>
               {item.label}
             </DropdownMenuItem>
           ))}

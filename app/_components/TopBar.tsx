@@ -7,19 +7,24 @@ export default function TopBar() {
   return (
     <header className="h-14 border-b border-white/6 bg-primaryColor flex items-center px-4 sm:px-6 gap-4 shrink-0">
       {/* Page title */}
-      <DropDownMenu
-        title="Overview"
-        placeholderClass="text-placeHolderTextColor hover:text-violetColor"
-        itemClass="text-placeHolderTextColor hover:text-violetColor"
-        items={[
-          { label: "Overview", value: "overview" },
-          { label: "Commits", value: "commits" },
-          { label: "PRs", value: "prs" },
-          { label: "Issues", value: "issues" },
-          { label: "Repos", value: "repos" },
-          { label: "Contributors", value: "contributors" },
-        ]}
-      />
+      <div className="block sm:hidden">
+        <DropDownMenu
+          title="Overview"
+          placeholderClass="text-placeHolderTextColor hover:text-violetColor"
+          itemClass="text-placeHolderTextColor hover:text-violetColor"
+          items={[
+            { label: "Overview", value: "overview", href: "/" },
+            { label: "Commits", value: "commits", href: "/commits" },
+            { label: "PRs", value: "prs", href: "/prs" },
+            { label: "Issues", value: "issues", href: "/issues" },
+            { label: "Repos", value: "repos", href: "/repos" },
+            { label: "Contributors", value: "contributors", href: "/contributors" },
+            { label: "Settings", value: "settings", href: "/settings" },
+            { label: "Notification", value: "notification", href: "/notification" },
+            { label: "Profile", value: "profile", href: "/profile" },
+          ]}
+        />
+      </div>
 
       <div className="flex-1" />
 
@@ -58,9 +63,9 @@ export default function TopBar() {
       </Button>
 
       {/* Sync badge (visible on small screens and above) */}
-      <div className="hidden md:flex items-center gap-1.5">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/60" />
-        <span className="text-[11px] text-white/30">Synced</span>
+      <div className="hidden lg:flex items-center gap-1.5">
+        <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/60" />
+        <span className="text-sm text-white/30">Synced</span>
       </div>
     </header>
   );
