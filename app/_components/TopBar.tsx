@@ -2,14 +2,14 @@ import { Search, SlidersHorizontal, ChevronDown } from "lucide-react";
 import {DropDownMenu} from "./index";
 export default function TopBar() {
   return (
-    <header className="h-14 border-b border-white/[0.06] bg-[#0c0c0e] flex items-center px-6 gap-4 shrink-0">
+    <header className="h-14 border-b border-white/6 bg-[#0c0c0e] flex items-center px-6 gap-4 shrink-0">
       {/* Page title */}
       <DropDownMenu />
 
       <div className="flex-1" />
 
       {/* Search */}
-      <div className="hidden md:flex items-center gap-2 bg-white/[0.05] border border-white/[0.07] rounded-xl px-3 py-1.5 w-56 group focus-within:border-violet-500/50 transition-colors">
+      <div className="hidden md:flex items-center gap-2 bg-white/5 border border-white/7 rounded-xl px-3 py-1.5 w-56 group focus-within:border-violet-500/50 transition-colors">
         <Search size={13} className="text-white/30 shrink-0" />
         <input
           placeholder="Search repos, PRs..."
@@ -19,7 +19,7 @@ export default function TopBar() {
       </div>
 
       {/* Date filter */}
-      <button className="flex items-center gap-2 bg-white/[0.05] border border-white/[0.07] rounded-xl px-3 py-1.5 text-[12px] text-white/50 hover:text-white/70 hover:border-white/20 transition-all">
+      <button className="flex items-center gap-2 bg-white/5 border border-white/7 rounded-xl px-3 py-1.5 text-[12px] text-white/50 hover:text-white/70 hover:border-white/20 transition-all">
         <SlidersHorizontal size={13} />
         Last 30 days
         <ChevronDown size={12} className="text-white/30" />

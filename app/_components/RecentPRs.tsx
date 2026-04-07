@@ -51,11 +51,10 @@ export default function RecentPRs() {
       <div className="flex flex-col divide-y divide-white/[0.04]">
         {prs.map((pr, i) => (
           <div key={i} className="py-3 flex items-start gap-3 group cursor-default">
-            <div className={`mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
-              pr.state === "merged"
-                ? "bg-violet-500/15"
-                : "bg-amber-500/15"
-            }`}>
+            <div className={`mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${pr.state === "merged"
+              ? "bg-violet-500/15"
+              : "bg-amber-500/15"
+              }`}>
               {pr.state === "merged"
                 ? <GitMerge size={13} className="text-violet-400" />
                 : <GitPullRequest size={13} className="text-amber-400" />
@@ -79,11 +78,10 @@ export default function RecentPRs() {
                 )}
               </div>
             </div>
-            <span className={`shrink-0 text-[10px] px-1.5 py-0.5 rounded-full border mt-0.5 ${
-              pr.state === "merged"
-                ? "text-violet-400 border-violet-400/20 bg-violet-400/10"
-                : "text-amber-400 border-amber-400/20 bg-amber-400/10"
-            }`}>
+            <span className={`shrink-0 text-[10px] px-1.5 py-0.5 rounded-full border mt-0.5 ${pr.state === "merged"
+              ? "text-violet-400 border-violet-400/20 bg-violet-400/10"
+              : "text-amber-400 border-amber-400/20 bg-amber-400/10"
+              }`}>
               {pr.state}
             </span>
           </div>
