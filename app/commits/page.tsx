@@ -28,77 +28,7 @@ const maxTimeValue = 14;
 export default function CommitsDashboard() {
   return (
     <div className="flex min-h-screen overflow-hidden bg-[#0c0c0e] font-sans text-white">
-      {/* <aside className="hidden w-[66px] shrink-0 flex-col items-center gap-2 border-r border-white/[0.06] bg-[#111114] py-5 md:flex">
-        <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-xl bg-violet-500 shadow-lg shadow-violet-500/30">
-          <Zap className="h-4 w-4 text-white" />
-        </div>
-
-        <nav className="flex w-full flex-1 flex-col gap-1 px-2">
-          <SidebarButton icon={<LayoutGrid className="h-[17px] w-[17px]" />} />
-          <SidebarButton icon={<TrendingUp className="h-[17px] w-[17px]" />} />
-          <SidebarButton icon={<CircleDot className="h-[17px] w-[17px]" />} active />
-          <SidebarButton icon={<Users className="h-[17px] w-[17px]" />} />
-          <SidebarButton icon={<Target className="h-[17px] w-[17px]" />} />
-        </nav>
-
-        <div className="flex w-full flex-col gap-1 px-2 pb-2">
-          <SidebarButton icon={<Bell className="h-4 w-4" />} />
-          <SidebarButton icon={<Settings className="h-4 w-4" />} />
-          <div className="mt-2 flex justify-center">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-500 text-[11px] font-semibold text-white">
-              RA
-            </div>
-          </div>
-        </div>
-      </aside> */}
-
       <div className="flex flex-1 flex-col overflow-hidden">
-        <header className="flex h-14 shrink-0 items-center gap-4 border-b border-white/[0.06] bg-[#0c0c0e] px-6">
-          <div className="flex items-center gap-2">
-            <span className="text-[13px] font-medium tracking-tight text-white/90">Commits</span>
-            <ChevronDown className="h-3 w-3 text-white/30" />
-          </div>
-
-          <div className="flex-1" />
-
-          <div className="hidden items-center gap-1 rounded-xl border border-white/[0.06] bg-white/[0.04] p-1 md:flex">
-            <Button
-              size="sm"
-              variant="ghost"
-              className="h-7 rounded-lg bg-violet-500/20 px-3 text-[11px] text-violet-400 hover:bg-violet-500/20 hover:text-violet-400"
-            >
-              All repos
-            </Button>
-            <Button
-              size="sm"
-              variant="ghost"
-              className="h-7 rounded-lg px-3 text-[11px] text-white/35 hover:bg-transparent hover:text-white/60"
-            >
-              devpulse/web
-            </Button>
-            <Button
-              size="sm"
-              variant="ghost"
-              className="h-7 rounded-lg px-3 text-[11px] text-white/35 hover:bg-transparent hover:text-white/60"
-            >
-              devpulse/api
-            </Button>
-          </div>
-
-          <div className="relative hidden w-44 md:block">
-            <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-white/30" />
-            <Input
-              placeholder="Search commits..."
-              className="h-9 rounded-xl border-white/[0.07] bg-white/[0.05] pl-8 text-[12px] text-white placeholder:text-white/25"
-            />
-          </div>
-
-          <div className="hidden items-center gap-1.5 md:flex">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/60" />
-            <span className="text-[11px] text-white/30">Synced</span>
-          </div>
-        </header>
-
         <main className="flex-1 overflow-y-auto p-5">
           <div className="mx-auto grid max-w-[1920px] grid-cols-12 gap-3.5">
             <div className="col-span-12 md:col-span-3">
