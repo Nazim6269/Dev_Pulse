@@ -21,9 +21,10 @@
   --color-si-text: #ffffffcc;
   --color-si-placeholder: #ffffff66;
   --color-si-icon: #ffffff80;
+  --color-si-hover-text: #ffffffcc;
 
   /* States */
-  --color-si-hover-bg: #1a1a1d;
+  --color-si-hover-bg: #8b5cf6;
   --color-si-active-bg: #1f1f23;
   --color-si-clear-hover: #ffffff14;
   --color-si-error: #f87171; /* softer red for dark */

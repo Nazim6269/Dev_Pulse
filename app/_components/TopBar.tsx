@@ -7,7 +7,7 @@ import GenericButton from "@/components/common/GenericButton";
 import { GenericSearch } from "@/components/common/search/GenericSearch";
 import { useRouter } from "next/navigation";
 import { NAV_LINKS } from "@/constants";
-
+import GenericDropDown from "@/components/common/GenericDropDown";
 
 function searchNavigation(query: string) {
   const q = query.toLowerCase();
@@ -34,34 +34,32 @@ export default function TopBar() {
       <div className="flex-1" />
 
       {/* Search */}
-      
-       
-        <GenericSearch
-          onSearch={searchNavigation as any}
-          onSelect={(item: any) => {
-            if (item && item.id) {
-              router.push(item.id);
-            }
-          }}
-          placeholder="Search pages and settings..."
-          debounceMs={0}
-          minChars={1}
-          size="lg"
-          className="w-sm hidden xl:block"
-        />
-    
 
       {/* Date filter */}
-      <DropDownMenu
-        title="Last 30 days"
-        placeholderClass="text-placeHolderTextColor hover:text-violetColor"
-        itemClass="text-placeHolderTextColor hover:text-violetColor"
-        leftIcon={<SlidersHorizontal size={13} />}
-        items={[
+      <GenericSearch
+        onSearch={searchNavigation as any}
+        onSelect={(item: any) => {
+          if (item && item.id) {
+            router.push(item.id);
+          }
+        }}
+        placeholder="Search pages and settings..."
+        debounceMs={0}
+        minChars={1}
+        size="lg"
+        className="w-sm hidden xl:block"
+      />
+
+      <GenericDropDown
+        options={[
           { label: "Last 30 days", value: "30" },
           { label: "Last 60 days", value: "60" },
           { label: "Last 90 days", value: "90" },
         ]}
+        placeholder="Select..."
+        leftIcon={<SlidersHorizontal size={13} />}
+        className="w-[180px]"
+        variant="dark"
       />
 
       {/* Button group (only visible on medium and larger screens) */}

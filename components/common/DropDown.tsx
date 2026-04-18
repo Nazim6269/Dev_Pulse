@@ -43,7 +43,7 @@ export default function DropDown({ title, placeholderClass, itemClass, leftIcon,
           {leftIcon}  {value} <ChevronDown size={13} className={`text-white/30 ${open ? "rotate-180 transition-all duration-300" : "transition-all duration-300"}`} />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-primaryColor border border-white/6">
+      <DropdownMenuContent className="bg-primaryColor border border-white/6 ">
         <DropdownMenuGroup>
           {items?.map((item) => (
             <DropdownMenuItem key={item.value} className={`cursor-pointer ${itemClass} `} onClick={() => handleValueChange(item.label)}>
