@@ -3,7 +3,7 @@ import { Sidebar, TopBar, ProfileCard, StatsRow, ActivityChart, PRCycleCard, Con
 
 export default function DashboardPageContent() {
     return (
-        <div className="flex h-screen bg-[#0c0c0e] text-white overflow-hidden font-sans">
+        <div className="flex h-screen bg-primaryColor text-white overflow-hidden font-sans">
             <div className="flex-1 flex flex-col overflow-hidden">
                 <CustomScrollableContainer className="flex-1 overflow-y-auto p-6">
                     <div className="grid grid-cols-12 gap-4 max-w-[1920px] mx-auto">

@@ -22,11 +22,11 @@ const groupedByDate: { label: string; items: Notification[] }[] = [
 
 export default function NotificationsPage() {
     return (
-        <div className="flex h-screen bg-[#0c0c0e] text-white overflow-hidden font-sans">
+        <div className="flex h-screen bg-primaryColor text-white overflow-hidden font-sans">
 
             <div className="flex-1 flex flex-col overflow-hidden">
                 {/* Topbar */}
-                <header className="h-14 border-b border-white/[0.06] bg-[#0c0c0e] flex items-center px-6 gap-4 shrink-0">
+                <header className="h-14 border-b border-white/[0.06] bg-primaryColor flex items-center px-6 gap-4 shrink-0">
                     <div className="flex items-center gap-3">
                         <Bell size={15} className="text-white/60" />
                         <span className="text-[13px] font-medium text-white/90">Notifications</span>
@@ -131,7 +131,7 @@ export default function NotificationsPage() {
                                                                 <Icon size={16} className={cfg.iconColor} />
                                                             </div>
                                                             {!notif.read && (
-                                                                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-rose-400 border-2 border-[#0c0c0e]" />
+                                                                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-rose-400 border-2 border-primaryColor" />
                                                             )}
                                                         </div>
 

@@ -12,7 +12,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import {
-  
+
     Trash2,
     ChevronRight,
     Check,
@@ -56,7 +56,7 @@ function FieldRow({ label, desc, children }: { label: string; desc?: string; chi
 
 export default function SettingsPage() {
     return (
-        <div className="flex h-screen bg-[#0c0c0e] text-white overflow-hidden font-sans">
+        <div className="flex h-screen bg-primaryColor text-white overflow-hidden font-sans">
             <div className="flex-1 flex overflow-hidden">
                 {/* Settings sidebar nav */}
                 <aside className="w-52 bg-[#0e0e11] border-r border-white/[0.06] flex flex-col py-6 px-3 shrink-0">

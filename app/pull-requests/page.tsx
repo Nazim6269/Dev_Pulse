@@ -188,7 +188,7 @@ function StatCard({
 
 export default function PullRequestsDashboard() {
   return (
-    <div className="flex min-h-screen bg-[#0c0c0e] text-white">
+    <div className="flex min-h-screen bg-primaryColor text-white">
       <div className="flex flex-1 flex-col overflow-hidden">
         <main className="flex-1 overflow-y-auto p-5">
           <div className="mx-auto grid max-w-[1920px] grid-cols-12 gap-3.5">

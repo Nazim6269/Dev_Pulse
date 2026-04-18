@@ -27,7 +27,7 @@ const maxTimeValue = 14;
 
 export default function CommitsDashboard() {
   return (
-    <div className="flex min-h-screen overflow-hidden bg-[#0c0c0e] font-sans text-white">
+    <div className="flex min-h-screen overflow-hidden bg-primaryColor font-sans text-white">
       <div className="flex flex-1 flex-col overflow-hidden">
         <main className="flex-1 overflow-y-auto p-5">
           <div className="mx-auto grid max-w-[1920px] grid-cols-12 gap-3.5">

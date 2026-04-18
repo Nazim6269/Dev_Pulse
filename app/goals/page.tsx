@@ -290,7 +290,7 @@ function getAchievementBadgeClass(badge: string) {
 
 export default function GoalsDashboard() {
   return (
-    <div className="flex min-h-screen overflow-hidden bg-[#0c0c0e] font-sans text-white">
+    <div className="flex min-h-screen overflow-hidden bg-primaryColor font-sans text-white">
       {/* <aside className="hidden w-[66px] shrink-0 flex-col items-center gap-2 border-r border-white/[0.06] bg-[#111114] py-5 md:flex">
         <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-xl bg-violet-500 shadow-lg shadow-violet-500/30">
           <Zap className="h-4 w-4 text-white" />
@@ -316,7 +316,7 @@ export default function GoalsDashboard() {
       </aside> */}
 
       <div className="flex flex-1 flex-col overflow-hidden">
-        <header className="flex h-14 shrink-0 items-center gap-4 border-b border-white/[0.06] bg-[#0c0c0e] px-6">
+        <header className="flex h-14 shrink-0 items-center gap-4 border-b border-white/[0.06] bg-primaryColor px-6">
           <div className="flex items-center gap-2">
             <span className="text-[13px] font-medium tracking-tight text-white/90">Goals</span>
             <ChevronDown className="h-3 w-3 text-white/30" />

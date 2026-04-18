@@ -1,40 +1,55 @@
+"use client";
+
 import { Search, SlidersHorizontal, ChevronDown, Plus } from "lucide-react";
 import { DropDownMenu } from "./index";
 import { Button } from "@/components/ui/button";
-import CustomSearch from "@/components/common/CustomSearch";
 import GenericButton from "@/components/common/GenericButton";
+import { GenericSearch } from "@/components/common/search/GenericSearch";
+import { useRouter } from "next/navigation";
+import { NAV_LINKS } from "@/constants";
+
+
+function searchNavigation(query: string) {
+  const q = query.toLowerCase();
+  return NAV_LINKS.filter(
+    (item) =>
+      item.label.toLowerCase().includes(q) ||
+      item.value.toLowerCase().includes(q),
+  );
+}
 export default function TopBar() {
+  const router = useRouter();
   return (
-    <header className="h-14 border-b border-white/6 bg-primaryColor flex items-center px-4 sm:px-6 gap-4 shrink-0">
+    <header className="h-14 border-b border-customRed bg-primaryColor flex items-center px-4 sm:px-6 gap-4 shrink-0">
       {/* Page title */}
       <div className="block sm:hidden">
         <DropDownMenu
           title="Overview"
           placeholderClass="text-placeHolderTextColor hover:text-violetColor"
           itemClass="text-placeHolderTextColor hover:text-violetColor"
-          items={[
-            { label: "Overview", value: "overview", href: "/" },
-            { label: "Commits", value: "commits", href: "/commits" },
-            { label: "PRs", value: "prs", href: "/prs" },
-            { label: "Issues", value: "issues", href: "/issues" },
-            { label: "Repos", value: "repos", href: "/repos" },
-            { label: "Contributors", value: "contributors", href: "/contributors" },
-            { label: "Settings", value: "settings", href: "/settings" },
-            { label: "Notification", value: "notification", href: "/notification" },
-            { label: "Profile", value: "profile", href: "/profile" },
-          ]}
+          items={NAV_LINKS}
         />
       </div>
 
       <div className="flex-1" />
 
       {/* Search */}
-      <CustomSearch
-        placeholder="Search repos, PRs..."
-        inputClass="text-sm"
-        iconSize={13}
-        iconClass="text-white/30 shrink-0"
-      />
+      
+       
+        <GenericSearch
+          onSearch={searchNavigation as any}
+          onSelect={(item: any) => {
+            if (item && item.id) {
+              router.push(item.id);
+            }
+          }}
+          placeholder="Search pages and settings..."
+          debounceMs={0}
+          minChars={1}
+          size="lg"
+          className="w-sm hidden xl:block"
+        />
+    
 
       {/* Date filter */}
       <DropDownMenu
@@ -51,9 +66,24 @@ export default function TopBar() {
 
       {/* Button group (only visible on medium and larger screens) */}
       <div className="hidden md:flex items-center gap-1 rounded-xl border border-white/6 bg-white/4 p-1">
-        <GenericButton title="All repos" size="sm" variant="ghost" className="px-3 text-sm" />
-        <GenericButton title="devpulse/web" size="sm" variant="ghost" className="px-3 text-sm" />
-        <GenericButton title="devpulse/api" size="sm" variant="ghost" className="px-3 text-sm" />
+        <GenericButton
+          title="All repos"
+          size="sm"
+          variant="ghost"
+          className="px-3 text-sm"
+        />
+        <GenericButton
+          title="devpulse/web"
+          size="sm"
+          variant="ghost"
+          className="px-3 text-sm"
+        />
+        <GenericButton
+          title="devpulse/api"
+          size="sm"
+          variant="ghost"
+          className="px-3 text-sm"
+        />
       </div>
 
       {/* Invite Button */}

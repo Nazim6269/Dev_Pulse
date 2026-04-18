@@ -27,11 +27,11 @@ import {
 
 export default function ProfilePage() {
     return (
-        <div className="flex h-screen bg-[#0c0c0e] text-white overflow-hidden font-sans">
+        <div className="flex h-screen bg-primaryColor text-white overflow-hidden font-sans">
 
             <div className="flex-1 flex flex-col overflow-hidden">
                 {/* Topbar */}
-                <header className="h-14 border-b border-white/[0.06] bg-[#0c0c0e] flex items-center px-6 gap-4 shrink-0">
+                <header className="h-14 border-b border-white/[0.06] bg-primaryColor flex items-center px-6 gap-4 shrink-0">
                     <span className="text-[13px] font-medium text-white/90">Public profile</span>
                     <div className="flex-1" />
                     <Button variant="ghost" size="sm" className="text-[11px] text-white/40 hover:text-white/70 h-8 gap-1.5">
