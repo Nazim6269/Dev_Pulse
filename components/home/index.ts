@@ -10,7 +10,7 @@ export { default as RecentPRs } from "./RecentPRs";
 export { default as GoalTracker } from "./GoalTracker";
 export { default as TopRepos } from "./TopRepos";
 export { default as ReviewStats } from "./ReviewStats";
-export { default as DropDownMenu } from "../../components/common/DropDown";
+export { default as DropDownMenu } from "../common/DropDown";
 export { navItems, bottomItems } from "@/data/sidebar";
 export { default as Link } from "next/link";
 export { usePathname } from "next/navigation";
