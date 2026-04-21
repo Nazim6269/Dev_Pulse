@@ -28,6 +28,7 @@ export default function TopBar() {
           placeholderClass="text-placeHolderTextColor hover:text-violetColor"
           itemClass="text-placeHolderTextColor hover:text-violetColor"
           items={NAV_LINKS}
+          size="md"
         />
       </div>
 
