@@ -68,19 +68,19 @@ export default function TopBar() {
         <GenericButton
           title="All repos"
           size="sm"
-          variant="ghost"
+          variant="no-style"
           className="px-3 text-sm"
         />
         <GenericButton
           title="devpulse/web"
           size="sm"
-          variant="ghost"
+          variant="no-style"
           className="px-3 text-sm"
         />
         <GenericButton
           title="devpulse/api"
           size="sm"
-          variant="ghost"
+          variant="no-style"
           className="px-3 text-sm"
         />
       </div>

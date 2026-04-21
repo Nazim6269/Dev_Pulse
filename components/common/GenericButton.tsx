@@ -4,7 +4,7 @@ interface GenericButtonProps {
     title: string;
     className?: string;
     size?: "default" | "xs" | "sm" | "lg" | "icon" | "icon-xs" | "icon-sm" | "icon-lg" | null | undefined;
-    variant?: "default" | "link" | "outline" | "secondary" | "ghost" | "destructive" | null | undefined;
+    variant?: "default" | "link" | "outline" | "secondary" | "ghost" | "destructive" | "no-style" | null | undefined;
 }
 
 const GenericButton = ({ title, className, size, variant }: GenericButtonProps) => {
