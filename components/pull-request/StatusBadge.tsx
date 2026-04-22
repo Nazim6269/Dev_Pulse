@@ -8,9 +8,9 @@ const statusBadgeVariants = cva(
   {
     variants: {
       status: {
-        open: "border-amber-400/20 bg-amber-400/10 text-amber-300",
-        closed: "border-slate-400/20 bg-slate-400/10 text-slate-300",
-        merged: "border-emerald-400/20 bg-emerald-400/10 text-emerald-300",
+        open: "border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-300",
+        closed: "border-slate-500/20 bg-slate-500/10 text-slate-600 dark:text-slate-300",
+        merged: "border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300",
       },
       size: {
         sm: "px-2 py-0.5 text-[10px]",
@@ -20,7 +20,7 @@ const statusBadgeVariants = cva(
       variant: {
         primary: "",
         outline: "bg-transparent",
-        ghost: "border-transparent bg-white/5 text-white/70",
+        ghost: "border-transparent bg-muted/50 text-muted-foreground",
       },
     },
     defaultVariants: {
@@ -32,17 +32,17 @@ const statusBadgeVariants = cva(
       {
         status: "open",
         variant: "outline",
-        className: "text-amber-300",
+        className: "text-amber-600 dark:text-amber-300",
       },
       {
         status: "closed",
         variant: "outline",
-        className: "text-slate-300",
+        className: "text-slate-600 dark:text-slate-300",
       },
       {
         status: "merged",
         variant: "outline",
-        className: "text-emerald-300",
+        className: "text-emerald-600 dark:text-emerald-300",
       },
     ],
   },

@@ -29,10 +29,10 @@ const STATUS_ACTION_MAP: Record<PullRequestStatus, PullRequestAction[]> = {
 };
 
 const sizeTone = {
-  xs: "text-emerald-300",
-  sm: "text-sky-300",
-  md: "text-amber-300",
-  lg: "text-rose-300",
+  xs: "text-emerald-600 dark:text-emerald-300",
+  sm: "text-sky-600 dark:text-sky-300",
+  md: "text-amber-600 dark:text-amber-300",
+  lg: "text-rose-600 dark:text-rose-300",
 } as const;
 
 export interface PullRequestItemProps {
@@ -47,28 +47,28 @@ function PullRequestItemComponent({
   const actions = useMemo(() => STATUS_ACTION_MAP[pullRequest.status], [pullRequest.status]);
 
   return (
-    <article className="grid gap-4 rounded-2xl border border-white/6 bg-[#111114] p-4 transition-colors hover:bg-white/[0.03] md:grid-cols-[minmax(0,2.3fr)_minmax(0,1fr)_auto_auto_auto_auto] md:items-center">
+    <article className="grid gap-4 rounded-2xl border border-border bg-card p-4 transition-all hover:bg-muted/50 md:grid-cols-[minmax(0,2.3fr)_minmax(0,1fr)_auto_auto_auto_auto] md:items-center shadow-sm">
       <div className="flex min-w-0 items-start gap-3">
         <div
           className={cn(
             "mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl",
             pullRequest.status === "merged"
-              ? "bg-emerald-500/10 text-emerald-300"
+              ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
               : pullRequest.status === "open"
-                ? "bg-amber-500/10 text-amber-300"
-                : "bg-slate-500/10 text-slate-300",
+                ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
+                : "bg-slate-500/10 text-slate-600 dark:text-slate-400",
           )}
         >
           <GitPullRequest className="size-4" />
         </div>
         <div className="min-w-0">
-          <p className="truncate text-sm font-medium text-white/90">
+          <p className="truncate text-sm font-semibold text-foreground">
             {pullRequest.title}
           </p>
-          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-white/40">
-            <span className="font-mono">{pullRequest.repository}</span>
-            <span>{pullRequest.branchName}</span>
-            <span>Updated {pullRequest.updatedAt}</span>
+          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+            <span className="font-mono bg-muted px-1.5 py-0.5 rounded text-[10px]">{pullRequest.repository}</span>
+            <span className="opacity-70">{pullRequest.branchName}</span>
+            <span className="opacity-70">Updated {pullRequest.updatedAt}</span>
           </div>
         </div>
       </div>
@@ -77,17 +77,17 @@ function PullRequestItemComponent({
 
       <StatusBadge status={pullRequest.status} size="sm" />
 
-      <span className={cn("text-sm font-semibold uppercase", sizeTone[pullRequest.size])}>
+      <span className={cn("text-[11px] font-bold uppercase tracking-wider", sizeTone[pullRequest.size])}>
         {pullRequest.size}
       </span>
 
-      <div className="text-sm text-white/55">
+      <div className="text-sm text-muted-foreground font-medium">
         <span className="sr-only">Review count</span>
         {pullRequest.reviewCount} reviews
       </div>
 
       <div className="flex items-center justify-between gap-3 md:justify-end">
-        <span className="font-mono text-sm text-white/50">{pullRequest.cycleTime}</span>
+        <span className="font-mono text-xs text-muted-foreground/80">{pullRequest.cycleTime}</span>
         <ActionDropdown
           label="Actions"
           size="sm"

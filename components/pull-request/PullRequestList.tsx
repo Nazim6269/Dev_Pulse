@@ -20,7 +20,7 @@ export function PullRequestList({
   if (isLoading) {
     return (
       <div
-        className="rounded-2xl border border-dashed border-white/10 bg-[#111114] p-8 text-sm text-white/50"
+        className="rounded-2xl border border-dashed border-border bg-card p-8 text-sm text-muted-foreground"
         role="status"
         aria-live="polite"
       >
@@ -32,14 +32,14 @@ export function PullRequestList({
   if (error) {
     return (
       <div
-        className="rounded-2xl border border-rose-400/20 bg-rose-400/10 p-6 text-sm text-rose-100"
+        className="rounded-2xl border border-rose-500/20 bg-rose-500/10 p-6 text-sm text-rose-700 dark:text-rose-200"
         role="alert"
       >
-        <p>{error}</p>
+        <p className="font-medium">{error}</p>
         {onRetry ? (
           <Button
             variant="outline"
-            className="mt-4 border-rose-300/20 bg-transparent text-rose-100 hover:bg-rose-400/10"
+            className="mt-4 border-rose-500/20 bg-transparent text-rose-700 dark:text-rose-200 hover:bg-rose-500/10"
             onClick={onRetry}
           >
             Retry
@@ -51,9 +51,9 @@ export function PullRequestList({
 
   if (items.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-white/10 bg-[#111114] p-8 text-center">
-        <p className="text-sm font-medium text-white/80">No pull requests found</p>
-        <p className="mt-2 text-sm text-white/45">
+      <div className="rounded-2xl border border-dashed border-border bg-card p-8 text-center">
+        <p className="text-sm font-semibold text-foreground">No pull requests found</p>
+        <p className="mt-2 text-sm text-muted-foreground">
           Adjust your search or filter to see more results.
         </p>
       </div>

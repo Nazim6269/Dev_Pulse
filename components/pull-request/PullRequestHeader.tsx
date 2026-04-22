@@ -46,15 +46,15 @@ export function PullRequestHeader({
   actions = DEFAULT_HEADER_ACTIONS,
 }: PullRequestHeaderProps) {
   return (
-    <header className="flex flex-col gap-4 rounded-3xl border border-white/6 bg-[#111114] p-5">
+    <header className="flex flex-col gap-4 rounded-3xl border border-border bg-card p-5 shadow-sm">
       <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-white">{title}</h1>
-          <p className="mt-1 text-sm text-white/45">
+          <h1 className="text-xl font-semibold text-foreground">{title}</h1>
+          <p className="mt-1 text-sm text-muted-foreground">
             {description ?? "Monitor review flow, ownership, and PR status at a glance."}
           </p>
         </div>
-        <span className="rounded-full border border-violet-400/20 bg-violet-400/10 px-3 py-1 text-xs text-violet-200">
+        <span className="rounded-full border border-violet-500/20 bg-violet-500/10 px-3 py-1 text-xs text-violet-600 dark:text-violet-200 font-medium">
           {totalCount} results
         </span>
       </div>
@@ -65,7 +65,7 @@ export function PullRequestHeader({
           onChange={(event) => onQueryChange(event.target.value)}
           placeholder="Search by title, repo, or branch"
           aria-label="Search pull requests"
-          className="h-10 border-white/10 bg-white/5 text-white placeholder:text-white/35"
+          className="h-10 border-border bg-muted/30 text-foreground placeholder:text-muted-foreground/50"
         />
 
         <div className="flex flex-col gap-3 sm:flex-row">
@@ -89,7 +89,7 @@ export function PullRequestHeader({
                 key={action.value}
                 type="button"
                 onClick={() => onHeaderAction?.(action.value)}
-                className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-border bg-muted/50 px-4 text-sm text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-95"
               >
                 {Icon ? <Icon className="size-4" /> : null}
                 {action.label}

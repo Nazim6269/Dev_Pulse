@@ -18,21 +18,21 @@ function SummaryCard({
   tone: "violet" | "amber" | "slate" | "emerald";
 }) {
   const toneClass = {
-    violet: "border-violet-400/20 bg-violet-400/10 text-violet-200",
-    amber: "border-amber-400/20 bg-amber-400/10 text-amber-200",
-    slate: "border-slate-400/20 bg-slate-400/10 text-slate-200",
-    emerald: "border-emerald-400/20 bg-emerald-400/10 text-emerald-200",
+    violet: "border-violet-500/20 bg-violet-500/10 text-violet-600 dark:text-violet-200",
+    amber: "border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-200",
+    slate: "border-slate-500/20 bg-slate-500/10 text-slate-600 dark:text-slate-200",
+    emerald: "border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-200",
   } as const;
 
   return (
-    <Card className="rounded-2xl border-white/6 bg-[#111114] shadow-none">
+    <Card className="rounded-2xl border-border bg-card shadow-sm transition-all duration-200">
       <CardContent className="p-5">
         <span
-          className={`inline-flex rounded-full border px-2 py-1 text-xs ${toneClass[tone]}`}
+          className={`inline-flex rounded-full border px-2 py-1 text-xs font-medium ${toneClass[tone]}`}
         >
           {label}
         </span>
-        <p className="mt-4 text-3xl font-semibold text-white">{value}</p>
+        <p className="mt-4 text-3xl font-semibold text-foreground tracking-tight">{value}</p>
       </CardContent>
     </Card>
   );
@@ -61,7 +61,7 @@ export function PullRequestsDashboard() {
   );
 
   return (
-    <div className="min-h-screen bg-primaryColor px-4 py-6 text-white md:px-6">
+    <div className="min-h-full bg-background px-4 py-6 text-foreground md:px-6 transition-colors duration-300">
       <div className="mx-auto flex max-w-7xl flex-col gap-6">
         <PullRequestHeader
           title="Pull Requests"
@@ -96,18 +96,18 @@ export function PullRequestsDashboard() {
             />
           </div>
 
-          <Card className="rounded-3xl border-white/6 bg-[#111114] shadow-none">
+          <Card className="rounded-3xl border-border bg-card shadow-sm">
             <CardHeader>
-              <CardTitle className="text-base text-white">Status Breakdown</CardTitle>
+              <CardTitle className="text-base text-foreground font-semibold">Status Breakdown</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {statusBreakdown.map((item) => (
                 <div
                   key={item.label}
-                  className="flex items-center justify-between rounded-2xl border border-white/6 bg-white/[0.03] px-4 py-3"
+                  className="flex items-center justify-between rounded-2xl border border-border bg-muted/30 px-4 py-3"
                 >
                   <StatusBadge status={item.status} size="sm" variant="outline" />
-                  <span className="text-lg font-semibold text-white">{item.value}</span>
+                  <span className="text-lg font-semibold text-foreground">{item.value}</span>
                 </div>
               ))}
             </CardContent>
