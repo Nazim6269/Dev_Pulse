@@ -8,7 +8,7 @@ export type SettingsSectionId =
   | "appearance"
   | "danger-zone";
 
-export type SettingsTone = "primary" | "success" | "warning" | "danger" | "neutral";
+export type SettingsTone = "primary" | "success" | "warning" | "danger" | "neutral" ;
 export type ThemeOptionId = "dark" | "light" | "system";
 export type AccentColorId = "violet" | "blue" | "emerald" | "amber" | "rose";
 export type LanguageOptionId = "en" | "en-gb" | "de" | "fr";

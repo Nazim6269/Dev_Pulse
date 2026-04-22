@@ -2,6 +2,7 @@ import { useCallback, useMemo } from "react";
 
 import { securityMetadata } from "@/features/settings/data/settings.data";
 import { usePersistentSettingsState } from "@/features/settings/hooks/usePersistentSettingsState";
+import type { SettingsTone } from "@/features/settings/types/settings.types";
 
 const storageKey = "devpulse-settings-security";
 
@@ -17,6 +18,11 @@ const initialState: SecurityState = {
   apiTokens: 4,
 };
 
+interface SecurityStatus {
+  label: string;
+  tone: Extract<SettingsTone, "success" | "warning">;
+}
+
 export function useSecuritySettings() {
   const [state, setState] = usePersistentSettingsState(storageKey, initialState);
 
@@ -24,7 +30,7 @@ export function useSecuritySettings() {
     setState((current) => ({ ...current, twoFactorEnabled: true }));
   }, [setState]);
 
-  const twoFactorStatus = useMemo(
+  const twoFactorStatus = useMemo<SecurityStatus>(
     () => ({
       label: state.twoFactorEnabled ? "Enabled" : "Not enabled",
       tone: state.twoFactorEnabled ? "success" : "warning",
@@ -40,4 +46,3 @@ export function useSecuritySettings() {
     metadata: securityMetadata,
   };
 }
-

@@ -6,7 +6,7 @@ import {
   syncIntervalOptions,
 } from "@/features/settings/data/settings.data";
 import { usePersistentSettingsState } from "@/features/settings/hooks/usePersistentSettingsState";
-import type { RepoAccessValue, SyncIntervalValue } from "@/features/settings/types/settings.types";
+import type { RepoAccessValue, SettingsTone, SyncIntervalValue } from "@/features/settings/types/settings.types";
 
 const storageKey = "devpulse-settings-github";
 
@@ -15,6 +15,11 @@ interface GithubState {
   syncInterval: SyncIntervalValue;
   includePrivateRepos: boolean;
   connected: boolean;
+}
+
+interface GithubStatus {
+  label: string;
+  tone: SettingsTone;
 }
 
 const initialState: GithubState = {
@@ -51,7 +56,7 @@ export function useGithubSettings() {
     });
   }, []);
 
-  const status = useMemo(
+  const status = useMemo<GithubStatus>(
     () => ({
       label: state.connected ? "Active" : "Disconnected",
       tone: state.connected ? "success" : "warning",
@@ -77,4 +82,3 @@ export function useGithubSettings() {
     updateSyncInterval,
   };
 }
-
