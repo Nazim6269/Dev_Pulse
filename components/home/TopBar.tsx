@@ -1,21 +1,27 @@
 "use client";
 
-import { Search, SlidersHorizontal, ChevronDown, Plus } from "lucide-react";
-import { DropDownMenu } from "./index";
+import { SlidersHorizontal, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import GenericButton from "@/components/common/GenericButton";
 import { GenericSearch } from "@/components/common/search/GenericSearch";
 import { useRouter } from "next/navigation";
 import { NAV_LINKS } from "@/constants";
 import GenericDropDown from "@/components/common/GenericDropDown";
+import type { SearchResult } from "@/types/search";
 
-function searchNavigation(query: string) {
+type NavSearchResult = SearchResult & {
+  href: string;
+  label: string;
+  value: string;
+};
+
+function searchNavigation(query: string): NavSearchResult[] {
   const q = query.toLowerCase();
   return NAV_LINKS.filter(
     (item) =>
       item.label.toLowerCase().includes(q) ||
       item.value.toLowerCase().includes(q),
-  );
+  ) as NavSearchResult[];
 }
 export default function TopBar() {
   const router = useRouter();
@@ -23,13 +29,14 @@ export default function TopBar() {
     <header className="h-14 border-b border-customRed bg-primaryColor flex items-center px-4 sm:px-6 gap-4 shrink-0">
       {/* Page title */}
       <div className="block sm:hidden">
-        <DropDownMenu
+        {/* <DropDownMenu
           title="Overview"
           placeholderClass="text-placeHolderTextColor hover:text-violetColor"
           itemClass="text-placeHolderTextColor hover:text-violetColor"
           items={NAV_LINKS}
           size="md"
-        />
+        /> */}
+        <GenericDropDown options={NAV_LINKS} placeholder="Overview" />
       </div>
 
       <div className="flex-1" />
@@ -38,10 +45,10 @@ export default function TopBar() {
 
       {/* Date filter */}
       <GenericSearch
-        onSearch={searchNavigation as any}
-        onSelect={(item: any) => {
-          if (item && item.id) {
-            router.push(item.id);
+        onSearch={searchNavigation}
+        onSelect={(item) => {
+          if (item.href) {
+            router.push(item.href);
           }
         }}
         placeholder="Search pages and settings..."
@@ -59,7 +66,7 @@ export default function TopBar() {
         ]}
         placeholder="Select..."
         leftIcon={<SlidersHorizontal size={13} />}
-        className="w-[180px]"
+        className="w-45"
         variant="dark"
       />
 

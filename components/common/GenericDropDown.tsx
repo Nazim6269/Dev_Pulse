@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { selectTokens } from "./design-tokens/select";
 import { ChevronDown } from "lucide-react";
-import { useClickOutside, useRotate, useSelect } from "@/hooks";
+import { useClickOutside, useSelect } from "@/hooks";
 
 function cn(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(" ");
@@ -48,39 +48,17 @@ const GenericDropDown = ({
   className,
 }: GenericDropDownProps) => {
   const [internalValue, setInternalValue] = useState<string | undefined>(value);
-  const { searchQuery, setSearchQuery, filteredOptions } = useSelect(options);
   const [open, setOpen] = useState(false);
-  const { rotate, toggleRotate } = useRotate();
+  const { searchQuery, setSearchQuery, filteredOptions } = useSelect(options);
 
-  // Sync internal state with prop
-  useEffect(() => {
-    if (value !== undefined) {
-      setInternalValue(value);
-    }
-  }, [value]);
-
-  const handleToggle = () => {
-    setOpen((prev) => !prev);
-    toggleRotate();
-  };
+  const handleToggle = () => setOpen((prev) => !prev);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const v = selectTokens.variants[variant];
 
-  // // close on outside click
-  // useEffect(() => {
-  //   const handleClickOutside = (e: MouseEvent) => {
-  //     if (!dropdownRef.current?.contains(e.target as Node)) {
-  //       setOpen(false);
-  //     }
-  //   };
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => document.removeEventListener("mousedown", handleClickOutside);
-  // }, []);
   useClickOutside(dropdownRef, () => {
     setOpen(false);
-    toggleRotate();
   });
   const currentValue = value !== undefined ? value : internalValue;
   const selectedLabel = options.find((o) => o.value === currentValue)?.label;
@@ -112,7 +90,7 @@ const GenericDropDown = ({
             size={14}
             className={cn(
               "transition-transform duration-300 ease-in-out",
-              rotate ? "rotate-180" : "",
+              open ? "rotate-180" : "",
             )}
           />
         </span>
@@ -156,7 +134,6 @@ const GenericDropDown = ({
                   }
                   onValueChange?.(opt.value);
                   setOpen(false);
-                  if (rotate) toggleRotate();
                 }}
                 className={cn(
                   "cursor-pointer px-3 py-2.5 text-sm transition-all duration-200 rounded-lg mb-0.5 last:mb-0 flex items-center justify-between group",
