@@ -5,7 +5,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:flex flex-col w-[68px] bg-[#111114] border-r border-white/[0.06] py-5 items-center shrink-0">
+    <aside className="hidden md:flex flex-col w-[68px] bg-sidebar border-r border-sidebar-border py-5 items-center shrink-0">
       {/* Logo */}
       <Link href="/" className="w-9 h-9 rounded-xl bg-violet-500 flex items-center justify-center mb-6 shadow-lg shadow-violet-500/25 hover:bg-violet-400 transition-colors">
         <Zap size={16} className="text-white fill-white" />
@@ -23,8 +23,8 @@ export default function Sidebar() {
               className={cn(
                 "w-full aspect-square rounded-xl flex items-center justify-center transition-all duration-200 relative",
                 active
-                  ? "bg-violet-500/15 text-violet-400"
-                  : "text-white/30 hover:text-white/70 hover:bg-white/[0.05]"
+                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-sidebar-accent/50"
               )}
             >
               <Icon size={18} />
@@ -48,8 +48,8 @@ export default function Sidebar() {
               className={cn(
                 "w-full aspect-square rounded-xl flex items-center justify-center transition-all duration-200 relative",
                 active
-                  ? "bg-violet-500/15 text-violet-400"
-                  : "text-white/25 hover:text-white/60 hover:bg-white/[0.05]"
+                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                  : "text-muted-foreground/80 hover:text-foreground hover:bg-sidebar-accent/50"
               )}
             >
               {label === "Notifications" && (
@@ -67,7 +67,7 @@ export default function Sidebar() {
         <Link href="/profile" title="Profile" className="mt-2 flex justify-center">
           <div className={cn(
             "w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-[11px] font-semibold text-white ring-2 transition-all",
-            pathname === "/profile" ? "ring-violet-400" : "ring-transparent hover:ring-white/20"
+            pathname === "/profile" ? "ring-violet-400" : "ring-transparent hover:ring-foreground/20"
           )}>
             RA
           </div>
@@ -75,4 +75,4 @@ export default function Sidebar() {
       </div>
     </aside>
   );
-}
+}

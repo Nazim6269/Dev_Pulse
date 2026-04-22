@@ -9,9 +9,9 @@ const goals = [
 
 export default function GoalTracker() {
   return (
-    <div className="bg-[#111114] border border-white/[0.06] rounded-2xl p-5 flex flex-col gap-5">
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-5">
       <div className="flex items-center justify-between">
-        <p className="text-[14px] font-medium text-white/90">Goals</p>
+        <p className="text-[14px] font-medium text-foreground">Goals</p>
         <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center">
           <Target size={14} className="text-amber-400" />
         </div>
@@ -21,7 +21,7 @@ export default function GoalTracker() {
       <div className="flex items-center gap-4">
         <div className="relative w-16 h-16 shrink-0">
           <svg viewBox="0 0 64 64" className="w-full h-full -rotate-90">
-            <circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" strokeWidth="5" className="text-white/[0.06]" />
+            <circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" strokeWidth="5" className="text-muted-foreground/10" />
             <circle
               cx="32" cy="32" r="26"
               fill="none"
@@ -38,8 +38,8 @@ export default function GoalTracker() {
           </div>
         </div>
         <div>
-          <p className="text-[13px] font-medium text-white/80">3 of 4 goals</p>
-          <p className="text-[11px] text-white/30 mt-0.5">completed this month</p>
+          <p className="text-[13px] font-medium text-foreground">3 of 4 goals</p>
+          <p className="text-[11px] text-muted-foreground mt-0.5">completed this month</p>
         </div>
       </div>
 
@@ -49,16 +49,16 @@ export default function GoalTracker() {
           <div key={i} className="flex flex-col gap-1.5">
             <div className="flex items-center gap-2">
               {g.done
-                ? <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
-                : <Circle size={13} className="text-white/20 shrink-0" />
+                ? <CheckCircle2 size={13} className="text-emerald-500 shrink-0" />
+                : <Circle size={13} className="text-muted-foreground/30 shrink-0" />
               }
-              <span className={`text-[11px] leading-tight ${g.done ? "text-white/40 line-through" : "text-white/70"}`}>
+              <span className={`text-[11px] leading-tight ${g.done ? "text-muted-foreground line-through" : "text-foreground/80"}`}>
                 {g.label}
               </span>
             </div>
-            <div className="ml-[21px] h-0.5 bg-white/[0.06] rounded-full overflow-hidden">
+            <div className="ml-[21px] h-0.5 bg-muted rounded-full overflow-hidden">
               <div
-                className={`h-full rounded-full ${g.done ? "bg-emerald-400" : "bg-amber-400"}`}
+                className={`h-full rounded-full ${g.done ? "bg-emerald-500" : "bg-amber-400"}`}
                 style={{ width: `${Math.min(100, Math.round((g.current / g.target) * 100))}%` }}
               />
             </div>
@@ -67,4 +67,4 @@ export default function GoalTracker() {
       </div>
     </div>
   );
-}
+}

@@ -17,7 +17,7 @@ function generateHeatmap() {
 const heatmap = generateHeatmap();
 
 const intensityClass = [
-  "bg-white/[0.05]",
+  "bg-muted/30",
   "bg-violet-500/20",
   "bg-violet-500/40",
   "bg-violet-500/65",
@@ -28,18 +28,18 @@ const dayLabels = ["", "Mon", "", "Wed", "", "Fri", ""];
 
 export default function ContributionHeatmap() {
   return (
-    <div className="bg-[#111114] border border-white/[0.06] rounded-2xl p-5">
+    <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
       <div className="flex items-center justify-between mb-5">
         <div>
-          <p className="text-[14px] font-medium text-white/90">Contribution calendar</p>
-          <p className="text-[11px] text-white/30 mt-0.5">318 contributions in the last year</p>
+          <p className="text-[14px] font-medium text-foreground">Contribution calendar</p>
+          <p className="text-[11px] text-muted-foreground mt-0.5">318 contributions in the last year</p>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="text-[10px] text-white/25">Less</span>
+          <span className="text-[10px] text-muted-foreground/60">Less</span>
           {intensityClass.map((cls, i) => (
             <span key={i} className={`w-2.5 h-2.5 rounded-sm ${cls}`} />
           ))}
-          <span className="text-[10px] text-white/25">More</span>
+          <span className="text-[10px] text-muted-foreground/60">More</span>
         </div>
       </div>
 
@@ -47,7 +47,7 @@ export default function ContributionHeatmap() {
         {/* Day labels */}
         <div className="flex flex-col gap-[3px] pt-5 shrink-0">
           {dayLabels.map((d, i) => (
-            <div key={i} className="h-[11px] text-[9px] text-white/25 leading-none">
+            <div key={i} className="h-[11px] text-[9px] text-muted-foreground/60 leading-none">
               {d}
             </div>
           ))}
@@ -60,7 +60,7 @@ export default function ContributionHeatmap() {
             {months.map((m, i) => (
               <div
                 key={i}
-                className="text-[9px] text-white/25"
+                className="text-[9px] text-muted-foreground/60"
                 style={{ flex: `${Math.round(36 / months.length)}` }}
               >
                 {m}
@@ -84,4 +84,4 @@ export default function ContributionHeatmap() {
       </div>
     </div>
   );
-}
+}

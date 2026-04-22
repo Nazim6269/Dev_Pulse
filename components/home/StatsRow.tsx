@@ -54,7 +54,7 @@ export default function StatsRow() {
       {stats.map(({ label, value, sub, change, up, icon: Icon, accent, iconBg, glow }) => (
         <div
           key={label}
-          className={`bg-[#111114] border border-white/[0.06] rounded-2xl p-5 flex flex-col justify-between shadow-lg ${glow} group hover:border-white/10 transition-colors duration-300`}
+          className={`bg-card border border-border rounded-2xl p-5 flex flex-col justify-between shadow-lg ${glow} group hover:border-primary/20 transition-colors duration-300`}
         >
           <div className="flex items-start justify-between mb-3">
             <div className={`w-9 h-9 rounded-xl ${iconBg} flex items-center justify-center`}>
@@ -63,8 +63,8 @@ export default function StatsRow() {
             <span
               className={`flex items-center gap-0.5 text-[11px] font-medium px-2 py-0.5 rounded-full border
                 ${up
-                  ? "text-emerald-400 bg-emerald-400/10 border-emerald-400/20"
-                  : "text-rose-400 bg-rose-400/10 border-rose-400/20"
+                  ? "text-emerald-500 bg-emerald-500/10 border-emerald-500/20"
+                  : "text-rose-500 bg-rose-500/10 border-rose-500/20"
                 }`}
             >
               {up ? <TrendingUp size={10} /> : <TrendingDown size={10} />}
@@ -74,8 +74,8 @@ export default function StatsRow() {
 
           <div>
             <p className={`text-3xl font-semibold tracking-tight ${accent}`}>{value}</p>
-            <p className="text-[12px] text-white/50 mt-1">{label}</p>
-            <p className="text-[10px] text-white/25 mt-0.5">{sub}</p>
+            <p className="text-[12px] text-foreground mt-1">{label}</p>
+            <p className="text-[10px] text-muted-foreground mt-0.5">{sub}</p>
           </div>
         </div>
       ))}

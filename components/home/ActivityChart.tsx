@@ -6,21 +6,21 @@ const maxCommits = Math.max(...commits);
 
 export default function ActivityChart() {
   return (
-    <div className="bg-[#111114] border border-white/[0.06] rounded-2xl p-5 flex flex-col gap-4">
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-4 shadow-sm">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-[14px] font-medium text-white/90">Commit activity</p>
-          <p className="text-[11px] text-white/30 mt-0.5">Last 8 weeks</p>
+          <p className="text-[14px] font-medium text-foreground">Commit activity</p>
+          <p className="text-[11px] text-muted-foreground mt-0.5">Last 8 weeks</p>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-sm bg-violet-500/70" />
-            <span className="text-[11px] text-white/40">Commits</span>
+            <span className="text-[11px] text-muted-foreground">Commits</span>
           </div>
           <div className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-sm bg-amber-500/70" />
-            <span className="text-[11px] text-white/40">PRs merged</span>
+            <span className="text-[11px] text-muted-foreground">PRs merged</span>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@ export default function ActivityChart() {
                   className="flex-1 rounded-t-md bg-violet-500 hover:bg-violet-500/50 transition-colors cursor-default relative group"
                   style={{ height: `${commitH}%` }}
                 >
-                  <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-white/0 group-hover:text-white/60 transition-colors whitespace-nowrap">
+                  <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] opacity-0 group-hover:opacity-60 transition-opacity whitespace-nowrap text-foreground">
                     {commits[i]}
                   </span>
                 </div>
@@ -46,32 +46,32 @@ export default function ActivityChart() {
                   style={{ height: `${prH}%` }}
                 />
               </div>
-              <span className="text-[10px] text-white/25">{week}</span>
+              <span className="text-[10px] text-muted-foreground/50">{week}</span>
             </div>
           );
         })}
       </div>
 
       {/* Sparkline summary */}
-      <div className="flex items-center justify-between pt-2 border-t border-white/[0.05]">
+      <div className="flex items-center justify-between pt-2 border-t border-border-muted">
         <div className="flex gap-4">
           <div>
-            <p className="text-[11px] text-white/30">Total commits</p>
-            <p className="text-[15px] font-semibold text-violet-400">408</p>
+            <p className="text-[11px] text-muted-foreground">Total commits</p>
+            <p className="text-[15px] font-semibold text-violet-500">408</p>
           </div>
           <div>
-            <p className="text-[11px] text-white/30">PRs merged</p>
-            <p className="text-[15px] font-semibold text-amber-400">69</p>
+            <p className="text-[11px] text-muted-foreground">PRs merged</p>
+            <p className="text-[15px] font-semibold text-amber-500">69</p>
           </div>
           <div>
-            <p className="text-[11px] text-white/30">Best week</p>
-            <p className="text-[15px] font-semibold text-white/70">Week 6</p>
+            <p className="text-[11px] text-muted-foreground">Best week</p>
+            <p className="text-[15px] font-semibold text-foreground/70">Week 6</p>
           </div>
         </div>
-        <div className="text-[11px] text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-full">
+        <div className="text-[11px] text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">
           ↑ 18% vs prev period
         </div>
       </div>
     </div>
   );
-}
+}

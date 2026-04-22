@@ -4,9 +4,9 @@ export const selectTokens = {
 
   variants: {
     dark: {
-      trigger: "bg-si-bg border border-white/6 text-white/30",
-      dropdown: "bg-si-bg border border-white/6",
-      item: "text-si-text",
+      trigger: "bg-surface-base border border-border-base text-text-muted",
+      dropdown: "bg-surface-overlay border border-border-base shadow-xl",
+      item: "text-text-base",
       itemHover:
         "hover:bg-si-hover-bg focus:bg-si-hover-bg hover:text-si-hover-text focus:text-si-hover-text rounded-md",
     },

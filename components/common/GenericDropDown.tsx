@@ -75,17 +75,17 @@ const GenericDropDown = ({
           selectTokens.sizes[size],
           selectTokens.radius[radius],
           "flex items-center justify-between gap-2 overflow-hidden",
-          selectedLabel ? "text-white" : "text-white/30",
+          selectedLabel ? "text-text-base" : "text-text-placeholder",
           slots?.trigger,
           className,
         )}
       >
         <div className="flex items-center gap-2 min-w-0">
-          {leftIcon && <span className="shrink-0">{leftIcon}</span>}
+          {leftIcon && <span className="shrink-0 text-text-muted">{leftIcon}</span>}
           <span className="truncate">{selectedLabel || placeholder}</span>
         </div>
 
-        <span className="shrink-0">
+        <span className="shrink-0 text-text-placeholder">
           <ChevronDown
             size={14}
             className={cn(
@@ -100,16 +100,16 @@ const GenericDropDown = ({
       {open && (
         <div
           className={cn(
-            "absolute z-50 mt-2 shadow-2xl rounded-xl min-w-full lg:min-w-[200px] border border-white/10 overflow-hidden backdrop-blur-xl",
+            "absolute z-50 mt-2 shadow-2xl rounded-xl min-w-full lg:min-w-[200px] border border-border-base overflow-hidden backdrop-blur-xl bg-surface-overlay",
             v.dropdown,
             slots?.dropdown,
           )}
         >
           {/* Search */}
           {searchable && (
-            <div className="p-2 border-b border-white/6">
+            <div className="p-2 border-b border-border-muted bg-surface-muted">
               <input
-                className="w-full bg-white/5 text-white px-3 py-2 text-sm rounded-lg outline-none border border-white/5 focus:border-violet-500/50 transition-colors"
+                className="w-full bg-surface-base text-text-base px-3 py-2 text-sm rounded-lg outline-none border border-border-base focus:border-border-active transition-colors"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -118,9 +118,9 @@ const GenericDropDown = ({
           )}
 
           {/* Options */}
-          <div className="max-h-64 overflow-y-auto py-1.5 px-1.5 custom-scrollbar">
+          <div className="max-h-64 overflow-y-auto py-1.5 px-1.5 custom-scrollbar bg-surface-overlay">
             {filteredOptions.length === 0 && (
-              <div className="p-3 text-sm text-white/40 text-center italic">
+              <div className="p-3 text-sm text-text-placeholder text-center italic">
                 No results found
               </div>
             )}
@@ -140,14 +140,14 @@ const GenericDropDown = ({
                   v.item,
                   v.itemHover,
                   currentValue === opt.value
-                    ? "bg-violet-500/20 text-white font-medium"
-                    : "text-white/60 hover:text-white",
+                    ? "bg-primary/10 text-primary font-medium"
+                    : "text-text-muted hover:text-text-base",
                   slots?.item,
                 )}
               >
                 <span className="truncate">{opt.label}</span>
                 {currentValue === opt.value && (
-                  <div className="w-1.5 h-1.5 rounded-full bg-violet-400 shadow-[0_0_8px_rgba(167,139,250,0.6)]" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]" />
                 )}
               </div>
             ))}

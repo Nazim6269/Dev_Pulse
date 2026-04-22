@@ -47,10 +47,10 @@ const maxVal = 14;
 
 export default function TopRepos() {
   return (
-    <div className="bg-[#111114] border border-white/[0.06] rounded-2xl p-5 flex flex-col gap-4">
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-4 shadow-sm">
       <div className="flex items-center justify-between">
-        <p className="text-[14px] font-medium text-white/90">Top repositories</p>
-        <button className="text-[11px] text-violet-400/70 hover:text-violet-400 transition-colors">
+        <p className="text-[14px] font-medium text-foreground">Top repositories</p>
+        <button className="text-[11px] text-violet-500/80 hover:text-violet-500 transition-colors">
           View all →
         </button>
       </div>
@@ -59,23 +59,23 @@ export default function TopRepos() {
         {repos.map((repo) => (
           <div
             key={repo.name}
-            className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/[0.04] hover:border-white/[0.09] hover:bg-white/[0.05] transition-all duration-200 group cursor-default"
+            className="flex items-start gap-3 p-3 rounded-xl bg-muted/30 border border-border-muted hover:border-border-active/30 hover:bg-muted/50 transition-all duration-200 group cursor-default"
           >
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1.5 mb-0.5">
-                <p className="text-[12px] font-medium text-violet-400 truncate">{repo.name}</p>
-                <ExternalLink size={10} className="text-white/0 group-hover:text-white/30 transition-colors shrink-0" />
+                <p className="text-[12px] font-medium text-violet-500 truncate">{repo.name}</p>
+                <ExternalLink size={10} className="opacity-0 group-hover:opacity-40 transition-opacity shrink-0 text-foreground" />
               </div>
-              <p className="text-[10px] text-white/30 truncate mb-2">{repo.desc}</p>
+              <p className="text-[10px] text-muted-foreground truncate mb-2">{repo.desc}</p>
               <div className="flex items-center gap-3">
-                <span className="flex items-center gap-1 text-[10px] text-white/30">
+                <span className="flex items-center gap-1 text-[10px] text-muted-foreground/60">
                   <span className={`w-1.5 h-1.5 rounded-full ${repo.langColor}`} />
                   {repo.lang}
                 </span>
-                <span className="flex items-center gap-1 text-[10px] text-white/30">
+                <span className="flex items-center gap-1 text-[10px] text-muted-foreground/60">
                   <Star size={9} /> {repo.stars}
                 </span>
-                <span className="flex items-center gap-1 text-[10px] text-white/30">
+                <span className="flex items-center gap-1 text-[10px] text-muted-foreground/60">
                   <GitFork size={9} /> {repo.forks}
                 </span>
               </div>
@@ -96,4 +96,4 @@ export default function TopRepos() {
       </div>
     </div>
   );
-}
+}

@@ -6,16 +6,16 @@ const phases = [
 
 export default function PRCycleCard() {
   return (
-    <div className="bg-[#111114] border border-white/[0.06] rounded-2xl p-5 flex flex-col gap-5 h-full">
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-5 h-full shadow-sm">
       <div>
-        <p className="text-[14px] font-medium text-white/90">PR cycle time</p>
-        <p className="text-[11px] text-white/30 mt-0.5">Avg time open → merged</p>
+        <p className="text-[14px] font-medium text-foreground">PR cycle time</p>
+        <p className="text-[11px] text-muted-foreground mt-0.5">Avg time open → merged</p>
       </div>
 
       {/* Big number */}
       <div className="flex items-end gap-2">
-        <span className="text-5xl font-semibold tracking-tighter text-white">18</span>
-        <span className="text-[16px] text-white/40 mb-1.5">hrs avg</span>
+        <span className="text-5xl font-semibold tracking-tighter text-foreground">18</span>
+        <span className="text-[16px] text-muted-foreground/60 mb-1.5">hrs avg</span>
       </div>
 
       {/* Progress phases */}
@@ -23,10 +23,10 @@ export default function PRCycleCard() {
         {phases.map(({ label, value, pct, color }) => (
           <div key={label} className="flex flex-col gap-1.5">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] text-white/40">{label}</span>
-              <span className="text-[11px] font-medium text-white/70">{value}</span>
+              <span className="text-[11px] text-muted-foreground">{label}</span>
+              <span className="text-[11px] font-medium text-foreground/70">{value}</span>
             </div>
-            <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
+            <div className="h-1 bg-muted rounded-full overflow-hidden">
               <div className={`h-full ${color} rounded-full`} style={{ width: `${pct}%` }} />
             </div>
           </div>
@@ -35,13 +35,13 @@ export default function PRCycleCard() {
 
       {/* Comparison */}
       <div className="mt-auto grid grid-cols-2 gap-3">
-        <div className="bg-white/[0.04] rounded-xl p-3 text-center">
-          <p className="text-[13px] font-semibold text-emerald-400">12h</p>
-          <p className="text-[10px] text-white/30 mt-0.5">Best PR</p>
+        <div className="bg-muted/50 rounded-xl p-3 text-center">
+          <p className="text-[13px] font-semibold text-emerald-500">12h</p>
+          <p className="text-[10px] text-muted-foreground mt-0.5">Best PR</p>
         </div>
-        <div className="bg-white/[0.04] rounded-xl p-3 text-center">
-          <p className="text-[13px] font-semibold text-rose-400">48h</p>
-          <p className="text-[10px] text-white/30 mt-0.5">Slowest PR</p>
+        <div className="bg-muted/50 rounded-xl p-3 text-center">
+          <p className="text-[13px] font-semibold text-rose-500">48h</p>
+          <p className="text-[10px] text-muted-foreground mt-0.5">Slowest PR</p>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { GenericSearch } from "@/components/common/search/GenericSearch";
 import { useRouter } from "next/navigation";
 import { NAV_LINKS } from "@/constants";
 import GenericDropDown from "@/components/common/GenericDropDown";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
 import type { SearchResult } from "@/types/search";
 
 type NavSearchResult = SearchResult & {
@@ -26,7 +27,7 @@ function searchNavigation(query: string): NavSearchResult[] {
 export default function TopBar() {
   const router = useRouter();
   return (
-    <header className="h-14 border-b border-customRed bg-primaryColor flex items-center px-4 sm:px-6 gap-4 shrink-0">
+    <header className="h-14 border-b border-border bg-background flex items-center px-4 sm:px-6 gap-4 shrink-0">
       {/* Page title */}
       <div className="block sm:hidden">
         {/* <DropDownMenu
@@ -71,7 +72,7 @@ export default function TopBar() {
       />
 
       {/* Button group (only visible on medium and larger screens) */}
-      <div className="hidden md:flex items-center gap-1 rounded-xl border border-white/6 bg-white/4 p-1">
+      <div className="hidden md:flex items-center gap-1 rounded-xl border border-border-base bg-surface-muted p-1">
         <GenericButton
           title="All repos"
           size="sm"
@@ -97,6 +98,8 @@ export default function TopBar() {
         <Plus className="mr-1.5 h-3.5 w-3.5" />
         Invite member
       </Button>
+
+      <ThemeToggle />
 
       {/* Sync badge (visible on small screens and above) */}
       <div className="hidden lg:flex items-center gap-1.5">
