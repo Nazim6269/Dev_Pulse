@@ -22,22 +22,22 @@ export function MonthlyProgressCard({
     <DashboardCard>
       <div className="flex flex-col items-center gap-4">
         <div>
-          <p className="text-center text-[14px] font-medium text-white/90">
+          <p className="text-center text-[14px] font-bold text-foreground/90 uppercase tracking-tight">
             Monthly progress
           </p>
-          <p className="mt-0.5 text-center text-[11px] text-white/30">{monthLabel}</p>
+          <p className="mt-0.5 text-center text-[11px] text-muted-foreground/60 font-medium">{monthLabel}</p>
         </div>
 
         <ProgressRing model={ring} />
 
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5">
-            <StatusIndicator tone="violet" />
-            <span className="text-[11px] text-white/45">Completed</span>
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
+            <StatusIndicator tone="violet" className="shadow-sm shadow-violet-500/20" />
+            <span className="text-[11px] text-muted-foreground/80 font-medium">Completed</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <StatusIndicator tone="amber" />
-            <span className="text-[11px] text-white/45">In progress</span>
+          <div className="flex items-center gap-2">
+            <StatusIndicator tone="amber" className="shadow-sm shadow-amber-500/20" />
+            <span className="text-[11px] text-muted-foreground/80 font-medium">In progress</span>
           </div>
         </div>
 

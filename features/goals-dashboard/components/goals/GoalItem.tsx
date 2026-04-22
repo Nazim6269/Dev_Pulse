@@ -7,7 +7,7 @@ import type { GoalItemModel } from "@/features/goals-dashboard/types/goals-dashb
 
 function GoalItemComponent({ item }: { item: GoalItemModel }) {
   return (
-    <div className="group flex cursor-default items-center gap-4 rounded-xl p-3 transition-colors hover:bg-white/[0.03]">
+    <div className="group flex cursor-default items-center gap-4 rounded-xl p-3 transition-all hover:bg-muted/50 border border-transparent hover:border-border/50">
       <GoalIcon state={item.state} />
 
       <div className="min-w-0 flex-1">
@@ -15,13 +15,13 @@ function GoalItemComponent({ item }: { item: GoalItemModel }) {
           <span
             className={
               item.state === "done"
-                ? "truncate text-[12px] text-white/40 line-through"
-                : "truncate text-[12px] text-white/75"
+                ? "truncate text-[12px] text-muted-foreground/40 line-through font-medium"
+                : "truncate text-[12px] text-foreground/80 font-semibold"
             }
           >
             {item.label}
           </span>
-          <span className="shrink-0 rounded-md bg-white/[0.04] px-1.5 py-0.5 text-[9px] text-white/25">
+          <span className="shrink-0 rounded-md bg-muted px-1.5 py-0.5 text-[9px] text-muted-foreground/60 font-bold uppercase tracking-tighter">
             {item.category}
           </span>
         </div>
@@ -31,12 +31,12 @@ function GoalItemComponent({ item }: { item: GoalItemModel }) {
           <span
             className={
               item.tone === "neutral"
-                ? "shrink-0 text-[10px] text-white/35"
+                ? "shrink-0 text-[10px] text-muted-foreground/50 font-bold"
                 : item.tone === "emerald"
-                  ? "shrink-0 text-[10px] text-emerald-400"
+                  ? "shrink-0 text-[10px] text-emerald-600 dark:text-emerald-400 font-bold"
                   : item.tone === "amber"
-                    ? "shrink-0 text-[10px] text-amber-400"
-                    : "shrink-0 text-[10px] text-rose-400"
+                    ? "shrink-0 text-[10px] text-amber-600 dark:text-amber-400 font-bold"
+                    : "shrink-0 text-[10px] text-rose-600 dark:text-rose-400 font-bold"
             }
           >
             {item.progressLabel}
@@ -47,7 +47,7 @@ function GoalItemComponent({ item }: { item: GoalItemModel }) {
       <GoalStatusBadge state={item.state} />
 
       {item.daysLeftLabel ? (
-        <span className="shrink-0 text-[10px] text-white/25">{item.daysLeftLabel}</span>
+        <span className="shrink-0 text-[10px] text-muted-foreground/30 font-medium">{item.daysLeftLabel}</span>
       ) : null}
     </div>
   );

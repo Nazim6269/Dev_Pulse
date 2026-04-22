@@ -29,7 +29,7 @@ export function GoalsDashboardFeature() {
   const { items: recordItems, highlightLabel } = useRecords();
 
   return (
-    <div className="flex min-h-screen overflow-hidden bg-primaryColor font-sans text-white">
+    <div className="flex min-h-full overflow-hidden bg-background font-sans text-foreground transition-colors duration-300">
       <div className="flex flex-1 flex-col overflow-hidden">
         <GoalsHeader
           selectedFilter={selectedFilter}

@@ -6,12 +6,12 @@ export function TrendBar({ item }: { item: TrendBarModel }) {
       <div
         className={
           item.isEmpty
-            ? "w-full rounded-t-md bg-white/[0.04]"
-            : "w-full rounded-t-md bg-violet-500/40 transition-colors hover:bg-violet-500/60"
+            ? "w-full rounded-t-md bg-muted/50"
+            : "w-full rounded-t-md bg-violet-500/40 transition-all hover:bg-violet-500/60 shadow-sm"
         }
         style={{ height: item.height }}
       />
-      <span className="text-[10px] text-white/25">{item.label}</span>
+      <span className="text-[10px] text-muted-foreground/30 font-bold uppercase tracking-tight">{item.label}</span>
     </div>
   );
 }

@@ -9,7 +9,8 @@ export function ProgressRing({ model }: { model: ProgressRingModel }) {
           cy="80"
           r="68"
           fill="none"
-          stroke="rgba(255,255,255,0.05)"
+          stroke="currentColor"
+          className="text-muted/30"
           strokeWidth="8"
         />
         <circle
@@ -17,7 +18,8 @@ export function ProgressRing({ model }: { model: ProgressRingModel }) {
           cy="80"
           r="68"
           fill="none"
-          stroke="#7F77DD"
+          stroke="currentColor"
+          className="text-violet-500"
           strokeWidth="8"
           strokeLinecap="round"
           strokeDasharray={model.circumference}
@@ -28,7 +30,8 @@ export function ProgressRing({ model }: { model: ProgressRingModel }) {
           cy="80"
           r="56"
           fill="none"
-          stroke="rgba(255,255,255,0.05)"
+          stroke="currentColor"
+          className="text-muted/30"
           strokeWidth="5"
         />
         <circle
@@ -36,7 +39,8 @@ export function ProgressRing({ model }: { model: ProgressRingModel }) {
           cy="80"
           r="56"
           fill="none"
-          stroke="#F59E0B"
+          stroke="currentColor"
+          className="text-amber-500"
           strokeWidth="5"
           strokeLinecap="round"
           strokeDasharray={Math.round(2 * Math.PI * 56)}
@@ -45,10 +49,10 @@ export function ProgressRing({ model }: { model: ProgressRingModel }) {
       </svg>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-4xl font-semibold tracking-tighter text-white">
+        <span className="text-4xl font-bold tracking-tighter text-foreground">
           {model.overallLabel}
         </span>
-        <span className="mt-1 text-[11px] text-white/35">overall</span>
+        <span className="mt-1 text-[11px] text-muted-foreground/40 font-bold uppercase tracking-widest">overall</span>
       </div>
     </div>
   );

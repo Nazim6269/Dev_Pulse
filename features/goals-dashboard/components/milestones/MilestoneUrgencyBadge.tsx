@@ -4,13 +4,13 @@ import { cn } from "@/lib/utils";
 import type { MilestoneUrgency } from "@/features/goals-dashboard/types/goals-dashboard.types";
 
 const milestoneUrgencyBadgeVariants = cva(
-  "shrink-0 text-[11px] font-medium",
+  "shrink-0 text-[11px] font-bold uppercase tracking-widest",
   {
     variants: {
       urgency: {
-        low: "text-white/50",
-        medium: "text-amber-400",
-        high: "text-rose-400",
+        low: "text-muted-foreground/40",
+        medium: "text-amber-600 dark:text-amber-400",
+        high: "text-rose-600 dark:text-rose-400",
       },
     },
   },

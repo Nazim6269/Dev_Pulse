@@ -6,9 +6,9 @@ export function CategoryItem({ item }: { item: CategoryItemModel }) {
   return (
     <div className="flex items-center gap-3">
       <StatusIndicator tone={item.tone} />
-      <span className="flex-1 text-[12px] text-white/55">{item.label}</span>
+      <span className="flex-1 text-[12px] text-foreground/70 font-medium">{item.label}</span>
       <CategoryProgressBlocks blocks={item.blocks} />
-      <span className="w-8 text-right text-[11px] text-white/35">
+      <span className="w-8 text-right text-[11px] text-muted-foreground/40 font-bold">
         {item.completedLabel}
       </span>
     </div>

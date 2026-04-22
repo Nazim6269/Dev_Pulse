@@ -3,18 +3,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-const dashboardCardVariants = cva("rounded-2xl border shadow-none", {
-  variants: {
-    variant: {
-      default: "border-white/6 bg-[#111114]",
-      subtle: "border-white/[0.05] bg-white/[0.03]",
-      elevated: "border-white/10 bg-[#141419]",
+const dashboardCardVariants = cva(
+  "rounded-2xl border shadow-sm transition-all duration-300",
+  {
+    variants: {
+      variant: {
+        default: "border-border bg-card",
+        elevated: "border-border bg-card shadow-md",
+        subtle: "border-border/50 bg-muted/30",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
     },
   },
-  defaultVariants: {
-    variant: "default",
-  },
-});
+);
 
 export interface DashboardCardProps
   extends React.ComponentProps<typeof Card>,
