@@ -62,7 +62,7 @@ export function PullRequestsDashboard() {
 
   return (
     <div className="min-h-full bg-background px-4 py-6 text-foreground md:px-6 transition-colors duration-300">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6">
+      <div className="mx-auto flex  flex-col gap-6">
         <PullRequestHeader
           title="Pull Requests"
           description="Composable pull request management designed for dashboards, repo views, and team-level review workflows."

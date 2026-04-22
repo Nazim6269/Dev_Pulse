@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 const dashboardCardVariants = cva(
-  "rounded-2xl border shadow-sm transition-all duration-300",
+  "rounded-2xl shadow-sm transition-all duration-300",
   {
     variants: {
       variant: {
