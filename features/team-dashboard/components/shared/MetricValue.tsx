@@ -5,11 +5,11 @@ import { cn } from "@/lib/utils";
 const metricValueVariants = cva("font-semibold", {
   variants: {
     tone: {
-      violet: "text-violet-400",
-      emerald: "text-emerald-400",
-      amber: "text-amber-400",
-      blue: "text-blue-400",
-      neutral: "text-white/75",
+      violet: "text-violet-600 dark:text-violet-400",
+      emerald: "text-emerald-600 dark:text-emerald-400",
+      amber: "text-amber-600 dark:text-amber-400",
+      blue: "text-blue-600 dark:text-blue-400",
+      neutral: "text-foreground/80",
     },
     size: {
       sm: "text-[12px]",

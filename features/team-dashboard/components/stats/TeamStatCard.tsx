@@ -4,7 +4,7 @@ import type { LucideIcon } from "lucide-react";
 import { DashboardCard } from "@/features/team-dashboard/components/shared/DashboardCard";
 import { MetricValue } from "@/features/team-dashboard/components/shared/MetricValue";
 import { cn } from "@/lib/utils";
-import type { TeamTone } from "@/features/team-dashboard/types/team.types";
+import type { ProgressTone } from "@/features/team-dashboard/types/team.types";
 
 const statCardVariants = cva("", {
   variants: {
@@ -21,12 +21,12 @@ const statCardVariants = cva("", {
   },
 });
 
-const toneStyles: Record<TeamTone, string> = {
-  violet: "bg-violet-500/10 text-violet-400",
-  emerald: "bg-emerald-500/10 text-emerald-400",
-  amber: "bg-amber-500/10 text-amber-400",
-  blue: "bg-blue-500/10 text-blue-400",
-  neutral: "bg-white/10 text-white/60",
+const toneStyles: Record<ProgressTone, string> = {
+  violet: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
+  emerald: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+  amber: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
+  blue: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+  neutral: "bg-muted text-muted-foreground",
 };
 
 export interface TeamStatCardProps extends VariantProps<typeof statCardVariants> {
@@ -45,7 +45,7 @@ export function TeamStatCard({
   badge,
   tone = "neutral",
 }: TeamStatCardProps) {
-  const resolvedTone: TeamTone = tone ?? "neutral";
+  const resolvedTone: ProgressTone = tone ?? "neutral";
 
   return (
     <DashboardCard className={cn(statCardVariants({ tone: resolvedTone }))}>
@@ -58,15 +58,15 @@ export function TeamStatCard({
         >
           <Icon className="size-4" />
         </div>
-        <span className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] text-white/55">
+        <span className="rounded-full border border-border px-2 py-0.5 text-[10px] text-muted-foreground font-medium">
           {badge}
         </span>
       </div>
       <MetricValue size="lg" tone={resolvedTone}>
         {value}
       </MetricValue>
-      <p className="mt-1 text-[12px] text-white/45">{label}</p>
-      <p className="mt-0.5 text-[10px] text-white/25">{sublabel}</p>
+      <p className="mt-1 text-[12px] text-muted-foreground font-medium">{label}</p>
+      <p className="mt-0.5 text-[10px] text-muted-foreground/60">{sublabel}</p>
     </DashboardCard>
   );
 }

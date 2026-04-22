@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 
 export type TeamStatus = "online" | "away" | "offline";
-export type TeamTone =
+export type ProgressTone =
   | "violet"
   | "emerald"
   | "amber"
@@ -60,7 +60,7 @@ export interface TeamStatCardModel {
   value: string;
   sublabel: string;
   badge: string;
-  tone: TeamTone;
+  tone: ProgressTone;
 }
 
 export type TeamMemberCardModel = TeamMember;
@@ -76,7 +76,7 @@ export interface VelocitySummaryItem {
   id: string;
   label: string;
   value: string;
-  tone: TeamTone;
+  tone: ProgressTone;
 }
 
 export interface MatrixCellModel {
@@ -112,5 +112,5 @@ export interface SubTeamCardModel {
 export interface ProgressSegment {
   id: string;
   width: string;
-  tone: TeamTone;
+  tone: ProgressTone;
 }

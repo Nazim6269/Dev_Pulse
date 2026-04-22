@@ -29,9 +29,9 @@ export function CollaborationMatrix({
           <table className="w-full border-collapse text-[10px]">
             <thead>
               <tr>
-                <td className="p-1.5 text-white/20" />
+                <td className="p-1.5 text-muted-foreground/20" />
                 {labels.map((label) => (
-                  <td key={label} className="p-1.5 text-center font-medium text-white/30">
+                  <td key={label} className="p-1.5 text-center font-medium text-muted-foreground/50">
                     {label}
                   </td>
                 ))}
@@ -40,7 +40,7 @@ export function CollaborationMatrix({
             <tbody>
               {rows.map((row) => (
                 <tr key={row.id}>
-                  <td className="p-1.5 font-medium text-white/30">{row.label}</td>
+                  <td className="p-1.5 font-medium text-muted-foreground/50">{row.label}</td>
                   {row.cells.map((cell) => (
                     <td key={cell.id} className="p-1">
                       <MatrixCell item={cell} />

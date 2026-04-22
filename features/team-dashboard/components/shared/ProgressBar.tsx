@@ -1,9 +1,9 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import type { ProgressSegment, TeamTone } from "@/features/team-dashboard/types/team.types";
+import type { ProgressSegment, ProgressTone } from "@/features/team-dashboard/types/team.types";
 
-const trackVariants = cva("overflow-hidden rounded-full bg-white/[0.06]", {
+const progressTrackVariants = cva("overflow-hidden rounded-full bg-muted/50", {
   variants: {
     size: {
       sm: "h-1.5",
@@ -15,22 +15,23 @@ const trackVariants = cva("overflow-hidden rounded-full bg-white/[0.06]", {
   },
 });
 
-const toneClass: Record<TeamTone, string> = {
-  violet: "bg-violet-400/70",
-  emerald: "bg-emerald-400/70",
-  amber: "bg-amber-400/70",
-  blue: "bg-blue-400/55",
-  neutral: "bg-white/15",
+const toneClass: Record<ProgressTone, string> = {
+  violet: "bg-violet-500/70",
+  rose: "bg-rose-500/70",
+  amber: "bg-amber-500/70",
+  blue: "bg-blue-500/50",
+  emerald: "bg-emerald-500/70",
+  neutral: "bg-muted",
 };
 
-export interface ProgressBarProps extends VariantProps<typeof trackVariants> {
+export interface ProgressBarProps extends VariantProps<typeof progressTrackVariants> {
   segments: ProgressSegment[];
   className?: string;
 }
 
 export function ProgressBar({ segments, size, className }: ProgressBarProps) {
   return (
-    <div className={cn(trackVariants({ size }), className)}>
+    <div className={cn(progressTrackVariants({ size }), className)}>
       <div className="flex h-full gap-px">
         {segments.map((segment) => (
           <div
