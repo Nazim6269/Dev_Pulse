@@ -5,19 +5,19 @@ import type { RecentCommitItemModel } from "@/features/commits-dashboard/types/c
 
 function RecentCommitItemComponent({ item }: { item: RecentCommitItemModel }) {
   return (
-    <div className="group -mx-2 flex cursor-default items-start gap-3 rounded-lg px-2 py-3 transition-colors hover:bg-white/[0.02]">
-      <span className="mt-1 w-14 shrink-0 font-mono text-[9px] text-white/20">
+    <div className="group -mx-2 flex cursor-default items-start gap-3 rounded-lg px-2 py-3 transition-colors hover:bg-muted/50">
+      <span className="mt-1 w-14 shrink-0 font-mono text-[9px] text-muted-foreground/30">
         {item.hash}
       </span>
 
       <div className="min-w-0 flex-1">
-        <p className="truncate text-[12px] text-white/70 transition-colors group-hover:text-white/90">
+        <p className="truncate text-[12px] text-foreground/80 transition-colors group-hover:text-foreground">
           {item.message}
         </p>
         <div className="mt-1 flex items-center gap-2">
-          <span className="font-mono text-[10px] text-white/30">{item.repository}</span>
-          <span className="text-white/10">.</span>
-          <span className="text-[10px] text-white/25">{item.timeAgo}</span>
+          <span className="font-mono text-[10px] text-muted-foreground/50">{item.repository}</span>
+          <span className="text-muted-foreground/20">.</span>
+          <span className="text-[10px] text-muted-foreground/40">{item.timeAgo}</span>
         </div>
       </div>
 

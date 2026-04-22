@@ -12,7 +12,7 @@ export function RepoCommitList({ items }: { items: RepoCommitItemModel[] }) {
       />
       <div className="mt-5">
         {items.length === 0 ? (
-          <p className="text-sm text-white/40">No repository contribution data.</p>
+          <p className="text-sm text-muted-foreground/60">No repository contribution data.</p>
         ) : (
           <div className="flex flex-col gap-4">
             {items.map((item) => (

@@ -28,12 +28,12 @@ const statCardVariants = cva("", {
 });
 
 const toneClass: Record<ProgressTone, string> = {
-  emerald: "bg-emerald-500/10 text-emerald-300",
-  violet: "bg-violet-500/10 text-violet-300",
-  amber: "bg-amber-500/10 text-amber-300",
-  blue: "bg-blue-500/10 text-blue-300",
-  rose: "bg-rose-500/10 text-rose-300",
-  neutral: "bg-white/10 text-white/70",
+  emerald: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300",
+  violet: "bg-violet-500/10 text-violet-600 dark:text-violet-300",
+  amber: "bg-amber-500/10 text-amber-600 dark:text-amber-300",
+  blue: "bg-blue-500/10 text-blue-600 dark:text-blue-300",
+  rose: "bg-rose-500/10 text-rose-600 dark:text-rose-300",
+  neutral: "bg-muted text-muted-foreground",
 };
 
 type StatTone = Extract<ProgressTone, "emerald" | "violet" | "amber" | "blue" | "rose" | "neutral">;
@@ -79,9 +79,9 @@ export function StatCard({
           {badge}
         </Badge>
       </div>
-      <p className="text-3xl font-semibold tracking-tight text-white">{value}</p>
-      <p className="mt-1 text-[12px] text-white/45">{label}</p>
-      <p className="mt-0.5 text-[10px] text-white/25">{sublabel}</p>
+      <p className="text-3xl font-semibold tracking-tight text-foreground">{value}</p>
+      <p className="mt-1 text-[12px] text-muted-foreground font-medium">{label}</p>
+      <p className="mt-0.5 text-[10px] text-muted-foreground/60">{sublabel}</p>
     </DashboardCard>
   );
 }
