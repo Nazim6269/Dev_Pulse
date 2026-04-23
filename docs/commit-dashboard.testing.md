@@ -9,7 +9,7 @@ The current workspace still does not include a test runner configuration, so thi
 ```tsx
 import { renderHook } from "@testing-library/react";
 
-import { useDailyCommitVolume } from "@/features/commits-dashboard/hooks/useDailyCommitVolume";
+import { useDailyCommitVolume } from "@/features/commits/hooks/useDailyCommitVolume";
 
 describe("useDailyCommitVolume", () => {
   it("builds chart bars with precomputed heights", () => {
@@ -26,7 +26,7 @@ describe("useDailyCommitVolume", () => {
 ```tsx
 import { render, screen } from "@testing-library/react";
 
-import { RecentCommitList } from "@/features/commits-dashboard/components/commits/RecentCommitList";
+import { RecentCommitList } from "@/features/commits/components/commits/RecentCommitList";
 
 describe("RecentCommitList", () => {
   it("shows an empty state when no commits exist", () => {
@@ -42,7 +42,7 @@ describe("RecentCommitList", () => {
 ```tsx
 import { render, screen } from "@testing-library/react";
 
-import { RepoCommitList } from "@/features/commits-dashboard/components/repos/RepoCommitList";
+import { RepoCommitList } from "@/features/commits/components/repos/RepoCommitList";
 
 describe("RepoCommitList", () => {
   it("renders repository contribution rows", () => {

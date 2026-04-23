@@ -1,5 +1,5 @@
-import { CommitsDashboardFeature } from "@/features/commits-dashboard";
+import { CommitsFeature } from "@/features/commits";
 
 export default function Page() {
-  return <CommitsDashboardFeature />;
+  return <CommitsFeature />;
 }

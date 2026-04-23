@@ -1,11 +1,15 @@
+import { ThemeProvider } from "@/components/providers/theme-provider";
+
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
-      {children}
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
+        {children}
+      </div>
+    </ThemeProvider>
   );
 }

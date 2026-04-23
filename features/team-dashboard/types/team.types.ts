@@ -4,6 +4,7 @@ export type TeamStatus = "online" | "away" | "offline";
 export type ProgressTone =
   | "violet"
   | "emerald"
+  | "rose"
   | "amber"
   | "blue"
   | "neutral";

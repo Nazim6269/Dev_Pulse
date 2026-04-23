@@ -7,7 +7,7 @@ These examples are ready for a future Jest or React Testing Library setup.
 ```tsx
 import { renderHook } from "@testing-library/react";
 
-import { useTrendData } from "@/features/goals-dashboard/hooks/useTrendData";
+import { useTrendData } from "@/features/goals/hooks/useTrendData";
 
 describe("useTrendData", () => {
   it("precomputes chart bar heights", () => {
@@ -24,7 +24,7 @@ describe("useTrendData", () => {
 ```tsx
 import { render, screen } from "@testing-library/react";
 
-import { GoalsList } from "@/features/goals-dashboard/components/goals/GoalsList";
+import { GoalsList } from "@/features/goals/components/goals/GoalsList";
 
 describe("GoalsList", () => {
   it("renders goal rows", () => {
@@ -62,7 +62,7 @@ describe("GoalsList", () => {
 ```tsx
 import { render, screen } from "@testing-library/react";
 
-import { CategoryGrid } from "@/features/goals-dashboard/components/categories/CategoryGrid";
+import { CategoryGrid } from "@/features/goals/components/categories/CategoryGrid";
 
 describe("CategoryGrid", () => {
   it("renders top category summary", () => {

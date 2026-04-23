@@ -13,6 +13,7 @@ const statCardVariants = cva("", {
       emerald: "",
       amber: "",
       blue: "",
+      rose: "",
       neutral: "",
     },
   },
@@ -26,10 +27,13 @@ const toneStyles: Record<ProgressTone, string> = {
   emerald: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
   amber: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
   blue: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+  rose: "bg-rose-500/10 text-rose-600 dark:text-rose-400",
   neutral: "bg-muted text-muted-foreground",
 };
 
-export interface TeamStatCardProps extends VariantProps<typeof statCardVariants> {
+export interface TeamStatCardProps extends VariantProps<
+  typeof statCardVariants
+> {
   icon: LucideIcon;
   value: string;
   label: string;
@@ -65,7 +69,9 @@ export function TeamStatCard({
       <MetricValue size="lg" tone={resolvedTone}>
         {value}
       </MetricValue>
-      <p className="mt-1 text-[12px] text-muted-foreground font-medium">{label}</p>
+      <p className="mt-1 text-[12px] text-muted-foreground font-medium">
+        {label}
+      </p>
       <p className="mt-0.5 text-[10px] text-muted-foreground/60">{sublabel}</p>
     </DashboardCard>
   );
