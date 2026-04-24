@@ -12,10 +12,10 @@ import type {
 export function useProfile() {
   const headerActions = useMemo<ProfileHeaderActionModel[]>(
     () =>
-      profileData.headerActions.map((action: { iconKey: any }) => ({
+      profileData.headerActions.map((action: any) => ({
         ...action,
         icon: getProfileIcon(action.iconKey),
-      })),
+      }) as ProfileHeaderActionModel),
     [],
   );
 
@@ -45,10 +45,10 @@ export function useProfile() {
           tone: "neutral",
         },
       ],
-      socials: profileData.identity.socials.map((social: { iconKey: any }) => ({
+      socials: profileData.identity.socials.map((social: any) => ({
         ...social,
         icon: getProfileIcon(social.iconKey),
-      })),
+      }) as any),
     }),
     [],
   );

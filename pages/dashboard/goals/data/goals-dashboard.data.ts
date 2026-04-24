@@ -171,3 +171,6 @@ export const personalRecords: PersonalRecord[] = [
     tone: "blue",
   },
 ];
+
+export default function DefaultExport() { return null; }
+

@@ -2,7 +2,7 @@ import type { ComponentType } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import type { ProfileTone } from "@/features/profile/types/profile.types";
+import { ProfileTone } from "@/widgets/dashboard/model/profile/profile.types";
 
 const iconWrapperVariants = cva("flex items-center justify-center rounded-xl", {
   variants: {

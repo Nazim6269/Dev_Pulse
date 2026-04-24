@@ -142,3 +142,6 @@ export const languageOptions: SelectOption<LanguageOptionId>[] = [
 
 export const appearanceStorageKey = "devpulse-settings-appearance";
 
+
+export default function DefaultExport() { return null; }
+

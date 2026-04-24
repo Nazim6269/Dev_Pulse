@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import type { DashboardTone, ProgressSegment } from "@/features/goals/types/goals-dashboard.types";
+import type { DashboardTone, ProgressSegment } from "../../../model/goals/goals-dashboard.types";
 
 const progressTrackVariants = cva("overflow-hidden rounded-full bg-muted/50", {
   variants: {

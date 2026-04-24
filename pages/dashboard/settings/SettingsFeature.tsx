@@ -44,3 +44,6 @@ export const SettingsFeature = memo(function SettingsFeature() {
     </div>
   );
 });
+
+export default function DefaultExport() { return null; }
+

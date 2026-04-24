@@ -11,5 +11,5 @@ export const DensityToggle = memo(function DensityToggle({
   checked,
   onCheckedChange,
 }: DensityToggleProps) {
-  return <ToggleSwitch checked={checked} onCheckedChange={onCheckedChange} />;
+  return <ToggleSwitch enabled={checked} onChange={onCheckedChange} />;
 });

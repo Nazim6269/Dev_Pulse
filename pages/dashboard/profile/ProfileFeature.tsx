@@ -56,3 +56,6 @@ export function ProfileFeature() {
     </div>
   );
 }
+
+export default function DefaultExport() { return null; }
+

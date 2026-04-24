@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import type { ChannelFilterData } from "@/features/notifications/types/notification.types";
+import type { ChannelFilterData } from "../../model/notifications/notification.types";
 
 const toneDot = {
   violet: "bg-violet-400",

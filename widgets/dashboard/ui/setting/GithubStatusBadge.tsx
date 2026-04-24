@@ -13,7 +13,7 @@ export const GithubStatusBadge = memo(function GithubStatusBadge({
   tone,
 }: GithubStatusBadgeProps) {
   return (
-    <Badge tone={tone}>
+    <Badge variant={tone === "danger" ? "warning" : tone}>
       <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-current" />
       {label}
     </Badge>

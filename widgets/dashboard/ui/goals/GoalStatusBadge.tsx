@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
-import type { GoalState } from "@/features/goals/types/goals-dashboard.types";
+import type { GoalState } from "../../model/goals/goals-dashboard.types";
 import { cn } from "@/lib/utils";
 
 const goalStatusBadgeVariants = cva(

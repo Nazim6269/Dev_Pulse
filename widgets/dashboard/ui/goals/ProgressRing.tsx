@@ -1,4 +1,4 @@
-import type { ProgressRingModel } from "@/features/goals/types/goals-dashboard.types";
+import { ProgressRingModel } from "../../model/goals/goals-dashboard.types";
 
 export function ProgressRing({ model }: { model: ProgressRingModel }) {
   return (

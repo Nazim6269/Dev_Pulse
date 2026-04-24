@@ -88,3 +88,6 @@ export function GoalsDashboardFeature() {
     </div>
   );
 }
+
+export default function DefaultExport() { return null; }
+

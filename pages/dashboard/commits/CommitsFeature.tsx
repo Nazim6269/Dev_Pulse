@@ -64,3 +64,5 @@ export function CommitsFeature() {
     </div>
   );
 }
+
+export default CommitsFeature;

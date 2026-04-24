@@ -1,4 +1,4 @@
-import type { CategoryBlockModel } from "@/features/goals/types/goals-dashboard.types";
+import { CategoryBlockModel } from "../../model/goals/goals-dashboard.types";
 
 const toneClass = {
   violet: "bg-violet-500",

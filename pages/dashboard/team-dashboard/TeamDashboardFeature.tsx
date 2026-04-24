@@ -57,3 +57,6 @@ export function TeamDashboardFeature() {
     </div>
   );
 }
+
+export default function DefaultExport() { return null; }
+

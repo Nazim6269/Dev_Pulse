@@ -73,3 +73,6 @@ export function RecordCardExample() {
     />
   );
 }
+
+export default function DefaultExport() { return null; }
+

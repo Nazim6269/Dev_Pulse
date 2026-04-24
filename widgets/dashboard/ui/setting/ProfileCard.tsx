@@ -32,7 +32,7 @@ export const ProfileCard = memo(function ProfileCard() {
       <div className="mb-4 flex flex-col gap-2">
         <ProfileInputField label="Email address" onChange={(value) => settings.updateField("email", value)} type="email" value={settings.form.email} />
         <div className="-mt-10 flex justify-end pr-2">
-          <Badge tone={settings.emailVerified ? "success" : "warning"}>
+          <Badge variant={settings.emailVerified ? "success" : "warning"}>
             {settings.emailVerified ? <Check className="mr-1 h-2.5 w-2.5" /> : null}
             {settings.emailVerified ? "Verified" : "Needs review"}
           </Badge>

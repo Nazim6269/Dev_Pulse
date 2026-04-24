@@ -1,4 +1,4 @@
-import type { ProfileData } from "@/features/profile/types/profile.types";
+import type { ProfileData } from "@/widgets/dashboard/model/profile/profile.types";
 
 export const profileData: ProfileData = {
   title: "Public profile",
@@ -76,3 +76,6 @@ export const profileData: ProfileData = {
     { id: "activity-pr", type: "pr", text: "Opened PR chore: upgrade Prisma to v5.8", repository: "devpulse/backend", timeAgo: "1d ago" },
   ],
 };
+
+export default function DefaultExport() { return null; }
+

@@ -86,3 +86,6 @@ export function CollaborationMatrixExample() {
     />
   );
 }
+
+export default function DefaultExport() { return null; }
+

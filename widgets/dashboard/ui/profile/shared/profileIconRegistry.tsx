@@ -20,7 +20,7 @@ import GitMerge from "@/icons/GitMerge";
 import type {
   ProfileIconComponent,
   ProfileIconKey,
-} from "@/features/profile/types/profile.types";
+} from "../../../model/profile/profile.types";
 
 const iconRegistry: Record<ProfileIconKey, ProfileIconComponent> = {
   calendar: Calendar,

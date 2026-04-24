@@ -166,3 +166,6 @@ export const teamDashboardSummary: TeamDashboardSummary = {
   reviewLgtmRate: "79% LGTM",
   teamGrowth: "+1 this month",
 };
+
+export default function DefaultExport() { return null; }
+

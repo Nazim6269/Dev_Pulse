@@ -9,10 +9,10 @@ import { getProfileIcon } from "../../ui/profile/shared/profileIconRegistry";
 export function useAchievements() {
   const items = useMemo<AchievementModel[]>(
     () =>
-      profileData.achievements.map((achievement: { iconKey: any }) => ({
+      profileData.achievements.map((achievement: any) => ({
         ...achievement,
         icon: getProfileIcon(achievement.iconKey),
-      })),
+      }) as AchievementModel),
     [],
   );
 

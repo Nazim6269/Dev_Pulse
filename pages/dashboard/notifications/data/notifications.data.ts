@@ -163,9 +163,9 @@ export const activitySparkline = [
 ];
 
 export const quickSettings: QuickSetting[] = [
-  { id: "push", label: "Push notifications", enabled: true },
-  { id: "digest", label: "Email digest", enabled: false },
-  { id: "slack", label: "Slack alerts", enabled: false },
+  { id: "push", label: "Push notifications", enabled: true, onChange: () => { } },
+  { id: "digest", label: "Email digest", enabled: false, onChange: () => { } },
+  { id: "slack", label: "Slack alerts", enabled: false, onChange: () => { } },
 ];
 
 export const notificationTypeConfig: Record<
@@ -191,3 +191,6 @@ export const urgentBannerConfig = {
   icon: Clock,
   actionLabel: "Review",
 };
+
+export default function DefaultExport() { return null; }
+

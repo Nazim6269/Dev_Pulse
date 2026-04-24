@@ -25,7 +25,7 @@ export function AchievementsGrid({
         <SectionHeader
           title="Achievements"
           action={
-            <Badge variant="highlight" className="gap-1">
+            <Badge variant="count" className="gap-1">
               <Star size={9} />
               {earnedLabel}
             </Badge>

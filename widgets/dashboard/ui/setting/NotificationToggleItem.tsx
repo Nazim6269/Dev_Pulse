@@ -18,7 +18,7 @@ export const NotificationToggleItem = memo(function NotificationToggleItem({
 }: NotificationToggleItemProps) {
   return (
     <FieldRow description={description} label={label}>
-      <ToggleSwitch checked={enabled} onCheckedChange={onToggle} />
+      <ToggleSwitch enabled={enabled} onChange={onToggle} />
     </FieldRow>
   );
 });

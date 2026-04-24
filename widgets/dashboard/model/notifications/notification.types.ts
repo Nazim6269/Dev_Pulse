@@ -53,6 +53,7 @@ export interface QuickSetting {
   id: string;
   label: string;
   enabled: boolean;
+  onChange: (enabled: boolean) => void;
 }
 
 export interface NotificationTypeConfig {

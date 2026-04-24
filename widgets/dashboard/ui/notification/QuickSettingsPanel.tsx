@@ -7,7 +7,7 @@ export function QuickSettingsPanel({ items }: { items: QuickSetting[] }) {
       {items.map((item) => (
         <div key={item.id} className="flex items-center justify-between">
           <span className="text-[11px] text-muted-foreground/60">{item.label}</span>
-          <ToggleSwitch enabled={item.enabled} />
+          <ToggleSwitch enabled={item.enabled} onChange={item.onChange} />
         </div>
       ))}
     </div>

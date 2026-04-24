@@ -1,4 +1,4 @@
-import type { TrendBarModel } from "@/features/goals/types/goals-dashboard.types";
+import type { TrendBarModel } from "../../model/goals/goals-dashboard.types";
 
 export function TrendBar({ item }: { item: TrendBarModel }) {
   return (

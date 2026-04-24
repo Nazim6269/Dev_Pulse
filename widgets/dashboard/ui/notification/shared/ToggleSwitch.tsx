@@ -26,13 +26,15 @@ const knobVariants = cva(
 
 export interface ToggleSwitchProps extends VariantProps<typeof toggleVariants> {
   enabled: boolean;
+  onChange: (enabled: boolean) => void;
 }
 
 export const ToggleSwitch = memo(function ToggleSwitch({
   enabled,
+  onChange,
 }: ToggleSwitchProps) {
   return (
-    <div className={cn(toggleVariants({ enabled }))}>
+    <div className={cn(toggleVariants({ enabled }))} onClick={() => onChange(!enabled)}>
       <span className={cn(knobVariants({ enabled }))} />
     </div>
   );

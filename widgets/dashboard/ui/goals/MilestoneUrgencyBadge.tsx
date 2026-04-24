@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import type { MilestoneUrgency } from "@/features/goals/types/goals-dashboard.types";
+import type { MilestoneUrgency } from "../../model/goals/goals-dashboard.types";
 
 const milestoneUrgencyBadgeVariants = cva(
   "shrink-0 text-[11px] font-bold uppercase tracking-widest",

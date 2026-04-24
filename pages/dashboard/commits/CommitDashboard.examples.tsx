@@ -36,3 +36,7 @@ export function SharedComponentsExample() {
     </div>
   );
 }
+
+export default function CommitDashboardExamples() {
+  return null;
+}

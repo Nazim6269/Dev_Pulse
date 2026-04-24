@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { WeeklyStat } from "@/features/notifications/types/notification.types";
+import type { WeeklyStat } from "../../model/notifications/notification.types";
 
 const toneClass = {
   amber: "text-amber-400",

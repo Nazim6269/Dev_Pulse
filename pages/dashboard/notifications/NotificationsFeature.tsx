@@ -45,3 +45,6 @@ export function NotificationsFeature() {
     </div>
   );
 }
+
+export default function DefaultExport() { return null; }
+

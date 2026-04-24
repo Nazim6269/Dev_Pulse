@@ -70,8 +70,13 @@ export function StatsPanelExample() {
         { id: "Tue", label: "Tue", height: "80%" },
       ]}
       quickSettings={[
-        { id: "push", label: "Push notifications", enabled: true },
+        { id: "push", label: "Push notifications", enabled: true, onChange: () => { } },
+        { id: "digest", label: "Email digest", enabled: false, onChange: () => { } },
+        { id: "slack", label: "Slack alerts", enabled: false, onChange: () => { } },
       ]}
     />
   );
 }
+
+export default function DefaultExport() { return null; }
+

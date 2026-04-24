@@ -9,10 +9,10 @@ import { ProfileKPIModel } from "./profile.types";
 export function useProfileKPIs() {
   const items = useMemo<ProfileKPIModel[]>(
     () =>
-      profileData.kpis.map((item: { iconKey: any }) => ({
+      profileData.kpis.map((item: any) => ({
         ...item,
         icon: getProfileIcon(item.iconKey),
-      })),
+      }) as ProfileKPIModel),
     [],
   );
 
