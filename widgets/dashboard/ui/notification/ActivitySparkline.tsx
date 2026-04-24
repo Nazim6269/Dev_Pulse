@@ -1,4 +1,6 @@
-import type { NotificationActivityBarModel } from "@/features/notifications/types/notification.types";
+import { NotificationActivityBarModel } from "../../model/notifications/notification.types";
+
+
 
 export function ActivitySparkline({
   items,
