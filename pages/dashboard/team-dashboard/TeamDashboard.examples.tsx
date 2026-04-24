@@ -23,8 +23,8 @@ export function TeamMemberCardExample() {
   return (
     <TeamMemberCard
       item={{
-        name: "Rafiq Ahsan",
-        handle: "@rafiq",
+        name: "Nazim Ahsan",
+        handle: "@Nazim",
         initials: "RA",
         gradient: "from-amber-400 to-orange-500",
         role: "Frontend Lead",
@@ -87,5 +87,6 @@ export function CollaborationMatrixExample() {
   );
 }
 
-export default function DefaultExport() { return null; }
-
+export default function DefaultExport() {
+  return null;
+}

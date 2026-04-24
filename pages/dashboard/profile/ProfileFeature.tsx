@@ -1,23 +1,26 @@
 "use client";
 
 import CustomScrollableContainer from "@/components/common/CustomScrollableContainer";
-import { AchievementsGrid } from "@/widgets/dashboard/ui/profile/AchievementsGrid";
-import { ContributionCalendar } from "@/widgets/dashboard/ui/profile/ContributionCalendar";
-import { ProfileHeader } from "@/widgets/dashboard/ui/profile/ProfileHeader";
-import { ProfileCard } from "@/widgets/dashboard/ui/profile/ProfileCard";
-import { MonthlyKPICard } from "@/widgets/dashboard/ui/profile/MonthlyKPICard";
-import { TopLanguagesList } from "@/widgets/dashboard/ui/profile/TopLanguagesList";
-import { RepositoriesList } from "@/widgets/dashboard/ui/profile/RepositoriesList";
-import { RecentActivityFeed } from "@/widgets/dashboard/ui/profile/RecentActivityFeed";
-import { ProfileStatsGrid } from "@/widgets/dashboard/ui/profile/ProfileStatsGrid";
+
+import {
+  useProfile,
+  useProfileStats,
+  useProfileLanguages,
+  useProfileKPIs,
+  useContributionActivity,
+  useRepositories,
+  useRecentActivity,
+  AchievementsGrid,
+  ContributionCalendar,
+  ProfileHeader,
+  MonthlyKPICard,
+  TopLanguagesList,
+  RepositoriesList,
+  RecentActivityFeed,
+  ProfileStatsGrid,
+} from "@/widgets/dashboard";
 import { useAchievements } from "@/widgets/dashboard/model/profile/useAchievements";
-import { useContributionActivity } from "@/widgets/dashboard/model/profile/useContributionActivity";
-import { useProfile } from "@/widgets/dashboard/model/profile/useProfile";
-import { useProfileKPIs } from "@/widgets/dashboard/model/profile/useProfileKPIs";
-import { useProfileLanguages } from "@/widgets/dashboard/model/profile/useProfileLanguages";
-import { useProfileStats } from "@/widgets/dashboard/model/profile/useProfileStats";
-import { useRecentActivity } from "@/widgets/dashboard/model/profile/useRecentActivity";
-import { useRepositories } from "@/widgets/dashboard/model/profile/useRepositories";
+import { ProfileCard } from "@/widgets/dashboard/ui/profile";
 
 export function ProfileFeature() {
   const { title, profile, headerActions } = useProfile();
@@ -46,7 +49,10 @@ export function ProfileFeature() {
 
             <div className="col-span-12 flex flex-col gap-4 md:col-span-8">
               <ContributionCalendar activity={activity} />
-              <AchievementsGrid items={achievements} earnedLabel={earnedLabel} />
+              <AchievementsGrid
+                items={achievements}
+                earnedLabel={earnedLabel}
+              />
               <RepositoriesList items={repositories} totalLabel={totalLabel} />
               <RecentActivityFeed items={recentActivity} />
             </div>
@@ -57,5 +63,6 @@ export function ProfileFeature() {
   );
 }
 
-export default function DefaultExport() { return null; }
-
+export default function DefaultExport() {
+  return null;
+}

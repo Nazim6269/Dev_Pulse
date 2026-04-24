@@ -14,8 +14,8 @@ export const profileData: ProfileData = {
     status: "online",
     bio: "Frontend engineer building scalable products. Open source contributor and coffee-driven debugger.",
     location: "Dhaka, Bangladesh",
-    websiteLabel: "devpulse.app/rafiq",
-    websiteHref: "https://devpulse.app/rafiq",
+    websiteLabel: "devpulse.app/nazim",
+    websiteHref: "https://devpulse.app/nazim",
     joinedLabel: "Joined March 2023",
     badges: [
       { id: "pro", label: "Pro", variant: "role" },

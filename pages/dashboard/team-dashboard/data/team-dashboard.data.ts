@@ -8,8 +8,8 @@ import type {
 
 export const teamMembers: TeamMember[] = [
   {
-    name: "Rafiq Ahsan",
-    handle: "@rafiq",
+    name: "Nazim Ahsan",
+    handle: "@Nazim",
     initials: "RA",
     gradient: "from-amber-400 to-orange-500",
     role: "Frontend Lead",
@@ -132,7 +132,7 @@ export const subTeams: SubTeam[] = [
   {
     name: "Frontend",
     gradient: "from-violet-400 to-purple-500",
-    members: ["Rafiq Ahsan", "Lena Park"],
+    members: ["Nazim Ahsan", "Lena Park"],
     prs: 18,
     reviews: 34,
     commits: 117,
@@ -167,5 +167,6 @@ export const teamDashboardSummary: TeamDashboardSummary = {
   teamGrowth: "+1 this month",
 };
 
-export default function DefaultExport() { return null; }
-
+export default function DefaultExport() {
+  return null;
+}

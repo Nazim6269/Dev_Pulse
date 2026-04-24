@@ -31,7 +31,8 @@ export const settingsSections: SettingsNavSection[] = [
   {
     id: "github",
     label: "GitHub",
-    description: "Control repository access, sync cadence, and connection health.",
+    description:
+      "Control repository access, sync cadence, and connection health.",
     icon: Globe,
   },
   {
@@ -55,7 +56,8 @@ export const settingsSections: SettingsNavSection[] = [
   {
     id: "danger-zone",
     label: "Danger zone",
-    description: "Sensitive account actions like export and permanent deletion.",
+    description:
+      "Sensitive account actions like export and permanent deletion.",
     icon: AlertTriangle,
   },
 ];
@@ -66,12 +68,12 @@ export const sidebarFooterAction = {
 };
 
 export const defaultProfileSettings: ProfileSettingsForm = {
-  firstName: "Rafiq",
+  firstName: "Nazim",
   lastName: "Ahsan",
-  email: "rafiq@devpulse.app",
+  email: "Nazim@devpulse.app",
   bio: "Frontend engineer building scalable products. Open source contributor & coffee-driven debugger.",
   location: "Dhaka, BD",
-  website: "devpulse.app/rafiq",
+  website: "devpulse.app/Nazim",
 };
 
 export const profileConstraints = {
@@ -80,8 +82,8 @@ export const profileConstraints = {
 };
 
 export const githubConnection = {
-  username: "rafiq-ahsan",
-  profileUrl: "github.com/rafiq-ahsan",
+  username: "NazimUddin",
+  profileUrl: "github.com/NazimUddin",
 };
 
 export const repoAccessOptions: SelectOption<RepoAccessValue>[] = [
@@ -98,15 +100,48 @@ export const syncIntervalOptions: SelectOption<SyncIntervalValue>[] = [
 ];
 
 export const notificationPreferences: NotificationPreference[] = [
-  { id: "pr-merged", label: "PR merged", description: "When one of your PRs is merged", enabledByDefault: true },
-  { id: "review-requested", label: "Review requested", description: "When someone requests your review", enabledByDefault: true },
-  { id: "review-completed", label: "Review completed", description: "When a review is left on your PR", enabledByDefault: true },
-  { id: "goal-completed", label: "Goal completed", description: "When you hit a tracking goal", enabledByDefault: true },
-  { id: "weekly-digest", label: "Weekly digest", description: "Summary email every Monday", enabledByDefault: false },
-  { id: "team-mention", label: "Team mention", description: "When someone @-mentions you", enabledByDefault: false },
+  {
+    id: "pr-merged",
+    label: "PR merged",
+    description: "When one of your PRs is merged",
+    enabledByDefault: true,
+  },
+  {
+    id: "review-requested",
+    label: "Review requested",
+    description: "When someone requests your review",
+    enabledByDefault: true,
+  },
+  {
+    id: "review-completed",
+    label: "Review completed",
+    description: "When a review is left on your PR",
+    enabledByDefault: true,
+  },
+  {
+    id: "goal-completed",
+    label: "Goal completed",
+    description: "When you hit a tracking goal",
+    enabledByDefault: true,
+  },
+  {
+    id: "weekly-digest",
+    label: "Weekly digest",
+    description: "Summary email every Monday",
+    enabledByDefault: false,
+  },
+  {
+    id: "team-mention",
+    label: "Team mention",
+    description: "When someone @-mentions you",
+    enabledByDefault: false,
+  },
 ];
 
-export const securityMetadata: Record<"sessions" | "tokens", SecurityActionMeta> = {
+export const securityMetadata: Record<
+  "sessions" | "tokens",
+  SecurityActionMeta
+> = {
   sessions: {
     label: "Active sessions",
     description: "Devices currently signed in",
@@ -125,7 +160,10 @@ export const themeOptions: SelectOption<ThemeOptionId>[] = [
   { value: "system", label: "System" },
 ];
 
-export const accentColorOptions: Array<{ value: AccentColorId; swatchClassName: string }> = [
+export const accentColorOptions: Array<{
+  value: AccentColorId;
+  swatchClassName: string;
+}> = [
   { value: "violet", swatchClassName: "bg-violet-500" },
   { value: "blue", swatchClassName: "bg-blue-500" },
   { value: "emerald", swatchClassName: "bg-emerald-500" },
@@ -142,6 +180,6 @@ export const languageOptions: SelectOption<LanguageOptionId>[] = [
 
 export const appearanceStorageKey = "devpulse-settings-appearance";
 
-
-export default function DefaultExport() { return null; }
-
+export default function DefaultExport() {
+  return null;
+}

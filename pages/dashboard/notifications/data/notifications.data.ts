@@ -97,7 +97,7 @@ export const notificationsData: NotificationItemData[] = [
     id: "9",
     type: "mention",
     title: "You were mentioned",
-    body: "@karimh mentioned you in a comment: 'cc @rafiq for the auth logic'",
+    body: "@karimh mentioned you in a comment: 'cc @Nazim for the auth logic'",
     repo: "devpulse/backend",
     time: "2 days ago",
     read: true,
@@ -163,9 +163,14 @@ export const activitySparkline = [
 ];
 
 export const quickSettings: QuickSetting[] = [
-  { id: "push", label: "Push notifications", enabled: true, onChange: () => { } },
-  { id: "digest", label: "Email digest", enabled: false, onChange: () => { } },
-  { id: "slack", label: "Slack alerts", enabled: false, onChange: () => { } },
+  {
+    id: "push",
+    label: "Push notifications",
+    enabled: true,
+    onChange: () => {},
+  },
+  { id: "digest", label: "Email digest", enabled: false, onChange: () => {} },
+  { id: "slack", label: "Slack alerts", enabled: false, onChange: () => {} },
 ];
 
 export const notificationTypeConfig: Record<
@@ -192,5 +197,6 @@ export const urgentBannerConfig = {
   actionLabel: "Review",
 };
 
-export default function DefaultExport() { return null; }
-
+export default function DefaultExport() {
+  return null;
+}
