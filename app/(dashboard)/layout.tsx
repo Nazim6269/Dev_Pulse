@@ -1,4 +1,4 @@
-import { Sidebar, TopBar } from "@/components/home";
+import { Sidebar, TopBar } from "@/widgets/dashboard/ui/home";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 
 export default function DashboardLayout({
@@ -12,9 +12,7 @@ export default function DashboardLayout({
         <Sidebar />
         <div className="flex flex-1 flex-col overflow-hidden">
           <TopBar />
-          <main className="flex-1 overflow-y-auto">
-            {children}
-          </main>
+          <main className="flex-1 overflow-y-auto">{children}</main>
         </div>
       </div>
     </ThemeProvider>

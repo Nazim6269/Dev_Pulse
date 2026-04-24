@@ -1,4 +1,5 @@
-import { NotificationsFeature } from "@/features/notifications";
+import { NotificationsFeature } from "@/pages/dashboard/notifications/NotificationsFeature";
+
 
 export default function Page() {
   return <NotificationsFeature />;

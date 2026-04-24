@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { AuthLayout } from "@/features/auth/components/auth-layout";
-import { RegisterForm } from "@/features/auth/components/register-form";
+import { AuthLayout } from "@/widgets/auth-layout";
+import { RegisterForm } from "@/widgets/register-form";
 
 export const metadata: Metadata = {
   title: "Register | DevPulse",
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
  */
 export default function RegisterPage() {
   return (
-    <AuthLayout 
-      title="Create an account" 
+    <AuthLayout
+      title="Create an account"
       description="Enter your details below to create your account"
     >
       <RegisterForm />

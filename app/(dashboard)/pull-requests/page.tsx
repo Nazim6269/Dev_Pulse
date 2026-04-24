@@ -1,4 +1,4 @@
-import { PullRequestsDashboard } from "@/components/pull-request";
+import { PullRequestsDashboard } from "@/widgets/dashboard/ui/pull-request";
 
 export default function Page() {
   return <PullRequestsDashboard />;

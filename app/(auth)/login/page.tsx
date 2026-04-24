@@ -1,6 +1,6 @@
+import { AuthLayout } from "@/widgets/auth-layout";
+import { LoginForm } from "@/widgets/login-form";
 import { Metadata } from "next";
-import { AuthLayout } from "@/features/auth/components/auth-layout";
-import { LoginForm } from "@/features/auth/components/login-form";
 
 export const metadata: Metadata = {
   title: "Login | DevPulse",
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
  */
 export default function LoginPage() {
   return (
-    <AuthLayout 
-      title="Welcome back" 
+    <AuthLayout
+      title="Welcome back"
       description="Enter your credentials to access your account"
     >
       <LoginForm />
