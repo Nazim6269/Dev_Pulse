@@ -5,11 +5,17 @@ const goals = [
   { label: "Review 10 PRs this month", current: 10, target: 10, done: true },
   { label: "Maintain 80%+ review rate", current: 83, target: 80, done: true },
   { label: "Reduce avg cycle time <24h", current: 18, target: 24, done: true },
+  { label: "Add detailed PR descriptions", current: 2, target: 10, done: false },
+  { label: "Close 15 tickets this month", current: 13, target: 15, done: false },
+  { label: "No broken builds on Mondays", current: 1, target: 1, done: true },
+  { label: "Achieve sprint commitment 90%", current: 85, target: 90, done: false },
+  
+
 ];
 
 export default function GoalTracker() {
   return (
-    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-5">
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-4 h-110">
       <div className="flex items-center justify-between">
         <p className="text-[14px] font-medium text-foreground">Goals</p>
         <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center">

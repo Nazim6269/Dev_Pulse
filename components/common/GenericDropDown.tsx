@@ -80,20 +80,21 @@ const GenericDropDown = ({
           className,
         )}
       >
-        <div className="flex items-center gap-2 min-w-0">
-          {leftIcon && <span className="shrink-0 text-text-muted">{leftIcon}</span>}
+        <div className="flex items-center gap-2 min-w-0 ">
+          {leftIcon && (
+            <span className="shrink-0 text-text-muted">{leftIcon}</span>
+          )}
           <span className="truncate">{selectedLabel || placeholder}</span>
+          <span className="shrink-0 text-text-placeholder">
+            <ChevronDown
+              size={14}
+              className={cn(
+                "transition-transform duration-300 ease-in-out",
+                open ? "rotate-180" : "",
+              )}
+            />
+          </span>{" "}
         </div>
-
-        <span className="shrink-0 text-text-placeholder">
-          <ChevronDown
-            size={14}
-            className={cn(
-              "transition-transform duration-300 ease-in-out",
-              open ? "rotate-180" : "",
-            )}
-          />
-        </span>
       </button>
 
       {/* Dropdown */}

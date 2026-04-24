@@ -26,7 +26,7 @@ export default function ActivityChart() {
       </div>
 
       {/* Chart */}
-      <div className="flex items-end gap-3 h-36 pt-2">
+      <div className="flex items-end gap-3 h-48 pt-2">
         {weeks.map((week, i) => {
           const commitH = Math.round((commits[i] / maxCommits) * 100);
           const prH = Math.round((prs[i] / maxCommits) * 100);
@@ -72,6 +72,7 @@ export default function ActivityChart() {
           ↑ 18% vs prev period
         </div>
       </div>
+      
     </div>
   );
 }

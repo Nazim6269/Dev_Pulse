@@ -31,26 +31,17 @@ const repos = [
     commits: 45,
     activity: [2, 3, 2, 5, 4, 6, 4],
   },
-  {
-    name: "oss/rxstore",
-    desc: "Lightweight state lib",
-    lang: "TypeScript",
-    langColor: "bg-blue-400",
-    stars: 505,
-    forks: 43,
-    commits: 50,
-    activity: [1, 2, 1, 3, 2, 4, 2],
-  },
+  
 ];
 
 const maxVal = 14;
 
 export default function TopRepos() {
   return (
-    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-4 shadow-sm">
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-4 shadow-sm h-110">
       <div className="flex items-center justify-between">
         <p className="text-[14px] font-medium text-foreground">Top repositories</p>
-        <button className="text-[11px] text-violet-500/80 hover:text-violet-500 transition-colors">
+        <button className="text-[11px] text-violet-500/80 hover:text-violet-500 transition-colors cursor-pointer">
           View all →
         </button>
       </div>

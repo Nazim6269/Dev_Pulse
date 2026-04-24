@@ -67,7 +67,7 @@ export default function TopBar() {
         ]}
         placeholder="Select..."
         leftIcon={<SlidersHorizontal size={13} />}
-        className="w-45"
+        className="hidden md:block "
         variant="dark"
       />
 

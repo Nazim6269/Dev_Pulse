@@ -40,10 +40,10 @@ const prs = [
 
 export default function RecentPRs() {
   return (
-    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-4 shadow-sm">
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-4 shadow-sm h-110">
       <div className="flex items-center justify-between">
         <p className="text-[14px] font-medium text-foreground">Recent pull requests</p>
-        <button className="text-[11px] text-violet-500/80 hover:text-violet-500 transition-colors">
+        <button className="text-[11px] text-violet-500/80 hover:text-violet-500 transition-colors cursor-pointer">
           View all →
         </button>
       </div>
