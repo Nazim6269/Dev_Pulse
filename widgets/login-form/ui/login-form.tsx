@@ -115,7 +115,7 @@ export function LoginForm() {
       </Form>
 
       <div className="text-center text-sm">
-        <span className="text-neutral-500 dark:text-neutral-400">
+        <span className="text-muted-foreground">
           Don&apos;t have an account?{" "}
         </span>
         <Link
