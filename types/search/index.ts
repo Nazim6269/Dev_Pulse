@@ -42,7 +42,7 @@ export interface GenericSearchHandle {
   getValue: () => string;
 }
 
-export interface GenericSearchProps<T extends SearchResult = SearchResult> {
+export interface GenericSearchProps<T> {
   // Value control
   value?: string;
   defaultValue?: string;
@@ -90,7 +90,7 @@ export interface GenericSearchProps<T extends SearchResult = SearchResult> {
   id?: string;
 }
 
-export interface DropdownProps<T extends SearchResult> {
+export interface DropdownProps<T> {
   id: string;
   items: T[];
   activeIndex: number;
@@ -106,7 +106,7 @@ export interface DropdownProps<T extends SearchResult> {
   className?: string;
 }
 
-export interface UseSearchOptions<T extends SearchResult> {
+export interface UseSearchOptions<T> {
   query: string;
   enabled: boolean;
   onSearch: (query: string) => Promise<T[]> | T[];
@@ -114,7 +114,7 @@ export interface UseSearchOptions<T extends SearchResult> {
   filterResults?: (items: T[], query: string) => T[];
 }
 
-export interface UseSearchReturn<T extends SearchResult> {
+export interface UseSearchReturn<T> {
   results: T[];
   status: SearchStatus;
   error: Error | null;
