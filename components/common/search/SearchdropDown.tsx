@@ -152,7 +152,7 @@ interface ResultItemProps<T extends SearchResult> {
   onSelect: (item: T) => void;
 }
 
-function ResultItem<T extends SearchResult>({
+function  ResultItem<T extends SearchResult>({
   id,
   item,
   isActive,

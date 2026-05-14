@@ -1,14 +1,10 @@
 const NAV_LINKS = [
   { label: "Overview", value: "overview", href: "/" },
   { label: "Commits", value: "commits", href: "/commits" },
-  { label: "PRs", value: "prs", href: "/prs" },
+  { label: "Pull Requests", value: "pull-requests", href: "/pull-requests" },
   { label: "Issues", value: "issues", href: "/issues" },
-  { label: "Repos", value: "repos", href: "/repos" },
-  {
-    label: "Contributors",
-    value: "contributors",
-    href: "/contributors",
-  },
+  { label: "Teams", value: "teams", href: "/teams" },
+  { label: "Goals", value: "goals", href: "/goals" },
   { label: "Settings", value: "settings", href: "/settings" },
   {
     label: "Notification",

@@ -1,6 +1,6 @@
 "use client";
 
-import { Download, Filter, RefreshCw } from "lucide-react";
+import { Download, Filter, RefreshCw, Search } from "lucide-react";
 
 import { ActionDropdown } from "@/widgets/dashboard/ui/pull-request/ActionDropdown";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,16 @@ import type {
   PullRequestHeaderAction,
   PullRequestStatusFilter,
 } from "@/types/pullRequest.types";
+import { GenericSearch } from "@/components/common/search/GenericSearch";
+import { MOCK_PULL_REQUESTS } from "@/services/pullRequest.service";
+
+const searchPR = (query: string) => {
+  const res = MOCK_PULL_REQUESTS.filter((pr) =>
+    pr.title.toLowerCase().includes(query.toLowerCase()),
+  );
+
+  return res;
+};
 
 const STATUS_OPTIONS: { label: string; value: PullRequestStatusFilter }[] = [
   { label: "All statuses", value: "all" },
@@ -70,16 +80,20 @@ export function PullRequestHeader({
         </span>
       </div>
 
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
-        <Input
-          value={query}
-          onChange={(event) => onQueryChange(event.target.value)}
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <GenericSearch
           placeholder="Search by title, repo, or branch"
-          aria-label="Search pull requests"
-          className="h-10 border-border bg-muted/30 text-foreground placeholder:text-muted-foreground/50"
+          value={query}
+          onChange={onQueryChange}
+          onSelect={(items) => console.log(items)}
+          debounceMs={300}
+          minChars={1}
+          onSearch={searchPR}
+          size="md"
+          // renderResult={(pr,q)=> <p>{pr.title} {q}</p>}
         />
 
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="col-span-1 flex gap-3 sm:col-span-2 lg:col-span-2">
           <ActionDropdown
             label={
               STATUS_OPTIONS.find((option) => option.value === selectedStatus)

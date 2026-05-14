@@ -284,9 +284,7 @@ function GenericSearchInner<T extends SearchResult>(
   );
 }
 
-export const GenericSearch = forwardRef(GenericSearchInner) as (<
-  T extends SearchResult,
->(
+export const GenericSearch = forwardRef(GenericSearchInner) as (<T>(
   props: GenericSearchProps<T> & {
     ref?: React.ForwardedRef<GenericSearchHandle>;
   },

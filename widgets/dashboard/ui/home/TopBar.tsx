@@ -27,13 +27,13 @@ function searchNavigation(query: string): NavSearchResult[] {
 export default function TopBar() {
   const router = useRouter();
   return (
-    <header className="h-14 border-b border-border bg-background flex items-center px-4 sm:px-6 gap-4 shrink-0">
+    <header className="h-14 border-b border-border bg-primaryColor flex items-center px-4 sm:px-6 gap-4 shrink-0">
       {/* Page title */}
       <div className="block sm:hidden">
         {/* <DropDownMenu
           title="Overview"
-          placeholderClass="text-placeHolderTextColor hover:text-violetColor"
-          itemClass="text-placeHolderTextColor hover:text-violetColor"
+          placeholderClass="text-placeHolderTextColor hover:text-orangeColor"
+          itemClass="text-placeHolderTextColor hover:text-orangeColor"
           items={NAV_LINKS}
           size="md"
         /> */}
@@ -94,7 +94,7 @@ export default function TopBar() {
       </div>
 
       {/* Invite Button */}
-      <Button className="hidden lg:flex h-9 cursor-pointer rounded-xl border border-violet-500/20 bg-violet-500/10 px-3 text-sm text-violet-400 hover:bg-violet-500/15">
+      <Button className="hidden lg:flex h-9 cursor-pointer rounded-xl border border-orangeColor/20 bg-orangeColor/10 px-3 text-sm text-orangeColor hover:bg-orangeColor/15">
         <Plus className="mr-1.5 h-3.5 w-3.5" />
         Invite member
       </Button>

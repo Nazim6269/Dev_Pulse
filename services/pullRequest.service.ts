@@ -4,7 +4,7 @@ import type {
   PullRequestStatus,
 } from "@/types/pullRequest.types";
 
-const MOCK_PULL_REQUESTS: PullRequest[] = [
+export const MOCK_PULL_REQUESTS: PullRequest[] = [
   {
     id: "pr-101",
     title: "feat: add OAuth token refresh logic",
