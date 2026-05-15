@@ -39,3 +39,17 @@ export const useGithubRepoPulls = (
     staleTime: 1000 * 60 * 10, // closed PRs rarely change
   });
 };
+
+export const useGithubCommitActivity = (username: string, repo: string) => {
+  return useQuery({
+    queryKey: githubKeys.commitActivity(username, repo),
+    queryFn: () => githubService.getRepoCommitActivity(username, repo),
+    placeholderData: keepPreviousData,
+    enabled: Boolean(username) && Boolean(repo),
+    // GitHub computes stats async — 202 responses are handled by axios-client retry;
+    // once cached, 15 min is safe since historical weeks don't change.
+    staleTime: 1000 * 60 * 15,
+    retry: 3,
+    retryDelay: (attempt) => Math.min(2000 * 2 ** attempt, 10_000),
+  });
+};

@@ -5,4 +5,6 @@ export const githubKeys = {
   repos: (username: string) => [...githubKeys.user(username), "repos"] as const,
   pulls: (username: string, repo: string) =>
     [...githubKeys.user(username), "pulls", repo] as const,
+  commitActivity: (username: string, repo: string) =>
+    [...githubKeys.user(username), "commit-activity", repo] as const,
 };

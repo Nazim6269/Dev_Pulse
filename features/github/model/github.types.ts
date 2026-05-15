@@ -142,3 +142,38 @@ export interface PullRequestQueryParams {
   sort?: "created" | "updated" | "popularity" | "long-running";
   direction?: "asc" | "desc";
 }
+
+// ---------------------------------------------------------------------------
+// Commit Activity
+// GitHub returns 52 weeks of data, each with:
+//   days[7]  — Sun=0 … Sat=6 commit counts
+//   total    — sum of the week
+//   week     — Unix timestamp of Sunday that starts the week
+// ---------------------------------------------------------------------------
+
+export interface CommitActivityWeekDto {
+  days: [number, number, number, number, number, number, number];
+  total: number;
+  week: number; // Unix timestamp (seconds)
+}
+
+/** One week of commit activity — ready for the UI */
+export interface CommitActivityWeek {
+  /** ISO date string for the Sunday that starts this week */
+  weekStart: string;
+  /** Short label like "Jan W2" */
+  label: string;
+  /** Total commits in the week */
+  total: number;
+  /** Daily breakdown Sun–Sat */
+  days: number[];
+}
+
+/** Derived summary computed from the full 52-week dataset */
+export interface CommitActivitySummary {
+  weeks: CommitActivityWeek[];
+  totalCommits: number;
+  bestWeek: CommitActivityWeek | null;
+  /** Percentage change vs the previous equal-length period (last N vs prior N) */
+  trendPercent: number | null;
+}

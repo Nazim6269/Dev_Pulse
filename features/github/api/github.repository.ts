@@ -34,4 +34,10 @@ export class GithubRepository {
       },
     );
   }
+
+  getRepoCommitActivity<T = unknown>(username: string, repo: string) {
+    return this.http.get<T>(
+      `https://api.github.com/repos/${username}/${repo}/stats/commit_activity`,
+    );
+  }
 }
