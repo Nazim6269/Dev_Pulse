@@ -33,6 +33,7 @@ function DashboardPageContent() {
             <div className="col-span-12 md:col-span-8">
               <ActivityChart />
             </div>
+            
             <div className="col-span-12 md:col-span-4">
               <PRCycleCard />
             </div>
@@ -64,3 +65,4 @@ function DashboardPageContent() {
 }
 
 export default DashboardPageContent;
+ 

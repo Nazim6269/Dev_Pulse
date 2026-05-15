@@ -3,34 +3,46 @@
 import { useEffect, useMemo, useState } from "react";
 import { GitPullRequest, GitCommit, Eye, Clock } from "lucide-react";
 import { DndContext, closestCenter } from "@dnd-kit/core";
-import { SortableContext, rectSortingStrategy, arrayMove } from "@dnd-kit/sortable";
+import {
+  SortableContext,
+  rectSortingStrategy,
+  arrayMove,
+} from "@dnd-kit/sortable";
 
 import { SortableStatCard } from "./SortableCard";
 import { StatsRowSkeleton } from "./skeleton";
-import { useGithubCommitActivity, useGithubRepoPulls, useGithubRepos } from "@/features/github";
+import {
+  useGithubCommitActivity,
+  useGithubRepoPulls,
+  useGithubRepos,
+} from "@/features/github";
 
 const STORAGE_KEY = "dashboard-stats-layout";
 const GITHUB_USERNAME = "Nazim6269";
 
 export default function StatsRow() {
-  const { data: repos, isLoading: reposLoading } = useGithubRepos(GITHUB_USERNAME);
-  
+  const { data: repos, isLoading: reposLoading } =
+    useGithubRepos(GITHUB_USERNAME);
+
   const primaryRepo =
     repos && repos.length > 0
       ? [...repos].sort(
-          (a, b) => new Date(b.pushedAt).getTime() - new Date(a.pushedAt).getTime(),
+          (a, b) =>
+            new Date(b.pushedAt).getTime() - new Date(a.pushedAt).getTime(),
         )[0].name
       : null;
 
-  const { data: summary, isLoading: statsLoading, isError: statsError } = useGithubCommitActivity(
-    GITHUB_USERNAME,
-    primaryRepo ?? ""
-  );
+  const {
+    data: summary,
+    isLoading: statsLoading,
+    isError: statsError,
+  } = useGithubCommitActivity(GITHUB_USERNAME, primaryRepo ?? "");
 
-  const { data: prs, isLoading: prsLoading, isError: prsError } = useGithubRepoPulls(
-    GITHUB_USERNAME,
-    primaryRepo ?? ""
-  );
+  const {
+    data: prs,
+    isLoading: prsLoading,
+    isError: prsError,
+  } = useGithubRepoPulls(GITHUB_USERNAME, primaryRepo ?? "");
 
   const [layout, setLayout] = useState<string[]>([]);
 
@@ -44,11 +56,16 @@ export default function StatsRow() {
     if (mergedPrs.length > 0) {
       const totalCycleTimeMs = mergedPrs.reduce((sum, pr) => {
         if (pr.mergedAt && pr.createdAt) {
-          return sum + (new Date(pr.mergedAt).getTime() - new Date(pr.createdAt).getTime());
+          return (
+            sum +
+            (new Date(pr.mergedAt).getTime() - new Date(pr.createdAt).getTime())
+          );
         }
         return sum;
       }, 0);
-      const avgCycleHours = Math.round(totalCycleTimeMs / mergedPrs.length / (1000 * 60 * 60));
+      const avgCycleHours = Math.round(
+        totalCycleTimeMs / mergedPrs.length / (1000 * 60 * 60),
+      );
       if (avgCycleHours > 24) {
         cycleTimeStr = `${Math.round(avgCycleHours / 24)}d`;
       } else {
@@ -74,7 +91,9 @@ export default function StatsRow() {
         label: "Commits",
         value: summary.totalCommits.toString(),
         sub: "last 52 weeks",
-        change: summary.trendPercent ? `${summary.trendPercent > 0 ? '+' : ''}${summary.trendPercent}%` : "0%",
+        change: summary.trendPercent
+          ? `${summary.trendPercent > 0 ? "+" : ""}${summary.trendPercent}%`
+          : "0%",
         up: (summary.trendPercent ?? 0) >= 0,
         icon: GitCommit,
         accent: "text-emerald-400",
@@ -114,8 +133,8 @@ export default function StatsRow() {
       if (saved) {
         const parsedLayout = JSON.parse(saved);
         // Verify all saved IDs still exist
-        const allExist = parsedLayout.every((id: string) => 
-          statsData.some(stat => stat.id === id)
+        const allExist = parsedLayout.every((id: string) =>
+          statsData.some((stat) => stat.id === id),
         );
         if (allExist && parsedLayout.length === statsData.length) {
           setLayout(parsedLayout);
@@ -139,7 +158,9 @@ export default function StatsRow() {
   if (statsError || prsError || !summary || !prs) {
     return (
       <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-[116px] shadow-sm">
-        <p className="text-[12px] text-muted-foreground">Failed to load statistics.</p>
+        <p className="text-[12px] text-muted-foreground">
+          Failed to load statistics.
+        </p>
       </div>
     );
   }
