@@ -12,8 +12,10 @@ import {
   TopRepos,
   ReviewStats,
 } from "./index";
+import { Suspense } from "react";
+import { ProfileCardSkeleton } from "./skeleton";
 
-export default function DashboardPageContent() {
+function DashboardPageContent() {
   return (
     <div className="bg-background text-foreground min-h-full">
       <div className="flex flex-col">
@@ -60,3 +62,5 @@ export default function DashboardPageContent() {
     </div>
   );
 }
+
+export default DashboardPageContent;

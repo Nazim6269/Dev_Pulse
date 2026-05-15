@@ -9,7 +9,7 @@ export function RecentCommitList({ items }: { items: RecentCommitItemModel[] }) 
       <SectionHeader
         title="Recent commits"
         action={
-          <button className="text-[11px] text-violet-500/80 transition-colors hover:text-violet-500">
+          <button className="text-[11px] text-orangeColor/80 transition-colors hover:text-orangeColor">
             View all {"->"}
           </button>
         }

@@ -21,7 +21,7 @@ export function DailyCommitChart({
         {bars.map((bar) => (
           <div key={bar.id} className="flex flex-1 flex-col items-center gap-1">
             <div
-              className={bar.isEmpty ? "w-full rounded-t-sm bg-muted/30" : "w-full rounded-t-sm bg-emerald-500/60"}
+              className={bar.isEmpty ? "w-full rounded-t-sm bg-muted/30" : "w-full rounded-t-sm bg-orangeColor/60"}
               style={{ height: bar.height }}
             />
             {bar.tickLabel ? (

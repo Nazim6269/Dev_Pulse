@@ -31,7 +31,6 @@ const repos = [
     commits: 45,
     activity: [2, 3, 2, 5, 4, 6, 4],
   },
-  
 ];
 
 const maxVal = 14;
@@ -40,7 +39,9 @@ export default function TopRepos() {
   return (
     <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-4 shadow-sm h-110">
       <div className="flex items-center justify-between">
-        <p className="text-[14px] font-medium text-foreground">Top repositories</p>
+        <p className="text-[14px] font-medium text-foreground">
+          Top repositories
+        </p>
         <button className="text-[11px] text-violet-500/80 hover:text-violet-500 transition-colors cursor-pointer">
           View all →
         </button>
@@ -54,13 +55,22 @@ export default function TopRepos() {
           >
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1.5 mb-0.5">
-                <p className="text-[12px] font-medium text-violet-500 truncate">{repo.name}</p>
-                <ExternalLink size={10} className="opacity-0 group-hover:opacity-40 transition-opacity shrink-0 text-foreground" />
+                <p className="text-[12px] font-medium text-violet-500 truncate">
+                  {repo.name}
+                </p>
+                <ExternalLink
+                  size={10}
+                  className="opacity-0 group-hover:opacity-40 transition-opacity shrink-0 text-foreground"
+                />
               </div>
-              <p className="text-[10px] text-muted-foreground truncate mb-2">{repo.desc}</p>
+              <p className="text-[10px] text-muted-foreground truncate mb-2">
+                {repo.desc}
+              </p>
               <div className="flex items-center gap-3">
                 <span className="flex items-center gap-1 text-[10px] text-muted-foreground/60">
-                  <span className={`w-1.5 h-1.5 rounded-full ${repo.langColor}`} />
+                  <span
+                    className={`w-1.5 h-1.5 rounded-full ${repo.langColor}`}
+                  />
                   {repo.lang}
                 </span>
                 <span className="flex items-center gap-1 text-[10px] text-muted-foreground/60">

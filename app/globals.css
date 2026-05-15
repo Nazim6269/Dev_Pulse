@@ -7,6 +7,7 @@
 @theme {
   --color-customRed: var(--custom-red);
   --color-primaryColor: var(--primary-color);
+  --color-secondaryColor: var(--secondary-color);
   --color-placeHolderTextColor: var(--placeholder-text);
   --color-orangeColor: var(--orange-color); /* Renamed from violet */
   --color-textColor: var(--text-color);

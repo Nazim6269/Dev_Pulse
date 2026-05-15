@@ -23,7 +23,7 @@ export function CommitsFeature() {
   } = useCommitCharts();
 
   return (
-    <div className="flex min-h-full overflow-hidden bg-background font-sans text-foreground transition-colors duration-300">
+    <div className="flex min-h-full overflow-hidden bg-primaryColor font-sans text-foreground transition-colors duration-300">
       <div className="flex flex-1 flex-col overflow-hidden">
         <main className="flex-1 overflow-y-auto p-5">
           <DashboardGrid>

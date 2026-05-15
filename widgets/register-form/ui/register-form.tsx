@@ -39,13 +39,13 @@ export function RegisterForm() {
         <form onSubmit={onSubmit} className="space-y-4">
           <FormField
             control={form.control}
-            name="name"
+            name="githubUsername"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name (Optional)</FormLabel>
+                <FormLabel>Github Username</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="John Doe"
+                    placeholder="Nazim6269"
                     {...field}
                     disabled={isLoading}
                   />

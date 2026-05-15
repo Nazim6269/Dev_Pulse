@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const progressTrackVariants = cva("overflow-hidden rounded-full bg-muted/50", {
   variants: {
     size: {
-      sm: "h-1.5",
+      sm: "h-1.5", 
       md: "h-4 rounded-lg",
     },
   },
@@ -16,7 +16,7 @@ const progressTrackVariants = cva("overflow-hidden rounded-full bg-muted/50", {
 });
 
 const toneClass: Record<ProgressTone, string> = {
-  violet: "bg-violet-500/70",
+  violet: "bg-orangeColor/70",
   rose: "bg-rose-500/70",
   amber: "bg-amber-500/70",
   blue: "bg-blue-500/50",

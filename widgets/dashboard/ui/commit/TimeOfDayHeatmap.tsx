@@ -24,7 +24,7 @@ export function TimeOfDayHeatmap({
                 {row.cells.map((cell) => (
                   <div
                     key={cell.id}
-                    className="h-5 flex-1 rounded-sm bg-violet-500/60 transition-all hover:bg-violet-500"
+                    className="h-5 flex-1 rounded-sm bg-orangeColor/60 transition-all hover:bg-orangeColor"
                     style={{ opacity: cell.opacity }}
                   />
                 ))}
@@ -35,7 +35,7 @@ export function TimeOfDayHeatmap({
         </div>
 
         <div className="mt-auto flex items-center gap-3 border-t border-border-muted pt-3">
-          <div className="h-2 w-2 rounded-full bg-violet-500" />
+          <div className="h-2 w-2 rounded-full bg-orangeColor" />
           <p className="text-[11px] text-muted-foreground">
             Peak activity: <span className="text-foreground/80 font-medium">{peakActivity}</span>
           </p>

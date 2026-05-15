@@ -9,11 +9,11 @@ const matrixCellVariants = cva(
     variants: {
       intensity: {
         0: "bg-muted/50 text-muted-foreground/30",
-        1: "bg-violet-500/10 text-violet-700/60 dark:text-violet-300/60",
-        2: "bg-violet-500/20 text-violet-700/80 dark:text-violet-300/80",
-        3: "bg-violet-500/40 text-violet-700 dark:text-violet-200",
-        4: "bg-violet-500/70 text-white",
-        5: "bg-violet-500 text-white",
+        1: "bg-orangeColor/10 text-orangeColor/60",
+        2: "bg-orangeColor/20 text-orangeColor/80",
+        3: "bg-orangeColor/40 text-orangeColor",
+        4: "bg-orangeColor/70 text-white",
+        5: "bg-orangeColor text-white",
       },
     },
   },

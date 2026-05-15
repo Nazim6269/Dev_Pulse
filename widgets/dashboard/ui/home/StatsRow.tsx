@@ -1,12 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import {
-  GitPullRequest,
-  GitCommit,
-  Eye,
-  Clock,
-} from "lucide-react";
+import { GitPullRequest, GitCommit, Eye, Clock } from "lucide-react";
 
 import { DndContext, closestCenter } from "@dnd-kit/core";
 
@@ -69,8 +64,6 @@ const statsData = [
 ];
 
 const STORAGE_KEY = "dashboard-stats-layout";
-
-
 
 export default function StatsRow() {
   const [layout, setLayout] = useState<string[]>([]);

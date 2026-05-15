@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     "DevPulse is a platform for developers to track their progress and improve their skills",
 };
 
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { QueryProvider } from "@/features/query-provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,8 +31,13 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <ThemeProvider>
+          <QueryProvider>{children}</QueryProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

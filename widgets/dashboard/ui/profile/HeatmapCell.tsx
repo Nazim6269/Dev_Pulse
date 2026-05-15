@@ -2,16 +2,16 @@ import { cva } from "class-variance-authority";
 import type { ActivityIntensity } from "../../model/profile/profile.types";
 
 const heatmapCellVariants = cva(
-  "h-[10px] flex-1 cursor-default rounded-[2px] transition-colors hover:ring-1 hover:ring-violet-400/40",
+  "h-[10px] flex-1 cursor-default rounded-[2px] transition-colors hover:ring-1 hover:ring-orangeColor/40",
   {
     variants: {
       intensity: {
         0: "bg-muted/40",
-        1: "bg-violet-500/20",
-        2: "bg-violet-500/40",
-        3: "bg-violet-500/60",
-        4: "bg-violet-500/80",
-        5: "bg-violet-500",
+        1: "bg-orangeColor/20",
+        2: "bg-orangeColor/40",
+        3: "bg-orangeColor/60",
+        4: "bg-orangeColor/80",
+        5: "bg-orangeColor",
       },
     },
   },

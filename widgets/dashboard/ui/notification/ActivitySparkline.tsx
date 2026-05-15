@@ -13,7 +13,7 @@ export function ActivitySparkline({
         {items.map((item) => (
           <div
             key={item.id}
-            className="flex-1 rounded-t-sm bg-violet-500/30"
+            className="flex-1 rounded-t-sm bg-orangeColor/30"
             style={{ height: item.height }}
           />
         ))}

@@ -29,7 +29,7 @@ const statCardVariants = cva("", {
 
 const toneClass: Record<ProgressTone, string> = {
   emerald: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300",
-  violet: "bg-violet-500/10 text-violet-600 dark:text-violet-300",
+  violet: "bg-orangeColor/10 text-orangeColor",
   amber: "bg-amber-500/10 text-amber-600 dark:text-amber-300",
   blue: "bg-blue-500/10 text-blue-600 dark:text-blue-300",
   rose: "bg-rose-500/10 text-rose-600 dark:text-rose-300",

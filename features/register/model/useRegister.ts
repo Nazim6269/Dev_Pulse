@@ -16,7 +16,7 @@ export function useRegister() {
   const form = useForm<RegisterSchema>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      name: "",
+      githubUsername: "",
       email: "",
       password: "",
       confirmPassword: "",

@@ -6,7 +6,7 @@ import { RepoContributionBar } from "@/widgets/dashboard/ui/commit/RepoContribut
 function RepoCommitItemComponent({ item }: { item: RepoCommitItemModel }) {
   return (
     <div className="flex cursor-default items-center gap-4">
-      <span className="w-36 shrink-0 truncate font-mono text-[12px] text-violet-500/80">
+      <span className="w-36 shrink-0 truncate font-mono text-[12px] text-orangeColor/80">
         {item.name}
       </span>
       <RepoContributionBar segments={item.segments} />

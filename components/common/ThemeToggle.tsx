@@ -23,7 +23,7 @@ export function ThemeToggle() {
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon" className="h-9 w-9 rounded-full border-neutral-200 bg-white shadow-sm transition-all hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800 cursor-pointer">
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-amber-500" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-violet-400" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-primary" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
@@ -39,7 +39,7 @@ export function ThemeToggle() {
           onClick={() => setTheme("dark")}
           className="flex items-center gap-2 rounded-lg px-3 py-2 cursor-pointer transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800"
         >
-          <Moon className="h-4 w-4 text-violet-400" />
+          <Moon className="h-4 w-4 text-primary" />
           <span>Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem 

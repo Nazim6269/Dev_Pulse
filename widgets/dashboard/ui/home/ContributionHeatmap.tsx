@@ -7,7 +7,9 @@ function generateHeatmap() {
     const rowData: number[] = [];
     for (let col = 0; col < 36; col++) {
       const rand = Math.random();
-      rowData.push(rand < 0.3 ? 0 : rand < 0.55 ? 1 : rand < 0.75 ? 2 : rand < 0.9 ? 3 : 4);
+      rowData.push(
+        rand < 0.3 ? 0 : rand < 0.55 ? 1 : rand < 0.75 ? 2 : rand < 0.9 ? 3 : 4,
+      );
     }
     grid.push(rowData);
   }
@@ -18,10 +20,10 @@ const heatmap = generateHeatmap();
 
 const intensityClass = [
   "bg-muted/30",
-  "bg-violet-500/20",
-  "bg-violet-500/40",
-  "bg-violet-500/65",
-  "bg-violet-500",
+  "bg-orangeColor/20",
+  "bg-orangeColor/40",
+  "bg-orangeColor/65",
+  "bg-orangeColor",
 ];
 
 const dayLabels = ["", "Mon", "", "Wed", "", "Fri", ""];
@@ -31,8 +33,12 @@ export default function ContributionHeatmap() {
     <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
       <div className="flex items-center justify-between mb-5">
         <div>
-          <p className="text-[14px] font-medium text-foreground">Contribution calendar</p>
-          <p className="text-[11px] text-muted-foreground mt-0.5">318 contributions in the last year</p>
+          <p className="text-[14px] font-medium text-foreground">
+            Contribution calendar
+          </p>
+          <p className="text-[11px] text-muted-foreground mt-0.5">
+            318 contributions in the last year
+          </p>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="text-[10px] text-muted-foreground/60">Less</span>
@@ -47,7 +53,10 @@ export default function ContributionHeatmap() {
         {/* Day labels */}
         <div className="flex flex-col gap-[3px] pt-5 shrink-0">
           {dayLabels.map((d, i) => (
-            <div key={i} className="h-[11px] text-[9px] text-muted-foreground/60 leading-none">
+            <div
+              key={i}
+              className="h-[11px] text-[9px] text-muted-foreground/60 leading-none"
+            >
               {d}
             </div>
           ))}
@@ -74,7 +83,7 @@ export default function ContributionHeatmap() {
                 {row.map((val, ci) => (
                   <div
                     key={ci}
-                    className={`h-[11px] flex-1 rounded-[2px] ${intensityClass[val]} transition-colors hover:ring-1 hover:ring-violet-400/40 cursor-default`}
+                    className={`h-[11px] flex-1 rounded-[2px] ${intensityClass[val]} transition-colors hover:ring-1 hover:ring-orangeColor/40 cursor-default`}
                   />
                 ))}
               </div>
