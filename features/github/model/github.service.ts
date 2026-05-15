@@ -7,6 +7,9 @@ import {
   GithubUserProfile,
   GithubRepositoryModel,
   RepoQueryParams,
+  GithubPullRequestDto,
+  GithubPullRequest,
+  PullRequestQueryParams,
 } from "./github.types";
 
 // ---------------------------------------------------------------------------
@@ -48,6 +51,29 @@ function transformRepo(dto: GithubRepoDto): GithubRepositoryModel {
   };
 }
 
+function transformPullRequest(dto: GithubPullRequestDto): GithubPullRequest {
+  return {
+    id: dto.id,
+    number: dto.number,
+    title: dto.title,
+    url: dto.html_url,
+    // merged_at being set means it was merged — derive a richer state
+    state: dto.merged_at ? "merged" : dto.state,
+    repo: dto.base.repo.full_name,
+    branch: dto.head.ref,
+    baseBranch: dto.base.ref,
+    author: dto.user.login,
+    authorAvatarUrl: dto.user.avatar_url,
+    createdAt: dto.created_at,
+    updatedAt: dto.updated_at,
+    mergedAt: dto.merged_at,
+    closedAt: dto.closed_at,
+    isDraft: dto.draft,
+    reviewComments: dto.review_comments,
+    commits: dto.commits,
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Service
 // ---------------------------------------------------------------------------
@@ -77,6 +103,24 @@ export class GithubService {
       return data.map(transformRepo);
     } catch (error) {
       logger.error(String(error), "Error fetching user repos");
+      throw parseError(error);
+    }
+  }
+
+  async getRepoPullRequests(
+    username: string,
+    repo: string,
+    params?: PullRequestQueryParams,
+  ): Promise<GithubPullRequest[]> {
+    try {
+      const { data } = await this.repo.getRepoPullRequests<GithubPullRequestDto[]>(
+        username,
+        repo,
+        params,
+      );
+      return data.map(transformPullRequest);
+    } catch (error) {
+      logger.error(String(error), `Error fetching PRs for ${username}/${repo}`);
       throw parseError(error);
     }
   }

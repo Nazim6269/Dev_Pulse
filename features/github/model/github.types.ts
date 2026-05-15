@@ -69,3 +69,76 @@ export interface RepoQueryParams {
   sort?: "created" | "updated" | "pushed" | "full_name";
   direction?: "asc" | "desc";
 }
+
+// ---------------------------------------------------------------------------
+// Pull Requests
+// ---------------------------------------------------------------------------
+
+export interface GithubPullRequestDto {
+  id: number;
+  number: number;
+  title: string;
+  html_url: string;
+  state: "open" | "closed";
+  merged_at: string | null;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  user: {
+    login: string;
+    avatar_url: string;
+  };
+  head: {
+    ref: string;
+    repo: {
+      name: string;
+      full_name: string;
+    } | null;
+  };
+  base: {
+    ref: string;
+    repo: {
+      name: string;
+      full_name: string;
+    };
+  };
+  draft: boolean;
+  body: string | null;
+  comments: number;
+  review_comments: number;
+  commits: number;
+  additions: number;
+  deletions: number;
+  changed_files: number;
+  labels: Array<{ name: string; color: string }>;
+}
+
+export type PullRequestState = "merged" | "open" | "closed";
+
+export interface GithubPullRequest {
+  id: number;
+  number: number;
+  title: string;
+  url: string;
+  /** Derived: "merged" when merged_at is set, otherwise the API state */
+  state: PullRequestState;
+  repo: string;
+  branch: string;
+  baseBranch: string;
+  author: string;
+  authorAvatarUrl: string;
+  createdAt: string;
+  updatedAt: string;
+  mergedAt: string | null;
+  closedAt: string | null;
+  isDraft: boolean;
+  reviewComments: number;
+  commits: number;
+}
+
+export interface PullRequestQueryParams {
+  state?: "open" | "closed" | "all";
+  per_page?: number;
+  sort?: "created" | "updated" | "popularity" | "long-running";
+  direction?: "asc" | "desc";
+}
