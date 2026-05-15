@@ -1,3 +1,6 @@
 export const githubKeys = {
-  profile: (username: string) => ["github-profile", username],
+  all: ["github"] as const,
+  user: (username: string) => [...githubKeys.all, username] as const,
+  profile: (username: string) => [...githubKeys.user(username), "profile"] as const,
+  repos: (username: string) => [...githubKeys.user(username), "repos"] as const,
 };
