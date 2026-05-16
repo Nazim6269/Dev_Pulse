@@ -1,0 +1,7 @@
+{
+  "name": "web-pages",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/pages",
+  "projectType": "library",
+  "tags": ["scope:web", "type:page"]
+}

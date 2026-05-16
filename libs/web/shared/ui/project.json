@@ -1,0 +1,7 @@
+{
+  "name": "web-shared-ui",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/shared/ui/src",
+  "projectType": "library",
+  "tags": ["scope:web", "type:shared"]
+}
