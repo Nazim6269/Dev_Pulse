@@ -1,0 +1,7 @@
+{
+  "name": "web-data",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/data",
+  "projectType": "library",
+  "tags": ["scope:web", "type:shared"]
+}

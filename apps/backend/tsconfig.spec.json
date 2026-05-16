@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": ["jest", "node", "reflect-metadata"]
+  },
+  "include": ["jest.config.cts", "src/**/*.spec.ts", "src/**/*.d.ts"]
+}

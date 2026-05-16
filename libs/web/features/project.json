@@ -1,0 +1,7 @@
+{
+  "name": "web-features",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/features",
+  "projectType": "library",
+  "tags": ["scope:web", "type:feature"]
+}
