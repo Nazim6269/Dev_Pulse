@@ -1,28 +1,31 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useState } from "react";
-import { GitPullRequest, GitCommit, Eye, Clock } from "lucide-react";
-import { DndContext, closestCenter } from "@dnd-kit/core";
+import { useEffect, useMemo, useState } from 'react';
+import { GitPullRequest, GitCommit, Eye, Clock } from 'lucide-react';
+import { DndContext, closestCenter } from '@dnd-kit/core';
 import {
   SortableContext,
   rectSortingStrategy,
   arrayMove,
-} from "@dnd-kit/sortable";
+} from '@dnd-kit/sortable';
 
-import { SortableStatCard } from "./SortableCard";
-import { StatsRowSkeleton } from "./skeleton";
+import { SortableStatCard } from './SortableCard';
+import { StatsRowSkeleton } from './skeleton';
 import {
   useGithubCommitActivity,
   useGithubRepoPulls,
   useGithubRepos,
-} from "@/features/github";
+} from '@/features/github';
+import { useCurrentUser } from '@/features/auth';
 
-const STORAGE_KEY = "dashboard-stats-layout";
-const GITHUB_USERNAME = "Nazim6269";
+const STORAGE_KEY = 'dashboard-stats-layout';
 
 export default function StatsRow() {
+  const { data: user } = useCurrentUser();
+  const username = user?.githubUsername || 'Nazim6269';
+
   const { data: repos, isLoading: reposLoading } =
-    useGithubRepos(GITHUB_USERNAME);
+    useGithubRepos(username);
 
   const primaryRepo =
     repos && repos.length > 0
@@ -36,23 +39,24 @@ export default function StatsRow() {
     data: summary,
     isLoading: statsLoading,
     isError: statsError,
-  } = useGithubCommitActivity(GITHUB_USERNAME, primaryRepo ?? "");
+  } = useGithubCommitActivity(username, primaryRepo ?? '');
 
   const {
     data: prs,
     isLoading: prsLoading,
     isError: prsError,
-  } = useGithubRepoPulls(GITHUB_USERNAME, primaryRepo ?? "");
+  } = useGithubRepoPulls(username, primaryRepo ?? '');
 
   const [layout, setLayout] = useState<string[]>([]);
 
   const statsData = useMemo(() => {
     if (!summary || !prs) return [];
 
-    const mergedPrs = prs.filter((pr) => pr.state === "merged");
-    const totalReviews = prs.reduce((sum, pr) => sum + pr.reviewComments, 0);
+    const mergedPrs = prs.filter((pr) => pr.state === 'merged');
+    const totalReviews = prs.reduce((sum, pr) => sum + pr.reviewComments, 0) || 0;
+    
 
-    let cycleTimeStr = "0h";
+    let cycleTimeStr = '0h';
     if (mergedPrs.length > 0) {
       const totalCycleTimeMs = mergedPrs.reduce((sum, pr) => {
         if (pr.mergedAt && pr.createdAt) {
@@ -75,54 +79,54 @@ export default function StatsRow() {
 
     return [
       {
-        id: "prs",
-        label: "PRs merged",
+        id: 'prs',
+        label: 'PRs merged',
         value: mergedPrs.length.toString(),
-        sub: "recent closed PRs",
-        change: "+12%", // Simulated
+        sub: 'recent closed PRs',
+        change: '+12%', // Simulated
         up: true,
         icon: GitPullRequest,
-        accent: "text-primary",
-        iconBg: "bg-primary/10",
-        glow: "shadow-primary/10",
+        accent: 'text-primary',
+        iconBg: 'bg-primary/10',
+        glow: 'shadow-primary/10',
       },
       {
-        id: "commits",
-        label: "Commits",
+        id: 'commits',
+        label: 'Commits',
         value: summary.totalCommits.toString(),
-        sub: "last 52 weeks",
+        sub: 'last 52 weeks',
         change: summary.trendPercent
-          ? `${summary.trendPercent > 0 ? "+" : ""}${summary.trendPercent}%`
-          : "0%",
+          ? `${summary.trendPercent > 0 ? '+' : ''}${summary.trendPercent}%`
+          : '0%',
         up: (summary.trendPercent ?? 0) >= 0,
         icon: GitCommit,
-        accent: "text-emerald-400",
-        iconBg: "bg-emerald-500/10",
-        glow: "shadow-emerald-500/10",
+        accent: 'text-emerald-400',
+        iconBg: 'bg-emerald-500/10',
+        glow: 'shadow-emerald-500/10',
       },
       {
-        id: "reviews",
-        label: "Code reviews",
-        value: totalReviews.toString(),
-        sub: "recent closed PRs",
-        change: "+24%", // Simulated
+        id: 'reviews',
+        label: 'Code reviews',
+        value: totalReviews?.toString() || '0',
+        sub: 'recent closed PRs',
+        change: '+24%', // Simulated
         up: true,
         icon: Eye,
-        accent: "text-amber-400",
-        iconBg: "bg-amber-500/10",
-        glow: "shadow-amber-500/10",
+        accent: 'text-amber-400',
+        iconBg: 'bg-amber-500/10',
+        glow: 'shadow-amber-500/10',
       },
       {
-        id: "cycle",
-        label: "Avg cycle time",
+        id: 'cycle',
+        label: 'Avg cycle time',
         value: cycleTimeStr,
-        sub: "per PR",
-        change: "-6%", // Simulated
+        sub: 'per PR',
+        change: '-6%', // Simulated
         up: false,
         icon: Clock,
-        accent: "text-rose-400",
-        iconBg: "bg-rose-500/10",
-        glow: "shadow-rose-500/10",
+        accent: 'text-rose-400',
+        iconBg: 'bg-rose-500/10',
+        glow: 'shadow-rose-500/10',
       },
     ];
   }, [summary, prs]);
@@ -157,7 +161,7 @@ export default function StatsRow() {
 
   if (statsError || prsError || !summary || !prs) {
     return (
-      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-[116px] shadow-sm">
+      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-full min-h-[160px] shadow-sm">
         <p className="text-[12px] text-muted-foreground">
           Failed to load statistics.
         </p>

@@ -1,6 +1,12 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+
 import {
   Form,
   FormControl,
@@ -12,28 +18,42 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { AlertCircle, Loader2 } from "lucide-react";
-import Link from "next/link";
 import { useLogin } from "@/features/auth";
+import { LoginFormValues, loginSchema } from "../model/schema";
 
 /**
  * Login form component.
  * Features: Email, Password, Remember Me, Forgot Password link.
  */
 export function LoginForm() {
-  const { form, onSubmit, isLoading, serverError } = useLogin();
+  const router = useRouter();
+  const form = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+    defaultValues: {
+      email: '',
+      password: '',
+      rememberMe: true,
+    },
+  });
+
+  const { mutateAsync: loginUser, isPending: isLoading } = useLogin();
+
+  const onSubmit = async (data: LoginFormValues) => {
+    try {
+      await loginUser(data);
+      router.push('/dashboard');
+    } catch (error: any) {
+      console.error('Login error:', error);
+    }
+  };
 
   return (
     <div className="space-y-6">
-      {serverError && (
-        <div className="flex items-center gap-2 rounded-md bg-destructive/15 p-3 text-sm text-destructive">
-          <AlertCircle className="h-4 w-4" />
-          <p>{serverError}</p>
-        </div>
-      )}
-
       <Form {...form}>
-        <form onSubmit={onSubmit} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          {/* Email */}
           <FormField
             control={form.control}
             name="email"
@@ -54,6 +74,7 @@ export function LoginForm() {
             )}
           />
 
+          {/* Password */}
           <FormField
             control={form.control}
             name="password"
@@ -82,6 +103,7 @@ export function LoginForm() {
             )}
           />
 
+          {/* Remember Me */}
           <FormField
             control={form.control}
             name="rememberMe"
@@ -101,7 +123,14 @@ export function LoginForm() {
             )}
           />
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            className={`w-full cursor-pointer ${
+              isLoading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            disabled={isLoading}
+          >
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -114,13 +143,14 @@ export function LoginForm() {
         </form>
       </Form>
 
+      {/* Footer */}
       <div className="text-center text-sm">
-        <span className="text-muted-foreground">
+        <span className="text-neutral-500">
           Don&apos;t have an account?{" "}
         </span>
         <Link
           href="/register"
-          className="font-medium text-primary underline-offset-4 hover:underline"
+          className="font-medium underline"
         >
           Sign up
         </Link>

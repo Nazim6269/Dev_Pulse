@@ -15,7 +15,7 @@ import { ApiError, NetworkError, TimeoutError } from './api-errors';
 import { env } from './env';
 import { logger } from './logger';
 
-const RETRY_STATUS_CODES = new Set([408, 429, 500, 502, 503, 504]);
+const RETRY_STATUS_CODES = new Set([202, 408, 429, 500, 502, 503, 504]);
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 1000;
 
@@ -96,6 +96,15 @@ export class AxiosHttpClient implements IHttpClient {
 
     this.instance.interceptors.response.use(
       (response: AxiosResponse) => {
+        // GitHub Stats 202 handling: If GitHub returns 202, it's still computing data.
+        // We reject the promise here to trigger the retry logic in the error interceptor.
+        if (response.status === 202 && response.config.url?.includes('/stats/')) {
+          const error = new Error('GitHub is still computing statistics') as any;
+          error.config = response.config;
+          error.response = response;
+          return Promise.reject(error);
+        }
+
         logger.debug('HTTP Response', {
           status: response.status,
           url: response.config.url,

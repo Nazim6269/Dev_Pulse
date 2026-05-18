@@ -2,11 +2,11 @@
 
 import { useGithubCommitActivity, useGithubRepos } from "@/features/github";
 import type { CommitActivitySummary } from "@/features/github";
+import { useCurrentUser } from "@/features/auth";
 
 // ---------------------------------------------------------------------------
 // Config
 // ---------------------------------------------------------------------------
-const GITHUB_USERNAME = "Nazim6269";
 /** How many recent weeks to show in the bar chart */
 const CHART_WEEKS = 8;
 
@@ -163,7 +163,10 @@ function Chart({ summary, repo }: { summary: CommitActivitySummary; repo: string
 // Root — resolves repo, then fetches commit activity
 // ---------------------------------------------------------------------------
 export default function ActivityChart() {
-  const { data: repos, isLoading: reposLoading } = useGithubRepos(GITHUB_USERNAME);
+  const { data: user } = useCurrentUser();
+  const username = user?.githubUsername || 'Nazim6269';
+  console.log(user)
+  const { data: repos, isLoading: reposLoading } = useGithubRepos(username);
 
   const primaryRepo =
     repos && repos.length > 0
@@ -176,7 +179,7 @@ export default function ActivityChart() {
     data: summary,
     isLoading: statsLoading,
     isError,
-  } = useGithubCommitActivity(GITHUB_USERNAME, primaryRepo ?? "");
+  } = useGithubCommitActivity(username, primaryRepo ?? "");
 
   if (reposLoading || statsLoading || !summary || !primaryRepo) {
     return <ActivityChartSkeleton />;

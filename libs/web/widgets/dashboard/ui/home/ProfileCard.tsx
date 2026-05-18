@@ -1,20 +1,23 @@
-"use client";
+'use client';
 
-import { useGithubProfile } from "@/features/github/model/github.hooks";
-import { MapPin, Link2 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { ProfileCardSkeleton } from "@/widgets/dashboard/ui/home/skeleton";
+import { useGithubProfile } from '@/features/github/model/github.hooks';
+import { useCurrentUser } from '@/features/auth';
+import { MapPin, Link2 } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ProfileCardSkeleton } from '@/widgets/dashboard/ui/home/skeleton';
 
 const langColors: Record<string, string> = {
-  TypeScript: "bg-blue-400",
-  Python: "bg-yellow-400",
-Rust: "bg-orange-400",
-  Go: "bg-cyan-400",  
+  TypeScript: 'bg-blue-400',
+  Python: 'bg-yellow-400',
+  Rust: 'bg-orange-400',
+  Go: 'bg-cyan-400',
 };
 
 export default function ProfileCard() {
-  const { data, isLoading } = useGithubProfile("Nazim6269");
+  const { data: user } = useCurrentUser();
+  const username = user?.githubUsername || 'Nazim6269';
+  const { data, isLoading } = useGithubProfile(username);
   if (isLoading) {
     return <ProfileCardSkeleton />;
   }
@@ -26,7 +29,7 @@ export default function ProfileCard() {
           {data?.avatarUrl ? (
             <Image
               src={data.avatarUrl}
-              alt={data.login || "Github Profile"}
+              alt={data.login || 'Github Profile'}
               width={50}
               height={50}
               className="rounded-full object-cover"
@@ -65,7 +68,7 @@ export default function ProfileCard() {
       {/* Link */}
       <div className="flex items-center gap-1.5 text-[12px] text-primary font-medium">
         <Link2 size={11} />
-        <Link href={data?.htmlUrl || "#"} aria-label="Github Profile">
+        <Link href={data?.htmlUrl || '#'} aria-label="Github Profile">
           Github Profile
         </Link>
       </div>
@@ -73,12 +76,14 @@ export default function ProfileCard() {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-2">
         {[
-          { label: "Repos", value: String(data?.publicRepos) },
-          { label: "Following", value: String(data?.following) || 0 },
-          { label: "Followers", value: String(data?.followers) || 0 },
+          { label: 'Repos', value: String(data?.publicRepos ?? 0) },
+          { label: 'Following', value: String(data?.following ?? 0) },
+          { label: 'Followers', value: String(data?.followers ?? 0) },
         ].map(({ label, value }) => (
           <div key={label} className="bg-muted/50 rounded-xl p-2.5 text-center">
-            <p className="text-[15px] font-semibold text-foreground">{value}</p>
+            <p className="text-[15px] font-semibold text-foreground">
+              {value}{' '}
+            </p>
             <p className="text-[10px] text-muted-foreground mt-0.5">{label}</p>
           </div>
         ))}

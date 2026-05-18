@@ -20,6 +20,7 @@ function transformUser(dto: UserDto): AuthUser {
     id: dto.id,
     email: dto.email,
     name: dto.name || dto.email.split('@')[0],
+    githubUsername: dto.githubUsername,
     avatarUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${dto.email}`,
   };
 }
@@ -36,6 +37,7 @@ export class AuthService {
   async login(params: LoginParams): Promise<{ token: string; user: AuthUser }> {
     try {
       const { data } = await this.repo.login<AuthResponseDto>(params);
+      
       tokenStore.setAccessToken(data.access_token);
       this.scheduleRefreshToken(3600);
       return {

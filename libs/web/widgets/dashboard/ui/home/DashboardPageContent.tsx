@@ -22,11 +22,11 @@ function DashboardPageContent() {
         <CustomScrollableContainer className="flex-1 overflow-y-auto p-3 md:p-4">
           <div className="grid grid-cols-12 gap-4 max-w-[1920px] mx-auto">
             {/* Row 1 */}
-            <div className="col-span-12 md:col-span-4">
+            <div className="col-span-12 md:col-span-4 h-full">
               <ProfileCard />
             </div>
 
-            <div className="col-span-12 md:col-span-8">
+            <div className="col-span-12 md:col-span-8 h-full">
               <StatsRow />
             </div>
             {/* Row 2 */}

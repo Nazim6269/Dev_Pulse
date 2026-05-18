@@ -24,6 +24,7 @@ export function SortableStatCard({ stat }: { stat: Stat }) {
     transition,
     isDragging,
   } = useSortable({ id: stat.id });
+  
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -69,7 +70,7 @@ export function SortableStatCard({ stat }: { stat: Stat }) {
 
       <div>
         <p className={`text-3xl font-semibold tracking-tight ${stat.accent}`}>
-          {stat.value}
+          {stat?.value || 0}
         </p>
         <p className="text-[12px] text-foreground mt-1">{stat.label}</p>
         <p className="text-[10px] text-muted-foreground mt-0.5">{stat.sub}</p>
