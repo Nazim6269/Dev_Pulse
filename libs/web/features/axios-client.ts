@@ -56,8 +56,16 @@ export class AxiosHttpClient implements IHttpClient {
   private attachRequestInterceptors(): void {
     this.instance.interceptors.request.use(
       async (config: InternalAxiosRequestConfig) => {
-        // Inject access token unless explicitly skipped
-        if (!(config as RequestConfig)._skipAuth) {
+        // Send cookies only to our API (refresh tokens). External APIs like GitHub
+        // use Access-Control-Allow-Origin: * which is incompatible with credentials.
+        const url = config.url ?? '';
+        const isExternalRequest =
+          url.startsWith('http://') || url.startsWith('https://');
+        config.withCredentials = !isExternalRequest;
+
+        // Only attach DevPulse JWT to our API — GitHub rejects foreign Bearer tokens
+        // with 401 "Bad credentials".
+        if (!isExternalRequest && !(config as RequestConfig)._skipAuth) {
           const token = this.tokenStore.getAccessToken();
           if (token) {
             config.headers.set('Authorization', `Bearer ${token}`);
@@ -115,8 +123,16 @@ export class AxiosHttpClient implements IHttpClient {
         const originalRequest = error.config as RequestConfig &
           InternalAxiosRequestConfig;
 
-        // ── 401 → Token Refresh Flow ────────────────────────────────────────
-        if (error.response?.status === 401 && !originalRequest._retry) {
+        // ── 401 → Token Refresh Flow (our API only) ─────────────────────────
+        const isExternalRequest =
+          originalRequest.url?.startsWith('http://') ||
+          originalRequest.url?.startsWith('https://');
+
+        if (
+          error.response?.status === 401 &&
+          !originalRequest._retry &&
+          !isExternalRequest
+        ) {
           if (isRefreshing) {
             // Queue this request until refresh completes
             return new Promise((resolve, reject) => {

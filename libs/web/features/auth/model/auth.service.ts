@@ -15,12 +15,12 @@ import {
 // ---------------------------------------------------------------------------
 
 function transformUser(dto: UserDto): AuthUser {
-  console.log(dto, 'dto');
+  const displayName = dto.name || dto.email.split('@')[0];
   return {
     id: dto.id,
     email: dto.email,
-    name: dto.name || dto.email.split('@')[0],
-    githubUsername: dto.githubUsername,
+    name: displayName,
+    githubUsername: dto.githubUsername ?? dto.name,
     avatarUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${dto.email}`,
   };
 }

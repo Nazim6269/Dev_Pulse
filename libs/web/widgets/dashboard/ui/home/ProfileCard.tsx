@@ -16,7 +16,7 @@ const langColors: Record<string, string> = {
 
 export default function ProfileCard() {
   const { data: user } = useCurrentUser();
-  const username = user?.githubUsername || 'Nazim6269';
+  const username = user?.githubUsername || user?.name || 'Nazim6269';
   const { data, isLoading } = useGithubProfile(username);
   if (isLoading) {
     return <ProfileCardSkeleton />;

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import React from 'react';
+import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 import {
   Form,
@@ -14,12 +14,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useLogin } from "@/features/auth";
-import { LoginFormValues, loginSchema } from "../model/schema";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { useLogin } from '@/features/auth';
+import { LoginFormValues, loginSchema } from '../model/schema';
 
 /**
  * Login form component.
@@ -43,7 +43,7 @@ export function LoginForm() {
   const onSubmit = async (data: LoginFormValues) => {
     try {
       await loginUser(data);
-      router.push('/dashboard');
+      router.push('/');
     } catch (error: any) {
       console.error('Login error:', error);
     }
@@ -137,7 +137,7 @@ export function LoginForm() {
                 Signing in...
               </>
             ) : (
-              "Sign in"
+              'Sign in'
             )}
           </Button>
         </form>
@@ -145,13 +145,8 @@ export function LoginForm() {
 
       {/* Footer */}
       <div className="text-center text-sm">
-        <span className="text-neutral-500">
-          Don&apos;t have an account?{" "}
-        </span>
-        <Link
-          href="/register"
-          className="font-medium underline"
-        >
+        <span className="text-neutral-500">Don&apos;t have an account? </span>
+        <Link href="/register" className="font-medium underline">
           Sign up
         </Link>
       </div>

@@ -128,9 +128,17 @@ export class AuthService {
 
   async generateTokens(userId: string, email: string) {
     const payload = { sub: userId, email };
+    const accessSecret = this.configService.get<string>('JWT_ACCESS_SECRET');
+    const refreshSecret = this.configService.get<string>('JWT_REFRESH_SECRET');
+
+    if (!accessSecret || !refreshSecret) {
+      throw new Error(
+        'JWT_ACCESS_SECRET and JWT_REFRESH_SECRET must be set in environment variables',
+      );
+    }
 
     const accessToken = this.jwtService.sign(payload, {
-      secret: this.configService.get('JWT_ACCESS_SECRET'),
+      secret: accessSecret,
       expiresIn: '15m',
     });
 
@@ -139,7 +147,7 @@ export class AuthService {
     const refreshToken = this.jwtService.sign(
       { sub: userId },
       {
-        secret: this.configService.get('JWT_REFRESH_SECRET'),
+        secret: refreshSecret,
         expiresIn: '7d',
       },
     );

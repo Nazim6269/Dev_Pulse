@@ -1,6 +1,6 @@
-import { logger } from "@/features/logger";
-import { GithubRepository } from "../api/github.repository";
-import { parseError } from "@/features/api-errors";
+import { logger } from '@/features/logger';
+import { GithubRepository } from '../api/github.repository';
+import { parseError } from '@/features/api-errors';
 import {
   GithubUserDto,
   GithubRepoDto,
@@ -17,7 +17,7 @@ import {
   GithubPullRequestReview,
   GithubPullRequestFileDto,
   GithubPullRequestFile,
-} from "./github.types";
+} from './github.types';
 
 // ---------------------------------------------------------------------------
 // Transformers (pure functions — no class coupling)
@@ -65,7 +65,7 @@ function transformPullRequest(dto: GithubPullRequestDto): GithubPullRequest {
     title: dto.title,
     url: dto.html_url,
     // merged_at being set means it was merged — derive a richer state
-    state: dto.merged_at ? "merged" : dto.state,
+    state: dto.merged_at ? 'merged' : dto.state,
     repo: dto.base.repo.full_name,
     branch: dto.head.ref,
     baseBranch: dto.base.ref,
@@ -86,15 +86,25 @@ function transformPullRequest(dto: GithubPullRequestDto): GithubPullRequest {
 // ---------------------------------------------------------------------------
 
 const MONTH_ABBR = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
 ];
 
 function weekLabel(unixSeconds: number): string {
   const d = new Date(unixSeconds * 1000);
   const month = MONTH_ABBR[d.getUTCMonth()];
   // Which week-of-month is this? (1-indexed)
-  const weekOfMonth = Math.ceil((d.getUTCDate()) / 7);
+  const weekOfMonth = Math.ceil(d.getUTCDate() / 7);
   return `${month} W${weekOfMonth}`;
 }
 
@@ -170,9 +180,10 @@ export class GithubService {
   async getUserProfile(username: string): Promise<GithubUserProfile> {
     try {
       const { data } = await this.repo.getUser<GithubUserDto>(username);
+      console.log(data, 'data');
       return transformUser(data);
     } catch (error) {
-      logger.error(String(error), "Error fetching user profile");
+      logger.error(String(error), 'Error fetching user profile');
       throw parseError(error);
     }
   }
@@ -188,7 +199,7 @@ export class GithubService {
       );
       return data.map(transformRepo);
     } catch (error) {
-      logger.error(String(error), "Error fetching user repos");
+      logger.error(String(error), 'Error fetching user repos');
       throw parseError(error);
     }
   }
@@ -199,11 +210,9 @@ export class GithubService {
     params?: PullRequestQueryParams,
   ): Promise<GithubPullRequest[]> {
     try {
-      const { data } = await this.repo.getRepoPullRequests<GithubPullRequestDto[]>(
-        username,
-        repo,
-        params,
-      );
+      const { data } = await this.repo.getRepoPullRequests<
+        GithubPullRequestDto[]
+      >(username, repo, params);
       return data.map(transformPullRequest);
     } catch (error) {
       logger.error(String(error), `Error fetching PRs for ${username}/${repo}`);
@@ -216,10 +225,9 @@ export class GithubService {
     repo: string,
   ): Promise<CommitActivitySummary> {
     try {
-      const { data } = await this.repo.getRepoCommitActivity<CommitActivityWeekDto[]>(
-        username,
-        repo,
-      );
+      const { data } = await this.repo.getRepoCommitActivity<
+        CommitActivityWeekDto[]
+      >(username, repo);
       return transformCommitActivity(data);
     } catch (error) {
       logger.error(
@@ -268,16 +276,19 @@ export class GithubService {
     }
   }
 
-  async addRepoCollaborator(username: string, repo: string, collaborator: string): Promise<void> {
+  async addRepoCollaborator(
+    username: string,
+    repo: string,
+    collaborator: string,
+  ): Promise<void> {
     try {
       await this.repo.addRepoCollaborator(username, repo, collaborator);
     } catch (error) {
       logger.error(
         String(error),
-        `Error adding collaborator ${collaborator} to ${username}/${repo}`
+        `Error adding collaborator ${collaborator} to ${username}/${repo}`,
       );
       throw parseError(error);
     }
   }
 }
-
