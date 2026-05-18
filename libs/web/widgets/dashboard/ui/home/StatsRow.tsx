@@ -29,7 +29,7 @@ export default function StatsRow() {
   const primaryRepo = useMemo(() => {
     if (!repos?.length) return null;
     const devPulse = repos.find(
-      (repo) => repo.name.toLowerCase() === 'dev_pulse',
+      (repo) => repo.name.toLowerCase() === 'git-test',
     );
     if (devPulse) return devPulse.name;
     return [...repos].sort(

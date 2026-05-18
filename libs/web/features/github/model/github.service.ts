@@ -180,7 +180,6 @@ export class GithubService {
   async getUserProfile(username: string): Promise<GithubUserProfile> {
     try {
       const { data } = await this.repo.getUser<GithubUserDto>(username);
-      console.log(data, 'data');
       return transformUser(data);
     } catch (error) {
       logger.error(String(error), 'Error fetching user profile');
