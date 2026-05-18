@@ -1,6 +1,7 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { AppModule } from './app/app.module';
+import cookieParser from 'cookie-parser';
 import {
   AllExceptionsFilter,
   LoggingInterceptor,
@@ -8,6 +9,7 @@ import {
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.use(cookieParser());
   // const globalPrefix = '/api/v1';
 
   const httpAdapterHost = app.get(HttpAdapterHost);

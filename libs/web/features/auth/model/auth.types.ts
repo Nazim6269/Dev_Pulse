@@ -2,6 +2,7 @@ export interface UserDto {
   id: string;
   email: string;
   name?: string;
+  githubUsername?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -15,6 +16,7 @@ export interface AuthUser {
   id: string;
   email: string;
   name: string;
+  githubUsername?: string;
   avatarUrl?: string;
 }
 

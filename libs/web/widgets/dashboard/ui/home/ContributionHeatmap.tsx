@@ -2,11 +2,11 @@
 
 import { useGithubCommitActivity, useGithubRepos } from "@/features/github";
 import type { CommitActivitySummary, CommitActivityWeek } from "@/features/github";
+import { useCurrentUser } from "@/features/auth";
 
 // ---------------------------------------------------------------------------
 // Config
 // ---------------------------------------------------------------------------
-const GITHUB_USERNAME = "Nazim6269";
 const WEEKS_TO_SHOW = 36; // Number of weeks to show in the heatmap
 
 const INTENSITY_CLASS = [
@@ -176,7 +176,10 @@ function Heatmap({ summary }: { summary: CommitActivitySummary }) {
 // Root
 // ---------------------------------------------------------------------------
 export default function ContributionHeatmap() {
-  const { data: repos, isLoading: reposLoading } = useGithubRepos(GITHUB_USERNAME);
+  const { data: user } = useCurrentUser();
+  const username = user?.githubUsername || 'Nazim6269';
+
+  const { data: repos, isLoading: reposLoading } = useGithubRepos(username);
 
   const primaryRepo =
     repos && repos.length > 0
@@ -189,7 +192,7 @@ export default function ContributionHeatmap() {
     data: summary,
     isLoading: statsLoading,
     isError,
-  } = useGithubCommitActivity(GITHUB_USERNAME, primaryRepo ?? "");
+  } = useGithubCommitActivity(username, primaryRepo ?? "");
 
   if (reposLoading || statsLoading || !summary || !primaryRepo) {
     return <HeatmapSkeleton />;

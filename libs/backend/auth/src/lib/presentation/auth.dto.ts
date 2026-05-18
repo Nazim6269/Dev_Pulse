@@ -1,4 +1,4 @@
-import { IsEmail, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsString, MinLength, IsOptional, IsBoolean } from 'class-validator';
 
 export class RegisterDto {
   @IsEmail()
@@ -9,7 +9,6 @@ export class RegisterDto {
   password!: string;
 
   @IsString()
-  @MinLength(6)
   githubUsername!: string;
 
   @IsString()
@@ -23,4 +22,8 @@ export class LoginDto {
 
   @IsString()
   password!: string;
+
+  @IsOptional()
+  @IsBoolean()
+  rememberMe?: boolean;
 }
