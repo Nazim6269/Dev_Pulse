@@ -21,19 +21,21 @@ import { useCurrentUser } from '@/features/auth';
 const STORAGE_KEY = 'dashboard-stats-layout';
 
 export default function StatsRow() {
-  const { data: user } = useCurrentUser();
-  const username = user?.githubUsername || 'Nazim6269';
+  const { data: user, isLoading: userLoading } = useCurrentUser();
+  const username = user?.githubUsername || user?.name || 'Nazim6269';
 
-  const { data: repos, isLoading: reposLoading } =
-    useGithubRepos(username);
+  const { data: repos, isLoading: reposLoading } = useGithubRepos(username);
 
-  const primaryRepo =
-    repos && repos.length > 0
-      ? [...repos].sort(
-          (a, b) =>
-            new Date(b.pushedAt).getTime() - new Date(a.pushedAt).getTime(),
-        )[0].name
-      : null;
+  const primaryRepo = useMemo(() => {
+    if (!repos?.length) return null;
+    const devPulse = repos.find(
+      (repo) => repo.name.toLowerCase() === 'dev_pulse',
+    );
+    if (devPulse) return devPulse.name;
+    return [...repos].sort(
+      (a, b) => new Date(b.pushedAt).getTime() - new Date(a.pushedAt).getTime(),
+    )[0].name;
+  }, [repos]);
 
   const {
     data: summary,
@@ -50,11 +52,11 @@ export default function StatsRow() {
   const [layout, setLayout] = useState<string[]>([]);
 
   const statsData = useMemo(() => {
-    if (!summary || !prs) return [];
+    if (!summary || prs === undefined) return [];
 
     const mergedPrs = prs.filter((pr) => pr.state === 'merged');
-    const totalReviews = prs.reduce((sum, pr) => sum + pr.reviewComments, 0) || 0;
-    
+    const totalReviews =
+      prs.reduce((sum, pr) => sum + pr.reviewComments, 0) || 0;
 
     let cycleTimeStr = '0h';
     if (mergedPrs.length > 0) {
@@ -155,11 +157,34 @@ export default function StatsRow() {
     }
   }, [layout]);
 
-  if (reposLoading || statsLoading || prsLoading || !primaryRepo) {
+  const orderedStats = useMemo(() => {
+    if (statsData.length === 0) return [];
+    const dataMap = Object.fromEntries(statsData.map((s) => [s.id, s]));
+    const order =
+      layout.length === statsData.length && layout.every((id) => dataMap[id])
+        ? layout
+        : statsData.map((s) => s.id);
+    return order.map((id) => dataMap[id]).filter(Boolean);
+  }, [statsData, layout]);
+
+  const sortableIds =
+    orderedStats.length > 0 ? orderedStats.map((s) => s.id) : layout;
+
+  if (userLoading || reposLoading || statsLoading || prsLoading) {
     return <StatsRowSkeleton />;
   }
 
-  if (statsError || prsError || !summary || !prs) {
+  if (!primaryRepo) {
+    return (
+      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-full min-h-[160px] shadow-sm">
+        <p className="text-[12px] text-muted-foreground">
+          No public repositories found for {username}.
+        </p>
+      </div>
+    );
+  }
+
+  if (statsError || prsError || summary === undefined || prs === undefined) {
     return (
       <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-full min-h-[160px] shadow-sm">
         <p className="text-[12px] text-muted-foreground">
@@ -168,9 +193,6 @@ export default function StatsRow() {
       </div>
     );
   }
-
-  const dataMap = Object.fromEntries(statsData.map((s) => [s.id, s]));
-  const orderedStats = layout.map((id) => dataMap[id]).filter(Boolean);
 
   function handleDragEnd(event: any) {
     const { active, over } = event;
@@ -186,7 +208,7 @@ export default function StatsRow() {
 
   return (
     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <SortableContext items={layout} strategy={rectSortingStrategy}>
+      <SortableContext items={sortableIds} strategy={rectSortingStrategy}>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 h-full">
           {orderedStats.map((stat) => (
             <SortableStatCard key={stat.id} stat={stat} />

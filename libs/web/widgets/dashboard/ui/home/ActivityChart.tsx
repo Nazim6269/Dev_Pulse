@@ -66,6 +66,7 @@ function Chart({ summary, repo }: { summary: CommitActivitySummary; repo: string
   const maxTotal = Math.max(...recentWeeks.map((w) => w.total), 1);
   const totalCommits = summary.totalCommits;
   const trendPercent = summary.trendPercent;
+  console.log(summary, 'summary');
 
   return (
     <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-4 shadow-sm">
@@ -165,7 +166,6 @@ function Chart({ summary, repo }: { summary: CommitActivitySummary; repo: string
 export default function ActivityChart() {
   const { data: user } = useCurrentUser();
   const username = user?.githubUsername || 'Nazim6269';
-  console.log(user)
   const { data: repos, isLoading: reposLoading } = useGithubRepos(username);
 
   const primaryRepo =

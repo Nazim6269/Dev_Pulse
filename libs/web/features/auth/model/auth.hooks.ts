@@ -1,8 +1,8 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { authKeys } from "./auth.querykeys";
-import { authService } from "@/features/container";
-import { LoginParams, RegisterParams } from "./auth.types";
-import { toast } from "sonner";
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { authKeys } from './auth.querykeys';
+import { authService } from '@/features/container';
+import { LoginParams, RegisterParams } from './auth.types';
+import { toast } from 'sonner';
 
 export const useCurrentUser = () => {
   return useQuery({
@@ -22,7 +22,7 @@ export const useLogin = () => {
       queryClient.invalidateQueries({ queryKey: authKeys.all });
     },
     onError: (error: any) => {
-      toast.error(error.message || "Login failed");
+      toast.error(error.message || 'Login failed');
     },
   });
 };
@@ -34,11 +34,10 @@ export const useRegister = () => {
     mutationFn: (params: RegisterParams) => authService.register(params),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: authKeys.all });
-      toast.success("User registered successfully");
+      toast.success('User registered successfully');
     },
     onError: (error: any) => {
-      toast.error(error.message || "Registration failed");
-
+      toast.error(error.message || 'Registration failed');
     },
   });
 };
