@@ -10,7 +10,7 @@ const GITHUB_USERNAME = "Nazim6269";
 
 export default function PRCycleCard() {
   const { data: repos, isLoading: reposLoading } = useGithubRepos(GITHUB_USERNAME);
-  
+
   const primaryRepo =
     repos && repos.length > 0
       ? [...repos].sort(
@@ -23,14 +23,34 @@ export default function PRCycleCard() {
     primaryRepo ?? ""
   );
 
-  if (reposLoading || prsLoading || !primaryRepo) {
+  if (reposLoading || prsLoading) {
     return <PRCycleCardSkeleton />;
   }
 
-  if (isError || !prs) {
+  if (!primaryRepo) {
+    return (
+      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-82 shadow-sm">
+        <p className="text-[12px] text-muted-foreground">
+          No repository available to render PR cycle time.
+        </p>
+      </div>
+    );
+  }
+
+  if (isError) {
     return (
       <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-full shadow-sm">
         <p className="text-[12px] text-muted-foreground">Failed to load PR cycle time.</p>
+      </div>
+    );
+  }
+
+  if (!prs) {
+    return (
+      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-full shadow-sm">
+        <p className="text-[12px] text-muted-foreground">
+          PR cycle time data is unavailable.
+        </p>
       </div>
     );
   }
@@ -45,7 +65,7 @@ export default function PRCycleCard() {
     const cycles = mergedPrs.map(
       (pr) => (new Date(pr.mergedAt!).getTime() - new Date(pr.createdAt).getTime()) / (1000 * 60 * 60)
     );
-    
+
     avgCycleHours = cycles.reduce((a, b) => a + b, 0) / cycles.length;
     bestPRHours = Math.min(...cycles);
     slowestPRHours = Math.max(...cycles);
@@ -65,11 +85,11 @@ export default function PRCycleCard() {
       pct: 25,
       color: "bg-primary",
     },
-    { 
-      label: "Review iterations", 
-      value: `${reviewIters.toFixed(1)}h`, 
-      pct: 40, 
-      color: "bg-amber-400" 
+    {
+      label: "Review iterations",
+      value: `${reviewIters.toFixed(1)}h`,
+      pct: 40,
+      color: "bg-amber-400"
     },
     {
       label: "Merge ready → merge",

@@ -46,11 +46,23 @@ export const useGithubCommitActivity = (username: string, repo: string) => {
     queryFn: () => githubService.getRepoCommitActivity(username, repo),
     placeholderData: keepPreviousData,
     enabled: Boolean(username) && Boolean(repo),
-    // GitHub computes stats async — 202 responses are handled by axios-client retry;
-    // once cached, 15 min is safe since historical weeks don't change.
+    // GitHub computes stats async; keep retrying longer when the endpoint
+    // returns 202 until stats are ready, but fail fast for ordinary errors.
     staleTime: 1000 * 60 * 15,
-    retry: 3,
-    retryDelay: (attempt) => Math.min(2000 * 2 ** attempt, 10_000),
+    retry: (failureCount, error) => {
+      const status = (error as Error & { response?: { status: number } })?.response?.status;
+      if (status === 202) {
+        return failureCount < 8;
+      }
+      return failureCount < 3;
+    },
+    retryDelay: (attempt, error) => {
+      const status = (error as Error & { response?: { status: number } })?.response?.status;
+      if (status === 202) {
+        return 2000;
+      }
+      return Math.min(2000 * 2 ** attempt, 10_000);
+    },
   });
 };
 
@@ -84,7 +96,7 @@ export const useGithubPullRequestFiles = (
 
 export const useAddGithubCollaborator = () => {
   return useMutation({
-    mutationFn: ({ username, repo, collaborator }: { username: string, repo: string, collaborator: string }) => 
+    mutationFn: ({ username, repo, collaborator }: { username: string, repo: string, collaborator: string }) =>
       githubService.addRepoCollaborator(username, repo, collaborator),
   });
 };

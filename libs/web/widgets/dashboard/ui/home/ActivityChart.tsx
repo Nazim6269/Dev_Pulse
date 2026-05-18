@@ -7,7 +7,6 @@ import { useCurrentUser } from "@/features/auth";
 // ---------------------------------------------------------------------------
 // Config
 // ---------------------------------------------------------------------------
-/** How many recent weeks to show in the bar chart */
 const CHART_WEEKS = 8;
 
 // ---------------------------------------------------------------------------
@@ -66,7 +65,6 @@ function Chart({ summary, repo }: { summary: CommitActivitySummary; repo: string
   const maxTotal = Math.max(...recentWeeks.map((w) => w.total), 1);
   const totalCommits = summary.totalCommits;
   const trendPercent = summary.trendPercent;
-  console.log(summary, 'summary');
 
   return (
     <div className="bg-card border border-border rounded-2xl p-5 flex flex-col gap-4 shadow-sm">
@@ -175,20 +173,41 @@ export default function ActivityChart() {
         )[0].name
       : null;
 
+
   const {
     data: summary,
     isLoading: statsLoading,
     isError,
   } = useGithubCommitActivity(username, primaryRepo ?? "");
 
-  if (reposLoading || statsLoading || !summary || !primaryRepo) {
+  if (reposLoading || statsLoading) {
     return <ActivityChartSkeleton />;
+  }
+
+  if (!primaryRepo) {
+    return (
+      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center shadow-sm h-82">
+        <p className="text-[12px] text-muted-foreground">
+          No repository available to render commit activity.
+        </p>
+      </div>
+    );
   }
 
   if (isError) {
     return (
       <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center shadow-sm h-48">
         <p className="text-[12px] text-muted-foreground">Failed to load commit activity.</p>
+      </div>
+    );
+  }
+
+  if (!summary) {
+    return (
+      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center shadow-sm h-48">
+        <p className="text-[12px] text-muted-foreground">
+          Commit activity data is unavailable.
+        </p>
       </div>
     );
   }

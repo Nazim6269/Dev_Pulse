@@ -35,10 +35,13 @@ export class GithubRepository {
     );
   }
 
-  getRepoCommitActivity<T = unknown>(username: string, repo: string) {
-    return this.http.get<T>(
+  async getRepoCommitActivity<T = unknown>(username: string, repo: string) {
+    console.log(username,"username");
+    const data= await this.http.get<T>(
       `https://api.github.com/repos/${username}/${repo}/stats/commit_activity`,
     );
+    console.log(data,"data from repo");
+    return data;
   }
 
   getPullRequestReviews<T = unknown>(username: string, repo: string, pullNumber: number) {

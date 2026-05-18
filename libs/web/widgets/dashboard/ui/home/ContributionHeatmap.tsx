@@ -194,14 +194,34 @@ export default function ContributionHeatmap() {
     isError,
   } = useGithubCommitActivity(username, primaryRepo ?? "");
 
-  if (reposLoading || statsLoading || !summary || !primaryRepo) {
+  if (reposLoading || statsLoading) {
     return <HeatmapSkeleton />;
   }
+
+  if (!primaryRepo) {
+    return (
+      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center shadow-sm h-48">
+        <p className="text-[12px] text-muted-foreground">
+          No repository available to render contribution activity.
+        </p>
+      </div>
+    );
+  }  
 
   if (isError) {
     return (
       <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center shadow-sm h-48">
         <p className="text-[12px] text-muted-foreground">Failed to load contribution calendar.</p>
+      </div>
+    );
+  }
+
+  if (!summary) {
+    return (
+      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center shadow-sm h-48">
+        <p className="text-[12px] text-muted-foreground">
+          Contribution activity data is unavailable.
+        </p>
       </div>
     );
   }

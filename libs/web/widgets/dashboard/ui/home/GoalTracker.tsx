@@ -12,7 +12,7 @@ const GITHUB_USERNAME = "Nazim6269";
 
 export default function GoalTracker() {
   const { data: repos, isLoading: reposLoading } = useGithubRepos(GITHUB_USERNAME);
-  
+
   const primaryRepo =
     repos && repos.length > 0
       ? [...repos].sort(
@@ -34,14 +34,14 @@ export default function GoalTracker() {
     if (!summary || !prs) return [];
 
     const mergedPrs = prs.filter((pr) => pr.state === "merged");
-    
+
     // 1. Commits this week (from last week of summary)
     const lastWeek = summary.weeks.length > 0 ? summary.weeks[summary.weeks.length - 1] : null;
     const commitsThisWeek = lastWeek ? lastWeek.total : 0;
-    
+
     // 2. Merged PRs
     const mergedCount = mergedPrs.length;
-    
+
     // 3. Reviewed PRs
     const reviewedCount = prs.filter((pr) => pr.reviewComments > 0).length;
 
@@ -110,14 +110,34 @@ export default function GoalTracker() {
     ];
   }, [summary, prs]);
 
-  if (reposLoading || statsLoading || prsLoading || !primaryRepo) {
+  if (reposLoading || statsLoading || prsLoading) {
     return <GoalTrackerSkeleton />;
   }
 
-  if (statsError || prsError || !summary || !prs) {
+  if (!primaryRepo) {
+    return (
+      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-110 shadow-sm">
+        <p className="text-[12px] text-muted-foreground">
+          No repository available to render goals.
+        </p>
+      </div>
+    );
+  }
+
+  if (statsError || prsError) {
     return (
       <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-110 shadow-sm">
         <p className="text-[12px] text-muted-foreground">Failed to load goals.</p>
+      </div>
+    );
+  }
+
+  if (!summary || !prs) {
+    return (
+      <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center h-110 shadow-sm">
+        <p className="text-[12px] text-muted-foreground">
+          Goal data is unavailable.
+        </p>
       </div>
     );
   }
